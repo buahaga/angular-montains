@@ -1,0 +1,21 @@
+form {
+ width: 50%;
+ margin: 5px auto;
+ padding: 5px;
+ border: thin solid grey;
+ display: flex;
+ align-items: center;
+}
+
+div {
+  width: 75%;
+}
+
+span {
+  display: block;
+}
+
+button {
+  display: inline-block;
+  width: 20%;
+}
