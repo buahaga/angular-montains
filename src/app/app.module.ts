@@ -1,28 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AuthenticationModule } from './authentication/authentication.module';
+import { ContentModule } from './content/content.module'
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
-import { ListComponent } from './list/list.component';
-import { ListItemComponent } from './list-item/list-item.component';
-import { MapComponent } from './map/map.component';
-import { SortComponent } from './sort/sort.component';
+import { routing } from './app.routing';
+
+import { AuthenticationService } from './authentication.service';
+import { AuthenticationInterceptor } from './authentication.interceptor'
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent,
-    ListComponent,
-    ListItemComponent,
-    MapComponent,
-    SortComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AuthenticationModule,
+    ContentModule,
+    routing
   ],
-  providers: [],
+  providers: [
+    AuthenticationService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthenticationInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

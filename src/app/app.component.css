@@ -1,3 +1,4 @@
-* {
-  border: thin solid green;
+div {
+  margin: 20px;
+  border: thin solid grey;
 }
