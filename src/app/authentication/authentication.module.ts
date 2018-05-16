@@ -10,6 +10,7 @@ import { AuthenticationComponent } from './authentication.component'
     FormsModule,
     routing
   ],
-  declarations: [AuthenticationComponent]
+  declarations: [AuthenticationComponent],
+  exports: [AuthenticationComponent] // maybe to put not on /login but on / it self
 })
 export class AuthenticationModule { }

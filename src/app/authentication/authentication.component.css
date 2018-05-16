@@ -9,3 +9,14 @@ label {
   display: block;
   margin: 5px;
 }
+
+.logged-out,
+.logged-in {
+  margin: 10px;
+  font-style: italic;
+  color: red;
+}
+
+.logged-in {
+  color: green;
+}

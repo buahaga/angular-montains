@@ -4,13 +4,17 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import { AuthenticationModule } from './authentication/authentication.module';
 import { ContentModule } from './content/content.module'
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
-import { AuthenticationService } from './authentication.service';
-import { AuthenticationInterceptor } from './authentication.interceptor'
+import { AuthenticationServicePost } from './services/authentication-post.service';
+import { AuthenticationServiceGet } from './services/authentication-get.service';
+import { AuthenticationInterceptor } from './services/authentication.interceptor'
 
 @NgModule({
   declarations: [
@@ -22,10 +26,13 @@ import { AuthenticationInterceptor } from './authentication.interceptor'
     HttpClientModule,
     AuthenticationModule,
     ContentModule,
-    routing
+    routing,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [
-    AuthenticationService, {
+    AuthenticationServicePost,
+    AuthenticationServiceGet, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthenticationInterceptor,
     multi: true,

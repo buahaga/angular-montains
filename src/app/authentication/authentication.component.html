@@ -1,8 +1,11 @@
 <form action="send">
   <h3>Authentications Form</h3>
-  <label>Der Login: <input type="email" placeholder="login@mail.com"></label>
+  <label>Der Login: <input type="email" placeholder="admin@mail.com" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></label>
   <br/>
-  <label>Der Parol: <input type="password" placeholder="*******"></label>
+  <label>Der Parol: <input type="password" placeholder="*****" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></label>
   <br/>
-  <button>Log in</button>
+  <button (click)="doLogin()">Log in</button>
+  <br/>
+  <div *ngIf="!loggedIn" class="logged-out">Please log in.</div>
+  <div *ngIf="loggedIn" class="logged-in">You are logged in.</div>
 </form>

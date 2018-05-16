@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationServicePost } from '../services/authentication-post.service';
+// import { AuthenticationServiceGet } from '../services/authentication-get.service';
 
 @Component({
   selector: 'app-authentication',
@@ -8,17 +9,25 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class AuthenticationComponent implements OnInit {
 
-  user;
+  email = '';
+  password = '';
+  loggedIn;
 
-  constructor(private AuthenticationService: AuthenticationService) { }
+  constructor(private authenticationServicePost: AuthenticationServicePost) { }
 
   ngOnInit() {
-    this.getAuthentication();
+    this.authenticationServicePost.loggedIn.subscribe(loggedIn => {
+      this.loggedIn = loggedIn;
+    });
   }
 
-  getAuthentication(): void {
-    this.AuthenticationService.getService('https://jsonplaceholder.typicode.com/posts/1')
-      .subscribe(user => this.user = user)
+  doLogin() {
+    this.authenticationServicePost.login(this.email, this.password)
   }
+
+  // getAuthentication(): void {
+  //   this.AuthenticationServiceGet.getService('https://jsonplaceholder.typicode.com/posts/1')
+  //     .subscribe(user => this.user = user)
+  // }
 
 }
