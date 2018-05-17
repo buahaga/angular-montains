@@ -3,20 +3,15 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const expressJwt = require('express-jwt');
-// const route = express.Router();
+const mountains = require('./data');
 
 const serverJWT_Secret = 'kpTxN=)7mX3W3SEJ58Ubt8-';
+
 const appUsers = {
   'admin@gmail.com': {
     name: 'Admin',
     password: '123',
-    token: ''
-  },
-  'guest@mail.com': {
-    name: 'Guest',
-    password: '12345',
-    token: ''
+    exp: 0,
   }
 };
 
@@ -30,10 +25,10 @@ app.get('/api', (req, res) => {
 });
 
 app.get('/api/content',
-  expressJwt({secret: serverJWT_Secret}),
   (req, res) => {
-    console.log(req.headers.authorization);
-    (!req.headers.authentication === appUsers) ? res.sendStatus(401) : res.sendStatus(200);
+    console.log(Number(req.headers.expiration));
+    (Number(req.headers.expiration) > Number(new Date())) ? res.status(200).send(mountains) : res.sendStatus(401);
+    // (!req.headers.authentication === appUsers) ? res.sendStatus(401) : res.sendStatus(200);
   });
 
 app.post('/api/login', (req, res) => {
@@ -43,11 +38,12 @@ app.post('/api/login', (req, res) => {
       const userWithoutPassword = {...user};
       delete userWithoutPassword.password;
       const token = jwt.sign(userWithoutPassword, serverJWT_Secret);
-      appUsers[req.body.email].token = token;
-      console.log(appUsers['']);
+      const expiration = Number(new Date()) + 30000;
+      appUsers[req.body.email].exp = expiration;
       res.status(200).send({
         user: userWithoutPassword,
-        token: token
+        token: token,
+        exp: expiration
       });
     } else {
       res.status(403).send({

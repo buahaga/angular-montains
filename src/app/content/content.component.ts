@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationServiceGet } from '../services/authentication-get.service';
-import { environment } from '../../environments/environment';
-import { GetTokenService } from '../services/get-token.service';
-
 
 @Component({
   selector: 'content',
@@ -11,19 +7,11 @@ import { GetTokenService } from '../services/get-token.service';
 })
 export class ContentComponent implements OnInit {
 
-  constructor(
-    public authenticationServiceGet: AuthenticationServiceGet,
-    public getTockenService: GetTokenService ) {}
+  constructor() {}
 
   title: string = 'ContentCompoent';
-  token: string = this.getTockenService.getToken();
-  apiUrl: string = environment.apiUrl + '/content';
 
   ngOnInit() {
-    this.authenticationServiceGet.getConfirm(this.apiUrl, this.token).
-      subscribe(
-        req => console.log(req)
-      )
   }
 
 }

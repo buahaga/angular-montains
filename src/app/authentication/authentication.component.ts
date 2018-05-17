@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationServicePost } from '../services/authentication-post.service';
-import { environment } from '../../environments/environment';
-
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, CanActivate } from '@angular/router';
-import { GetTokenService } from '../services/get-token.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
-
+import { AuthenticationService } from '../services/authentication.service';
+import { StorageService } from '../services/storage.service';
+import { LoginModel } from '../models/login-model';
 
 @Component({
   selector: 'app-authentication',
@@ -14,61 +12,40 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthenticationComponent implements OnInit {
 
-// TODO formControl
-  email = '';
-  password = '';
-  loggedIn = '';
-  apiUrl: string = environment.apiUrl + '/login';
+  form: FormGroup;
+  loginError: boolean = false;
 
   constructor(
-    private authenticationServicePost: AuthenticationServicePost,
-    public getTockenService: GetTokenService,
+    public authenticationService: AuthenticationService,
+    public storageService: StorageService,
     public router: Router,
-    public jwtHelper: JwtHelperService) { }
+    public formBuilder: FormBuilder) {  }
 
   ngOnInit() {
-    //this.redirectToContent();
-    sessionStorage.setItem('sessionUser', this.loggedIn)
+    this.createForm();
   }
 
-  doLogin() {
-    this.authenticationServicePost.login(this.apiUrl, this.email, this.password)
+  createForm() {
+    this.form = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
+    });
+  }
+
+  login() {
+    const loginModel = this.form.value as LoginModel;
+    this.authenticationService.login(loginModel)
       .subscribe(
-        res => {
-          this.loggedIn = res.token;
-          sessionStorage.clear();
-          sessionStorage.setItem('sessionUser', this.loggedIn);
-          console.log(res)
-          return res;
+        resp => {
+          //move to service => how do I move this to service, when I only get resp on subscirbe?
+          this.storageService.set('userToken', resp.token);
+          this.storageService.set('userTokenExpires', resp.exp);
+          this.router.navigate(['content']);
+          return resp;
+        }, (error) => {
+          this.loginError = true;
         }
       )
-
-
-      // .map((response: any) => {
-      //   sessionStorage.setItem('sessionUser', response.token);
-      //   return response;
-      // });
-      //
-      // .subscribe((resp: any) => {
-      //   this.loggedIn.next(true);
-      //   this.token = resp.token;
-      //   sessionStorage.setItem('sessionUser', this.token);
-      //   this.toastr.success(resp && resp.user && resp.user.name ? `Welcome ${resp.user.name}` : 'Logged in!');
-      // }, (errorResp) => {
-      //   this.loggedIn.next(undefined);
-      //   errorResp.error ? this.toastr.error(errorResp.error.errorMessage) : this.toastr.error('An unknown error has occured.');
-      // });
-  }
-
-  redirectToContent(): boolean {
-    const token = this.getTockenService.getToken();
-    //const helper = new JwtHelperService();
-    // && helper.isTokenExpired(token)
-    if (token) {
-      this.router.navigate(['content']);
-      return false;
-    }
-    return false;
   }
 
 }

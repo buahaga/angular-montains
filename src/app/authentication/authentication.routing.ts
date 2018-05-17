@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { ModuleWithProviders } from '@angular/core';
 import { AuthenticationComponent } from './authentication.component';
 
 
@@ -10,9 +9,4 @@ const routes: Routes = [
     component: AuthenticationComponent
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class AuthenticationComponentRouting { }
+export const AuthenticationComponentRouting: ModuleWithProviders = RouterModule.forChild(routes);

@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-import { GetTokenService } from './get-token.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { TokenService } from './token.service';
+import { StorageService } from './storage.service';
 
 @Injectable()
 export class RouteGuardService implements CanActivate {
 
   constructor(
-    public getTockenService: GetTokenService,
-    public router: Router,
-    public jwtHelper: JwtHelperService) {}
+    public tockenService: TokenService,
+    public storageService: StorageService,
+    public router: Router) {}
 
   canActivate(): boolean {
-    const helper = new JwtHelperService();
-    const token = this.getTockenService.getToken();
+    const token = this.tockenService.getToken();
+    const expiration = (Number(this.tockenService.getExpirationTime()) > Number(new Date()));
 
-    if (!token || !helper.isTokenExpired(token)) {
+    if (!token || !expiration) {
+      this.storageService.clear();
       this.router.navigate(['login']);
       return false;
     }
-    
     return true;
   }
 }

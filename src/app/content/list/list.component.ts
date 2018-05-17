@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MountainModel } from '../../models/mountain-model';
+import { HttpService } from '../../services/http.service';
+
 
 @Component({
   selector: 'app-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public httpSerivice: HttpService) { }
+  mountains: MountainModel[];
 
   ngOnInit() {
+    console.log('hl')
+    this.httpSerivice.getMountains()
+      .subscribe((resp) => this.mountains = resp);
   }
 
 }

@@ -7,16 +7,11 @@ form {
 
 label {
   display: block;
-  margin: 5px;
+  margin: 10px;
 }
 
-.logged-out,
-.logged-in {
+.error {
   margin: 10px;
   font-style: italic;
   color: red;
-}
-
-.logged-in {
-  color: green;
 }

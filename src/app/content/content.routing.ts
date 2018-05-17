@@ -1,8 +1,6 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { ModuleWithProviders } from '@angular/core';
 import { ContentComponent } from './content.component';
-
 
 const routes: Routes = [
   {
@@ -10,9 +8,4 @@ const routes: Routes = [
     component: ContentComponent
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class ContentComponentRouting { }
+export const ContentComponentRouting: ModuleWithProviders = RouterModule.forChild(routes);

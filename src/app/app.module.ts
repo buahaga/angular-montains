@@ -3,20 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-
-import { AuthenticationServicePost } from './services/authentication-post.service';
-import { AuthenticationServiceGet } from './services/authentication-get.service';
+import { AuthenticationService } from './services/authentication.service';
+import { StorageService } from './services/storage.service';
 import { AuthenticationInterceptor } from './services/authentication.interceptor'
-import { GetTokenService } from './services/get-token.service';
+import { TokenService } from './services/token.service';
 import { RouteGuardService } from './services/route-guard.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { JwtModule } from '@auth0/angular-jwt';
+import { HttpService } from './services/http.service';
 
 export function tokenGetter() {
-  return sessionStorage.getItem('sessionUser');
+  return sessionStorage.getItem('userToken');
 }
 
 @NgModule({
@@ -38,11 +37,12 @@ export function tokenGetter() {
     })
   ],
   providers: [
-    AuthenticationServicePost,
-    AuthenticationServiceGet,
-    GetTokenService,
+    AuthenticationService,
+    StorageService,
+    TokenService,
     RouteGuardService,
     JwtHelperService,
+    HttpService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
