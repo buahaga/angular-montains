@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationServiceGet } from '../services/authentication-get.service';
+import { environment } from '../../environments/environment';
+import { GetTokenService } from '../services/get-token.service';
+
 
 @Component({
   selector: 'content',
@@ -7,17 +10,20 @@ import { AuthenticationServiceGet } from '../services/authentication-get.service
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  title: string = 'ContentCompoent';
-  api: string = 'http://localhost:3200/api/content';
-  token: string = this.authGet.getToken();
 
-  constructor(public authGet: AuthenticationServiceGet ) {}
+  constructor(
+    public authenticationServiceGet: AuthenticationServiceGet,
+    public getTockenService: GetTokenService ) {}
+
+  title: string = 'ContentCompoent';
+  token: string = this.getTockenService.getToken();
+  apiUrl: string = environment.apiUrl + '/content';
 
   ngOnInit() {
-    console.log(this.token)
-    this.authGet.getService(this.api, this.token).subscribe(data => {
-      console.log(data);
-    });
+    this.authenticationServiceGet.getConfirm(this.apiUrl, this.token).
+      subscribe(
+        req => console.log(req)
+      )
   }
 
 }

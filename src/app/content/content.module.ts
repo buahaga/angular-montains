@@ -1,5 +1,5 @@
-import { routing } from './content.routing';
-import { BrowserModule } from '@angular/platform-browser';
+import { ContentComponentRouting } from './content.routing';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { ContentComponent } from './content.component';
@@ -10,6 +10,11 @@ import { MapComponent } from './map/map.component';
 import { SortComponent } from './sort/sort.component';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    ContentComponentRouting
+  ],
   declarations: [
     ContentComponent,
     SearchComponent,
@@ -17,13 +22,6 @@ import { SortComponent } from './sort/sort.component';
     ListItemComponent,
     MapComponent,
     SortComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    routing
-  ],
-  providers: [],
-  bootstrap: []
+  ]
 })
 export class ContentModule { }

@@ -10,18 +10,14 @@ export class AuthenticationServiceGet {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getService(url: string, token: string): Observable<any>{
+  public getConfirm(url: string, token: string): Observable<any>{
     return this.httpClient.get(url);
   }
-
-  public isAuthenticated(): boolean {
-  const token = this.getToken();
-  let auth;
-  token ? auth = true : auth = false;
-  return auth;
+  
 }
 
-  public getToken() {
-    return sessionStorage.getItem('sessionUser');
-  }
-}
+
+//TODO check starge service (guard)
+// if token is not exist redirect to login page
+// if token is exist send request to server (resolver)
+// if server send 401 redirect to login

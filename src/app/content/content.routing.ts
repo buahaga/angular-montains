@@ -1,9 +1,18 @@
-import { ContentComponent } from './content.component';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core';
 
-export const routes: Routes = [
-  { path: 'content', component: ContentComponent }
+import { ContentComponent } from './content.component';
+
+
+const routes: Routes = [
+  {
+    path: '',
+    component: ContentComponent
+  }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forChild(routes);
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class ContentComponentRouting { }

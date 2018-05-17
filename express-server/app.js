@@ -4,16 +4,19 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const expressJwt = require('express-jwt');
+// const route = express.Router();
 
 const serverJWT_Secret = 'kpTxN=)7mX3W3SEJ58Ubt8-';
 const appUsers = {
-  'admin@mail.com': {
+  'admin@gmail.com': {
     name: 'Admin',
-    password: '12345'
+    password: '123',
+    token: ''
   },
   'guest@mail.com': {
     name: 'Guest',
-    password: '12345'
+    password: '12345',
+    token: ''
   }
 };
 
@@ -27,10 +30,10 @@ app.get('/api', (req, res) => {
 });
 
 app.get('/api/content',
-  // expressJwt({secret: serverJWT_Secret}),
+  expressJwt({secret: serverJWT_Secret}),
   (req, res) => {
-    console.log(!Boolean(req.headers.authorization));
-    (!req.headers.authentication) ? res.sendStatus(401) : res.sendStatus(200);
+    console.log(req.headers.authorization);
+    (!req.headers.authentication === appUsers) ? res.sendStatus(401) : res.sendStatus(200);
   });
 
 app.post('/api/login', (req, res) => {
@@ -40,6 +43,8 @@ app.post('/api/login', (req, res) => {
       const userWithoutPassword = {...user};
       delete userWithoutPassword.password;
       const token = jwt.sign(userWithoutPassword, serverJWT_Secret);
+      appUsers[req.body.email].token = token;
+      console.log(appUsers['']);
       res.status(200).send({
         user: userWithoutPassword,
         token: token
