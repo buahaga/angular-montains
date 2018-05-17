@@ -27,7 +27,7 @@ app.get('/api', (req, res) => {
 app.get('/api/content',
   (req, res) => {
     console.log(Number(req.headers.expiration));
-    (Number(req.headers.expiration) > Number(new Date())) ? res.status(200).send(mountains) : res.sendStatus(401);
+    (Number(req.headers.expiration) > Number(new Date())) ? res.status(200).send(mountains.slice(0,10)) : res.sendStatus(401);
     // (!req.headers.authentication === appUsers) ? res.sendStatus(401) : res.sendStatus(200);
   });
 
@@ -38,7 +38,7 @@ app.post('/api/login', (req, res) => {
       const userWithoutPassword = {...user};
       delete userWithoutPassword.password;
       const token = jwt.sign(userWithoutPassword, serverJWT_Secret);
-      const expiration = Number(new Date()) + 30000;
+      const expiration = Number(new Date()) + 300000;
       appUsers[req.body.email].exp = expiration;
       res.status(200).send({
         user: userWithoutPassword,

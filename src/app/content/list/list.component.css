@@ -4,3 +4,18 @@
   padding: 0;
   text-align: left;
 }
+
+li {
+  display: block;
+  margin: 5px;
+  padding: 10px;
+  background: #6496fa;
+  border: 5px solid #6496fa;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+li > a {
+  text-decoration: none;
+  color: black;
+}

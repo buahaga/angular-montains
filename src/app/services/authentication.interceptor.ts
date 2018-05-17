@@ -18,7 +18,6 @@ export class AuthenticationInterceptor implements HttpInterceptor {
         Expiration: exp ? exp : ''
       }
     });
-    console.log(this.tokenService.getToken())
     return next.handle(request);
   }
 

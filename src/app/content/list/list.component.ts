@@ -14,7 +14,6 @@ export class ListComponent implements OnInit {
   mountains: MountainModel[];
 
   ngOnInit() {
-    console.log('hl')
     this.httpSerivice.getMountains()
       .subscribe((resp) => this.mountains = resp);
   }

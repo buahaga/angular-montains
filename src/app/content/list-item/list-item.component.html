@@ -1,3 +1,33 @@
-<p>
-  list-item works!
-</p>
+<div class="list-item">
+
+  <h2>{{ mountain.mountain | uppercase }}:</h2>
+
+  <div class="column">
+    <img src="{{ mountain.img }}" alt="{{ mountain.mountain }}">
+  </div>
+
+  <div class="column">
+    <div class="country">
+      <h3>Country:</h3>
+      {{ mountain.country }}
+    </div>
+    <div class="height">
+      <h3>Height:</h3>
+      {{ mountain.height }} m.
+    </div>
+    <div>
+      <label>
+        <h3>Leave comment:</h3>
+        <textarea [(ngModel)]="comment"></textarea>
+      </label>
+      <button (click)="sendComment()">Send</button>
+    </div>
+    <div>
+      <h4>Related comments:</h4>
+      <p>{{newComment}}</p>
+    </div>
+  </div>
+
+  <button routerLink="../">Go back</button>
+
+</div>

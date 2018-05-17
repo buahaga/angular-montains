@@ -1,5 +1,11 @@
 <ul class="heroes">
-  <li *ngFor="let mountain of mountains">
-    <span class="mountain">{{mountain.id}}. </span>{{mountain.mountain}}
+  <li
+    *ngFor="let mountain of mountains"
+    [class.selected]="mountain === selectedMountain"
+    (click)="onSelect(mountain)"
+    >
+    <a routerLink="{{mountain.id}}">
+      <span class="mountain">{{ mountain.id }}. </span>{{ mountain.mountain }}
+    </a>
   </li>
 </ul>
