@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Token } from '../models/token';
 
 @Injectable()
 export class StorageService {
 
-  get(auth: string) {
-    return sessionStorage.getItem(auth);
+  get(key: string) {
+    return sessionStorage.getItem(key);
   }
 
-  set(auth: string, payload: string) {
-    return sessionStorage.setItem(auth, payload);
-  }
-
-  clear() {
-    return sessionStorage.clear();
+  set(key: string, payload: string) {
+    sessionStorage.setItem(key, payload);
   }
 
 }

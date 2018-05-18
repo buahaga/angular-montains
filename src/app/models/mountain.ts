@@ -1,4 +1,4 @@
-export class MountainModel {
+export class Mountain {
   id: string;
   country: string;
   mountain: string;

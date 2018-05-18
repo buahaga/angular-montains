@@ -14,8 +14,3 @@ li {
   border-radius: 5px;
   cursor: pointer;
 }
-
-li > a {
-  text-decoration: none;
-  color: black;
-}

@@ -9,4 +9,4 @@ const routes: Routes = [
     component: AuthenticationComponent
   }
 ];
-export const AuthenticationComponentRouting: ModuleWithProviders = RouterModule.forChild(routes);
+export const AuthenticationRouting: ModuleWithProviders = RouterModule.forChild(routes);

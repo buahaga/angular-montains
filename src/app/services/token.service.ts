@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
+import { Token } from '../models/token';
 
 @Injectable()
 export class TokenService {
 
   constructor(public storage: StorageService) { }
 
-  //TODO make TokenModel whit exptime and return it as Token
-  // get(): Token | null {
-  //   return this.storageService.get('userToken') as Token;
-  // }
-
-  getToken() {
-    return this.storage.get('userToken');
+  getToken() : Token {
+    const token = JSON.parse(this.storage.get('userToken'))
+    return token ? token : false
   }
 
-  getExpirationTime() {
-    return this.storage.get('userTokenExpires');
+  setToken(payload: Token | null) {
+    this.storage.set('userToken', JSON.stringify(payload))
   }
 
 }

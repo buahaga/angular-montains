@@ -2,11 +2,11 @@
 
   <h2>{{ mountain.mountain | uppercase }}:</h2>
 
-  <div class="column">
+  <div class="column-left">
     <img src="{{ mountain.img }}" alt="{{ mountain.mountain }}">
   </div>
 
-  <div class="column">
+  <div class="column-right">
     <div class="country">
       <h3>Country:</h3>
       {{ mountain.country }}
@@ -18,9 +18,9 @@
     <div>
       <label>
         <h3>Leave comment:</h3>
-        <textarea [(ngModel)]="comment"></textarea>
+        <textarea [(ngModel)]="comment" rows="5" cols="20"></textarea>
+        <button (click)="sendComment()">Send</button>
       </label>
-      <button (click)="sendComment()">Send</button>
     </div>
     <div>
       <h4>Related comments:</h4>

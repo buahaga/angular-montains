@@ -1,4 +1,4 @@
-import { ContentComponentRouting } from './content.routing';
+import { ContentRouting } from './content.routing';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
@@ -13,7 +13,7 @@ import { SortComponent } from './sort/sort.component';
   imports: [
     CommonModule,
     FormsModule,
-    ContentComponentRouting
+    ContentRouting
   ],
   declarations: [
     ContentComponent,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MountainModel } from '../../models/mountain-model';
+import { Mountain } from '../../models/mountain';
 import { HttpService } from '../../services/http.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class ListItemComponent implements OnInit {
     private httpSerivice: HttpService
   ) { }
 
-  mountain: MountainModel;
+  mountain: Mountain;
   comment: string = '';
   newComment: string = '';
 

@@ -3,9 +3,8 @@
     *ngFor="let mountain of mountains"
     [class.selected]="mountain === selectedMountain"
     (click)="onSelect(mountain)"
+    routerLink="{{mountain.id}}"
     >
-    <a routerLink="{{mountain.id}}">
-      <span class="mountain">{{ mountain.id }}. </span>{{ mountain.mountain }}
-    </a>
+    <span class="mountain">{{ mountain.id }}. </span>{{ mountain.mountain }}
   </li>
 </ul>

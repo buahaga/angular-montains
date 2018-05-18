@@ -3,7 +3,8 @@ export class LoginModel {
   password: string;
 }
 
-// export class AuthorisedModel {
-//   apiUrl: string;
-//   login: LoginModel;
-// }
+export class AuthorisedModel {
+  expiration: number;
+  token: string;
+  login: LoginModel;
+}

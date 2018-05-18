@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MountainModel } from '../../models/mountain-model';
+import { Mountain } from '../../models/mountain';
 import { HttpService } from '../../services/http.service';
 
 
@@ -11,7 +11,7 @@ import { HttpService } from '../../services/http.service';
 export class ListComponent implements OnInit {
 
   constructor(public httpSerivice: HttpService) { }
-  mountains: MountainModel[];
+  mountains: Mountain[];
 
   ngOnInit() {
     this.httpSerivice.getMountains()

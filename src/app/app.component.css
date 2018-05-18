@@ -1,4 +1,6 @@
 div {
   margin: 20px;
+  text-align: center;
+  background-color: #7FFFD4;
   border: thin solid grey;
 }

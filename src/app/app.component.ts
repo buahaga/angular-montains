@@ -8,6 +8,3 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'MountainSearch';
 }
-
-//TODO make list, search and map
-// TODO make authorisation and comments

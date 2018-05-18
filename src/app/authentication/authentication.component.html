@@ -1,8 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="login()">
 
-  <h3>Authentications Form</h3>
+  <h3>Authentication Form</h3>
 
-  <div *ngIf="loginError" class="error">Please check e-mail and password are correct!</div>
+  <div *ngIf="formError" class="error fatal">Please check e-mail and password are correct!</div>
 
   <label>
     Der Login:
@@ -20,6 +20,6 @@
     Password not valid.
   </div>
 
-  <button>Log in</button>
+  <button type="submit">Log in</button>
 
 </form>

@@ -11,7 +11,7 @@ const appUsers = {
   'admin@gmail.com': {
     name: 'Admin',
     password: '123',
-    exp: 0,
+    expiration: 0,
   }
 };
 
@@ -35,15 +35,15 @@ app.post('/api/login', (req, res) => {
   if (req.body) {
     const user = appUsers[req.body.email];
     if (user && user.password === req.body.password) {
-      const userWithoutPassword = {...user};
-      delete userWithoutPassword.password;
-      const token = jwt.sign(userWithoutPassword, serverJWT_Secret);
+      const userWithPassword = {...user};
+      delete userWithPassword.password;
+      const token = jwt.sign(userWithPassword, serverJWT_Secret);
       const expiration = Number(new Date()) + 300000;
-      appUsers[req.body.email].exp = expiration;
+      appUsers[req.body.email].expiration = expiration;
       res.status(200).send({
-        user: userWithoutPassword,
+        user: userWithPassword.name,
         token: token,
-        exp: expiration
+        expiration: expiration
       });
     } else {
       res.status(403).send({
