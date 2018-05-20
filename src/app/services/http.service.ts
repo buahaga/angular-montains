@@ -11,7 +11,7 @@ export class HttpService {
   constructor(public httpClient: HttpClient) { }
   apiUrl: string = environment.apiUrl + '/content';
 
-  public getMountains(): Observable<any>{
+  public getMountains(): Observable<any> {
     return this.httpClient.get(this.apiUrl);
   }
 

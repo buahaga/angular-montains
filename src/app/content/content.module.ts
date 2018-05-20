@@ -22,6 +22,7 @@ import { SortComponent } from './sort/sort.component';
     ListItemComponent,
     MapComponent,
     SortComponent,
-  ]
+  ],
+  providers: []
 })
 export class ContentModule { }

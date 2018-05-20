@@ -11,6 +11,8 @@ import { StorageService } from './services/storage.service';
 import { TokenService } from './services/token.service';
 import { RouteGuardService } from './services/guards/route-guard.service';
 import { HttpService } from './services/http.service';
+import { MountainsResolver } from './services/resolvers/mountains.resolver';
+import { MountainResolver } from './services/resolvers/mountain.resolver';
 
 @NgModule({
 
@@ -29,6 +31,8 @@ import { HttpService } from './services/http.service';
     TokenService,
     RouteGuardService,
     HttpService,
+    MountainsResolver,
+    MountainResolver,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,

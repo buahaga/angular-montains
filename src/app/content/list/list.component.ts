@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Mountain } from '../../models/mountain';
-import { HttpService } from '../../services/http.service';
-
 
 @Component({
   selector: 'app-list',
@@ -10,12 +9,14 @@ import { HttpService } from '../../services/http.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(public httpSerivice: HttpService) { }
+  constructor(private route: ActivatedRoute) { }
   mountains: Mountain[];
 
   ngOnInit() {
-    this.httpSerivice.getMountains()
-      .subscribe((resp) => this.mountains = resp);
+    this.route.data
+      .subscribe(data => {
+        this.mountains = data.mountains;
+      });
   }
 
 }

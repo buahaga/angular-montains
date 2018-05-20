@@ -1,8 +1,6 @@
 <ul class="heroes">
   <li
     *ngFor="let mountain of mountains"
-    [class.selected]="mountain === selectedMountain"
-    (click)="onSelect(mountain)"
     routerLink="{{mountain.id}}"
     >
     <span class="mountain">{{ mountain.id }}. </span>{{ mountain.mountain }}
