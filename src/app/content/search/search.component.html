@@ -1,4 +1,4 @@
-<form action="send">
-  <label><input type="search" placeholder="Mordor"></label>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <label><input type="search" placeholder="Mordor" formControlName="search"></label>
   <button>Search</button>
 </form>

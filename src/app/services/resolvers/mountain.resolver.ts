@@ -11,9 +11,10 @@ export class MountainResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
         const id = route.params['id'];
-        console.log(route)
-        return this.http.getMountains()
-          .pipe(map(resp => resp[id-1]))
+        return this.http.getMountains('')
+          .pipe(map(resp => resp[id - 1]))
     }
+
+
 
 }

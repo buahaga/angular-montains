@@ -11,12 +11,13 @@ export class ListComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) { }
   mountains: Mountain[];
+  queryParams: any;
 
   ngOnInit() {
     this.route.data
       .subscribe(data => {
         this.mountains = data.mountains;
-      });
+    });
   }
 
 }

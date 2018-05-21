@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -8,11 +8,13 @@ import { environment } from '../../environments/environment';
 })
 export class HttpService {
 
-  constructor(public httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
   apiUrl: string = environment.apiUrl + '/content';
 
-  public getMountains(): Observable<any> {
-    return this.httpClient.get(this.apiUrl);
+  public getMountains(sortOptions): Observable<any> {
+    const params = new HttpParams()
+      .set('sort', JSON.stringify(sortOptions));
+    return this.httpClient.get(this.apiUrl, {params});
   }
 
 }

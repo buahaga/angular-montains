@@ -10,7 +10,8 @@ export class MountainsResolver implements Resolve<any> {
   constructor(private http: HttpService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.getMountains()
+        const queryParams = route.queryParams;
+        return this.http.getMountains(queryParams)
           .pipe(map(resp => resp))
     }
 

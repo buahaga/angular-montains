@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Mountain } from '../../models/mountain';
 
 @Component({
@@ -11,6 +12,7 @@ export class ListItemComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   mountain: Mountain;
@@ -18,13 +20,6 @@ export class ListItemComponent implements OnInit {
   newComment: string = '';
 
   ngOnInit() {
-    // console.log(this.route.snapshot.data['id'])
-    // this.mountain = this.route.snapshot.data['id'];
-    // let id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-    // this.mountains()
-    //   .subscribe((resp) => this.mountain = resp[id-1])
-    // console.log(this.route.data.pipe(map(data => data.mountain)))
-
     this.route.data
       .subscribe(data => {
         this.mountain = data.mountain;
@@ -34,6 +29,10 @@ export class ListItemComponent implements OnInit {
   sendComment() {
     this.newComment = this.comment;
     this.comment = '';
+  }
+
+  goBack() {
+    this.location.back()
   }
 
 }

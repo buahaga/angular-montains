@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router) { }
+
+  private searchForm: FormGroup;
 
   ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
+    this.route.queryParams.subscribe(params => {
+      const { search } = params;
+      this.searchForm = this.formBuilder.group({
+        search: ['']
+      });
+    });
+  }
+
+  onSubmit() {
+    this.router.navigate(['content'], { queryParams: this.searchForm.value });
   }
 
 }

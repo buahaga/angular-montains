@@ -14,6 +14,7 @@ const routes: Routes = [
         {
           path: '',
           component: ListComponent,
+          runGuardsAndResolvers: 'paramsOrQueryParamsChange',
           resolve: {
             mountains: MountainsResolver
           }
