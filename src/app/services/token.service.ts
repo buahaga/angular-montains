@@ -9,11 +9,11 @@ export class TokenService {
 
   getToken() : Token {
     const token = JSON.parse(this.storage.get('userToken'))
-    return token ? token : false
+    return token ? token : null;
   }
 
   setToken(payload: Token | null) {
-    this.storage.set('userToken', JSON.stringify(payload))
+    this.storage.set('userToken', JSON.stringify(payload));
   }
 
 }

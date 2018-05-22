@@ -13,7 +13,6 @@ import { LoginModel } from '../models/login-model';
 export class AuthenticationComponent implements OnInit {
 
   form: FormGroup;
-  formError: boolean = false;
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -33,18 +32,21 @@ export class AuthenticationComponent implements OnInit {
 
   login() {
     const loginModel: LoginModel = this.form.value;
-
     this.authenticationService.login(loginModel)
       .subscribe(
         resp => {
           this.router.navigate(['content']);
-          return resp;
         }, (error) => {
-          // TODO this.form.invalid => think how to make it work this way?
-          console.log(error)
-          this.formError = true
+          this.form.setErrors({ incorrectLoginOrPassword: true });
         }
       )
+  }
+
+  loginByEnter(event) {
+    if(event.keyCode == 13) {
+      alert('fix submit on enter')
+      this.login()
+    }
   }
 
 }

@@ -9,10 +9,10 @@ import { AuthenticationComponent } from './authentication.component'
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AuthenticationRouting
+    AuthenticationRouting,
   ],
   declarations: [
-    AuthenticationComponent
-  ]
+    AuthenticationComponent,
+  ],
 })
 export class AuthenticationModule { }

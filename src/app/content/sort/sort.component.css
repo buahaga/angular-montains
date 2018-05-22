@@ -18,3 +18,7 @@ button {
   display: inline-block;
   width: 20%;
 }
+
+label {
+  cursor: pointer;
+}

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Mountain } from '../../models/mountain';
+import { filter } from 'rxjs/operators'
 
 @Component({
   selector: 'app-list-item',
@@ -10,25 +12,31 @@ import { Mountain } from '../../models/mountain';
 })
 export class ListItemComponent implements OnInit {
 
-  constructor(
+  mountain: Mountain;
+  commentForm: FormGroup;
+  comments = [];
+
+  constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
   ) { }
 
-  mountain: Mountain;
-  comment: string = '';
-  newComment: string = '';
-
   ngOnInit() {
+    this.createForm();
     this.route.data
       .subscribe(data => {
         this.mountain = data.mountain;
       });
   }
 
+  createForm() {
+    this.commentForm = this.formBuilder.group({
+      comment: ['']
+    });
+  }
+
   sendComment() {
-    this.newComment = this.comment;
-    this.comment = '';
+    this.comments.push(this.commentForm.value.comment);
   }
 
   goBack() {

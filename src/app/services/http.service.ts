@@ -8,8 +8,9 @@ import { environment } from '../../environments/environment';
 })
 export class HttpService {
 
+  private apiUrl: string = environment.apiUrl + '/content';
+
   constructor(private httpClient: HttpClient) { }
-  apiUrl: string = environment.apiUrl + '/content';
 
   public getMountains(sortOptions): Observable<any> {
     const params = new HttpParams()

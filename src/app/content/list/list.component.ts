@@ -9,9 +9,9 @@ import { Mountain } from '../../models/mountain';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
   mountains: Mountain[];
-  queryParams: any;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data

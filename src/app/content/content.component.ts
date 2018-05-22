@@ -9,8 +9,6 @@ export class ContentComponent implements OnInit {
 
   constructor() {}
 
-  title: string = 'ContentCompoent';
-
   ngOnInit() {
   }
 

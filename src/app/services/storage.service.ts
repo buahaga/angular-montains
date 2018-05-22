@@ -4,12 +4,14 @@ import { Token } from '../models/token';
 @Injectable()
 export class StorageService {
 
+  private storage = sessionStorage;
+
   get(key: string) {
-    return sessionStorage.getItem(key);
+    return this.storage.getItem(key);
   }
 
   set(key: string, payload: string) {
-    sessionStorage.setItem(key, payload);
+    this.storage.setItem(key, payload);
   }
 
 }

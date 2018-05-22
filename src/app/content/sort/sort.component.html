@@ -1,19 +1,19 @@
 <form [formGroup]="sortForm" (ngSubmit)="onSubmit()">
   <div>
     <select name="height" id="byHeight" formControlName="byHeight">
-      <option value="" selected>Sort by height</option>
+      <option value="" selected>-- Sort by height --</option>
       <option value="highest">Highest first</option>
       <option value="smallest">Smallest first</option>
     </select>
     <select name="name" id="byName" formControlName="byName">
-      <option value="" selected>Sort by name</option>
+      <option value="" selected>-- Sort by name --</option>
       <option value="A">A - Z</option>
       <option value="Z">Z - A</option>
     </select>
     <span>
-      <input type="radio" value="4000" formControlName="heigherThen">4000+
-      <input type="radio" value="5000" formControlName="heigherThen">5000+
-      <input type="radio" value="6000" formControlName="heigherThen">6000+
+      <label><input type="radio" value="4000" formControlName="heigherThen">4000+</label>
+      <label><input type="radio" value="5000" formControlName="heigherThen">5000+</label>
+      <label><input type="radio" value="6000" formControlName="heigherThen">6000+</label>
     </span>
   </div>
 

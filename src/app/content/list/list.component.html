@@ -2,11 +2,11 @@
   <app-search></app-search>
   <app-sort></app-sort>
 </div>
-<ul class="heroes">
-  <li
-    *ngFor="let mountain of mountains"
-    routerLink="{{mountain.id}}"
-    >
-    <span class="mountain">{{ mountain.id }}. </span>{{ mountain.mountain }}
+
+<ul>
+  <li *ngFor="let mountain of mountains">
+    <a [routerLink]="mountain.id">
+      <b>{{ mountain.id }}</b>. {{ mountain.mountain }}
+    </a>
   </li>
 </ul>

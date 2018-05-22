@@ -14,21 +14,17 @@ export class SortComponent implements OnInit {
               private router: Router) { }
 
   private sortForm: FormGroup;
-  mountains;
 
   ngOnInit() {
     this.createForm();
-
+    this.route.queryParams.subscribe(params => {});
   }
 
   createForm() {
-    this.route.queryParams.subscribe(params => {
-      const {byHeight, byName, heigherThen} = params;
-      this.sortForm = this.formBuilder.group({
-        byHeight: [''],
-        byName: [''],
-        heigherThen: ['']
-      });
+    this.sortForm = this.formBuilder.group({
+      byHeight: [''],
+      byName: [''],
+      heigherThen: ['']
     });
   }
 

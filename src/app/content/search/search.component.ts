@@ -17,14 +17,12 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.route.queryParams.subscribe(params => {});
   }
 
   createForm() {
-    this.route.queryParams.subscribe(params => {
-      const { search } = params;
-      this.searchForm = this.formBuilder.group({
-        search: ['']
-      });
+    this.searchForm = this.formBuilder.group({
+      search: ['']
     });
   }
 

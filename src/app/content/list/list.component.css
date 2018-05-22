@@ -1,11 +1,12 @@
-.heroes {
+ul {
   list-style: none;
   margin: 20px;
   padding: 0;
   text-align: left;
+  font-size: 24px;
 }
 
-li {
+li a {
   display: block;
   margin: 5px;
   padding: 10px;
@@ -13,6 +14,7 @@ li {
   border: 5px solid #6496fa;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 div {

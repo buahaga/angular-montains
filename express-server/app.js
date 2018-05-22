@@ -53,14 +53,14 @@ app.get('/api/content',
     (Number(req.headers.expiration) > Number(new Date())) ? res.status(200).send(data) : res.sendStatus(401);
   });
 
+  // api/places?country=Russia&peopleQty=2000000&sortBy=peopleQty:desc acs
+
 const sortData = (sort) => {
 
   let data = mountains.slice();
 
   if (sort.heigherThen) {
-    data = data.filter((mountain) => {
-      return mountain['height'] > sort.heigherThen;
-    })
+    data = data.filter((mountain) => mountain['height'] > sort.heigherThen);
   }
 
   if (sort.byName) {
@@ -74,7 +74,7 @@ const sortData = (sort) => {
   }
 
   if (sort.search) {
-    return data = [searchMountain(data, sort.search)];
+    return data = searchMountain(data, sort.search);
   }
 
   return data;
@@ -94,11 +94,13 @@ const sortData = (sort) => {
   }
 
   function searchMountain(arr, key) {
+    const data = []
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i]['mountain'] === key) {
-        return arr[i];
+      if (arr[i]['mountain'].startsWith(key)) {
+        data.push(arr[i])
       }
     }
+    return data;
   }
 
 }

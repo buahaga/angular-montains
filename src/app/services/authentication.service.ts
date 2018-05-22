@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { TokenService } from '../services/token.service';
-import { LoginModel, AuthorisedModel } from '../models/login-model';
+import { LoginModel } from '../models/login-model';
+import { AuthorisedModel } from '../models/authorised-model'
 import { Token } from '../models/token';
 
 @Injectable()
@@ -22,10 +23,10 @@ export class AuthenticationService {
         map((data: AuthorisedModel) => {
           const token: Token = {
             userToken: data.token,
-            userTokenExpires: data.expiration
+            userTokenExpires: data.expiration.toString()
           }
           this.tokenService.setToken(token);
-          return data as AuthorisedModel;
+          return data;
         })
     );
   }

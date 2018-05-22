@@ -3,7 +3,7 @@
   <h2>{{ mountain.mountain | uppercase }}:</h2>
 
   <div class="column-left">
-    <img src="{{ mountain.img }}" alt="{{ mountain.mountain }}">
+    <img [src]="mountain.img" [alt]="mountain.mountain" />
   </div>
 
   <div class="column-right">
@@ -15,19 +15,23 @@
       <h3>Height:</h3>
       {{ mountain.height }} m.
     </div>
-    <div>
+    <form [formGroup]="commentForm" (ngSubmit)="sendComment()">
       <label>
         <h3>Leave comment:</h3>
-        <textarea [(ngModel)]="comment" rows="5" cols="20"></textarea>
-        <button (click)="sendComment()">Send</button>
+        <textarea formControlName="comment" rows="5" cols="20"></textarea>
+        <button type="submit">Send comment</button>
       </label>
-    </div>
+    </form>
     <div>
       <h4>Related comments:</h4>
-      <p>{{newComment}}</p>
+      <div *ngFor="let comment of comments">
+        <i>{{comment}}</i>
+      </div>
     </div>
   </div>
 
   <button (click)="goBack()">Go back</button>
 
 </div>
+
+<!-- TODO form and link back whith navLink -->

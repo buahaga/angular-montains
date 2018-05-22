@@ -1,8 +1,10 @@
-<form [formGroup]="form" (ngSubmit)="login()">
+<form [formGroup]="form" (keydown.Enter)="loginByEnter($event)" (ngSubmit)="login()">
 
   <h3>Authentication Form</h3>
 
-  <div *ngIf="formError" class="error fatal">Please check e-mail and password are correct!</div>
+  <div *ngIf="form.errors?.incorrectLoginOrPassword" class="error fatal">
+    Please check e-mail and password are correct!
+  </div>
 
   <label>
     Der Login:
@@ -20,6 +22,6 @@
     Password not valid.
   </div>
 
-  <button type="submit">Log in</button>
+  <button type="submit">Submit</button>
 
 </form>
