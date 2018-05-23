@@ -1,11 +1,11 @@
-import { ContentRouting } from './content.routing';
+import { ContentRouting } from './mountains.routing';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ContentComponent } from './content.component';
+import { MountainsComponent } from './mountains.component';
 import { SearchComponent } from './search/search.component';
-import { ListComponent } from './list/list.component';
-import { ListItemComponent } from './list-item/list-item.component';
+import { MountainsListComponent } from './mountains-list/mountains-list.component';
+import { MountainDetailsComponent } from './mountain-details/mountain-details.component';
 import { MapComponent } from './map/map.component';
 import { SortComponent } from './sort/sort.component';
 
@@ -17,13 +17,12 @@ import { SortComponent } from './sort/sort.component';
     ContentRouting
   ],
   declarations: [
-    ContentComponent,
+    MountainsComponent,
     SearchComponent,
-    ListComponent,
-    ListItemComponent,
+    MountainsListComponent,
+    MountainDetailsComponent,
     MapComponent,
     SortComponent,
-  ],
-  providers: []
+  ]
 })
-export class ContentModule { }
+export class MountainsModule { }

@@ -13,7 +13,7 @@ export const routes: Routes = [
     canActivate: [
       RouteGuardService,
     ],
-    loadChildren: './content/content.module#ContentModule' ,
+    loadChildren: './mountains/mountains.module#MountainsModule' ,
   },
   {
     path: 'login',

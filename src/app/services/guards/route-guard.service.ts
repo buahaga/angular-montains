@@ -10,18 +10,22 @@ export class RouteGuardService implements CanActivate {
     private router: Router) {}
 
   canActivate(): boolean {
-    let userToken;
-    let userTokenExpires;
-    
-    (this.tokenService.getToken()) ?
-    { userToken, userTokenExpires } = this.tokenService.getToken() :
-    userToken, userTokenExpires = null;
-
+    // const token = this.tokenService.getToken();
+    // console.log(token)
+    // let userToken, userTokenExpires;
+    // token ? { userToken, userTokenExpires } = token : userToken = false;
+    let userToken: string | boolean = false;
+    let userTokenExpires: string | boolean = false;
+    if (this.tokenService.getToken()) {
+      userToken = this.tokenService.getToken().userToken;
+      userTokenExpires = this.tokenService.getToken().userTokenExpires;
+    }
     if (!userToken || !(Number(userTokenExpires) > Date.now())) {
       this.tokenService.setToken(null);
       this.router.navigate(['login']);
       return false;
     }
     return true;
+
   }
 }

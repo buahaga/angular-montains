@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const mountains = (require('./data')).slice(0, 50);
+const mountains = (require('./data'));
 
 const serverJWT_Secret = 'kpTxN=)7mX3W3SEJ58Ubt8-';
 
@@ -44,37 +44,57 @@ app.post('/api/login', (req, res) => {
   }
 });
 
-app.get('/api/content',
+app.get('/api/mountains',
   (req, res) => {
-    const sort = JSON.parse(req.query.sort);
-    const bool = Boolean(Object.keys(sort).length);
+    const params = JSON.parse(req.query.params);
+    const paramsLength = Object.keys(params).length;
+    const expiration = Number(req.headers.expiration);
     let data;
-    bool ? data = sortData(sort) : data = mountains.slice();
-    (Number(req.headers.expiration) > Number(new Date())) ? res.status(200).send(data) : res.sendStatus(401);
+    if (paramsLength === 1) {
+      data = searchData(params);
+    } else if (paramsLength === 3) {
+      data = sortData(params);
+    } else {
+      data = mountains.slice();
+    }
+    (expiration > Date.now()) ? res.status(200).send(data) : res.sendStatus(401);
   });
 
-  // api/places?country=Russia&peopleQty=2000000&sortBy=peopleQty:desc acs
+const searchData = (params) => {
+  let data = mountains.slice();
 
-const sortData = (sort) => {
+  if (params.search) {
+    data = searchMountain(data, params.search);
+  }
+
+  return data;
+
+  function searchMountain(arr, key) {
+    const data = []
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i]['mountain'].toLowerCase().startsWith(key.toLowerCase())) {
+        data.push(arr[i])
+      }
+    }
+    return data;
+  }
+
+}
+
+const sortData = (params) => {
 
   let data = mountains.slice();
 
-  if (sort.heigherThen) {
-    data = data.filter((mountain) => mountain['height'] > sort.heigherThen);
+  if (params.heigherThen) {
+    data = data.filter((mountain) => mountain['height'] > params.heigherThen);
   }
 
-  if (sort.byName) {
-    sort.byName === 'A' ? data = sortByName() : data = sortByName().reverse()
-    return data;
+  if (params.byHeight) {
+    params.byHeight === 'smallest' ? data = sortByHeight() : data = sortByHeight().reverse()
   }
 
-  if (sort.byHeight) {
-    sort.byHeight === 'smallest' ? data = sortByHeight() : data = sortByHeight().reverse()
-    return data;
-  }
-
-  if (sort.search) {
-    return data = searchMountain(data, sort.search);
+  if (params.byName) {
+    params.byName === 'A' ? data = sortByName() : data = sortByName().reverse()
   }
 
   return data;
@@ -93,16 +113,8 @@ const sortData = (sort) => {
     return sortedByHeight;
   }
 
-  function searchMountain(arr, key) {
-    const data = []
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i]['mountain'].startsWith(key)) {
-        data.push(arr[i])
-      }
-    }
-    return data;
-  }
-
 }
 
-app.listen(3200, () => console.log('Server started on port 3200'));
+app.listen(3200, () => console.log('Server listening on port 3200'));
+
+// api/places?country=Russia&peopleQty=2000000&sortBy=peopleQty:desc acs

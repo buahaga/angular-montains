@@ -5,7 +5,7 @@
 
 <ul>
   <li *ngFor="let mountain of mountains">
-    <a [routerLink]="mountain.id">
+    <a [routerLink]="mountain.id" queryParamsHandling="preserve">
       <b>{{ mountain.id }}</b>. {{ mountain.mountain }}
     </a>
   </li>

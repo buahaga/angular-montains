@@ -3,13 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { Mountain } from '../../models/mountain';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-mountains-list',
+  templateUrl: './mountains-list.component.html',
+  styleUrls: ['./mountains-list.component.css']
 })
-export class ListComponent implements OnInit {
+export class MountainsListComponent implements OnInit {
 
-  mountains: Mountain[];
+  private mountains: Mountain[];
 
   constructor(private route: ActivatedRoute) { }
 

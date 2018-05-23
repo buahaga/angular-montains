@@ -1,4 +1,4 @@
-<div class="list-item">
+<div class="mountain-details">
 
   <h2>{{ mountain.mountain | uppercase }}:</h2>
 
@@ -29,9 +29,6 @@
       </div>
     </div>
   </div>
-
-  <button (click)="goBack()">Go back</button>
+  <a routerLink="../" queryParamsHandling="preserve"><button>Go back</button></a>
 
 </div>
-
-<!-- TODO form and link back whith navLink -->

@@ -1,25 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Location } from '@angular/common';
 import { Mountain } from '../../models/mountain';
 import { filter } from 'rxjs/operators'
 
 @Component({
-  selector: 'app-list-item',
-  templateUrl: './list-item.component.html',
-  styleUrls: ['./list-item.component.css']
+  selector: 'app-mountain-details',
+  templateUrl: './mountain-details.component.html',
+  styleUrls: ['./mountain-details.component.css']
 })
-export class ListItemComponent implements OnInit {
+export class MountainDetailsComponent implements OnInit {
 
-  mountain: Mountain;
-  commentForm: FormGroup;
-  comments = [];
+  private mountain: Mountain;
+  private commentForm: FormGroup;
+  private comments = [];
 
-  constructor(private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private location: Location,
-  ) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.createForm();
@@ -37,10 +35,6 @@ export class ListItemComponent implements OnInit {
 
   sendComment() {
     this.comments.push(this.commentForm.value.comment);
-  }
-
-  goBack() {
-    this.location.back()
   }
 
 }

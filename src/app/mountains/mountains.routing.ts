@@ -1,19 +1,19 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
-import { ContentComponent } from './content.component';
-import { ListComponent } from './list/list.component';
-import { ListItemComponent } from './list-item/list-item.component'
+import { MountainsComponent } from './mountains.component';
+import { MountainsListComponent } from './mountains-list/mountains-list.component';
+import { MountainDetailsComponent } from './mountain-details/mountain-details.component'
 import { MountainsResolver } from '../services/resolvers/mountains.resolver';
 import { MountainResolver } from '../services/resolvers/mountain.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    component: ContentComponent,
+    component: MountainsComponent,
       children: [
         {
           path: '',
-          component: ListComponent,
+          component: MountainsListComponent,
           runGuardsAndResolvers: 'paramsOrQueryParamsChange',
           resolve: {
             mountains: MountainsResolver
@@ -21,7 +21,7 @@ const routes: Routes = [
         },
         {
           path: ':id',
-          component: ListItemComponent,
+          component: MountainDetailsComponent,
           resolve: {
             mountain: MountainResolver
           }

@@ -9,11 +9,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SortComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,
-              private route: ActivatedRoute,
-              private router: Router) { }
-
   private sortForm: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.createForm();

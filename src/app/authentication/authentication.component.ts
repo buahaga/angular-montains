@@ -12,7 +12,7 @@ import { LoginModel } from '../models/login-model';
 })
 export class AuthenticationComponent implements OnInit {
 
-  form: FormGroup;
+  private form: FormGroup;
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -26,7 +26,7 @@ export class AuthenticationComponent implements OnInit {
   createForm() {
     this.form = this.formBuilder.group({
       email: ['', { validators: [Validators.required, Validators.email], updateOn: 'blur' }],
-      password: ['', { validators: [Validators.required, Validators.minLength(3)], updateOn: 'blur' }]
+      password: ['', { validators: [Validators.required, Validators.minLength(1)] }]
     });
   }
 
@@ -40,13 +40,6 @@ export class AuthenticationComponent implements OnInit {
           this.form.setErrors({ incorrectLoginOrPassword: true });
         }
       )
-  }
-
-  loginByEnter(event) {
-    if(event.keyCode == 13) {
-      alert('fix submit on enter')
-      this.login()
-    }
   }
 
 }

@@ -14,7 +14,6 @@ import { MountainsResolver } from './services/resolvers/mountains.resolver';
 import { MountainResolver } from './services/resolvers/mountain.resolver';
 
 @NgModule({
-
   declarations: [
     AppComponent,
   ],
