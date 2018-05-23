@@ -9,7 +9,7 @@ export const routes: Routes = [
     redirectTo: '/login',
   },
   {
-    path: 'content',
+    path: 'mountains',
     canActivate: [
       RouteGuardService,
     ],

@@ -29,4 +29,4 @@ const routes: Routes = [
       ]
   }
 ];
-export const ContentRouting: ModuleWithProviders = RouterModule.forChild(routes);
+export const MountainsRouting: ModuleWithProviders = RouterModule.forChild(routes);

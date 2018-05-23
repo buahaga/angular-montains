@@ -3,18 +3,17 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpService } from '../http.service';
+import { Mountain } from '../../models/mountain';
 
 @Injectable()
 export class MountainResolver implements Resolve<any> {
 
   constructor(private http: HttpService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Mountain[]> {
         const id = route.params['id'];
-        return this.http.getMountains('')
+        return this.http.getMountains()
           .pipe(map(resp => resp[id - 1]))
     }
-
-
 
 }

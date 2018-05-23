@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Mountain } from '../../models/mountain';
-import { filter } from 'rxjs/operators'
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'app-mountain-details',
@@ -14,13 +14,16 @@ export class MountainDetailsComponent implements OnInit {
   private mountain: Mountain;
   private commentForm: FormGroup;
   private comments = [];
+  private queryParams;
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private filterService: FilterService) { }
 
   ngOnInit() {
     this.createForm();
+    this.queryParams = this.filterService.getFilter();
     this.route.data
       .subscribe(data => {
         this.mountain = data.mountain;

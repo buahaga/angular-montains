@@ -9,10 +9,10 @@ import { environment } from '../../environments/environment';
 export class HttpService {
 
   private apiUrl: string = environment.apiUrl + '/mountains';
-  
+
   constructor(private httpClient: HttpClient) { }
 
-  public getMountains(queryParams): Observable<any> {
+  public getMountains(queryParams = {}): Observable<any> {
     const params = new HttpParams()
       .set('params', JSON.stringify(queryParams));
     return this.httpClient.get(this.apiUrl, {params});

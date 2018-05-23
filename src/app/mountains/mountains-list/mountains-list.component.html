@@ -1,11 +1,10 @@
 <div>
-  <app-search></app-search>
-  <app-sort></app-sort>
+  <app-filter></app-filter>
 </div>
 
 <ul>
   <li *ngFor="let mountain of mountains">
-    <a [routerLink]="mountain.id" queryParamsHandling="preserve">
+    <a [routerLink]="mountain.id" >
       <b>{{ mountain.id }}</b>. {{ mountain.mountain }}
     </a>
   </li>

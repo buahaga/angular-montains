@@ -35,7 +35,7 @@ export class AuthenticationComponent implements OnInit {
     this.authenticationService.login(loginModel)
       .subscribe(
         resp => {
-          this.router.navigate(['content']);
+          this.router.navigate(['mountains']);
         }, (error) => {
           this.form.setErrors({ incorrectLoginOrPassword: true });
         }

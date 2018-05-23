@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'content',
+  selector: 'mountains',
   templateUrl: './mountains.component.html',
   styleUrls: ['./mountains.component.css']
 })

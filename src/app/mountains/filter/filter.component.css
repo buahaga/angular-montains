@@ -1,0 +1,28 @@
+form {
+  display: block;
+  margin: 5px auto;
+  padding: 5px;
+  border: thin solid grey;
+  display: flex;
+  align-items: center;
+}
+div {
+  width: 70%;
+}
+button {
+  display: block;
+  width: 20%;
+  height: 50px;
+  margin-left: 10px;
+}
+select {
+  margin: 5px;
+}
+label {
+  cursor: pointer;
+}
+.search-field,
+span {
+  display: block;
+  margin-bottom: 5px;
+}
