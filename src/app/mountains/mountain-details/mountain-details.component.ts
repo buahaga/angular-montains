@@ -15,6 +15,8 @@ export class MountainDetailsComponent implements OnInit {
   private commentForm: FormGroup;
   private comments = [];
   private queryParams;
+  private lat: number;
+  private lng: number;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,10 +25,12 @@ export class MountainDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.queryParams = this.filterService.getFilter();
+    this.queryParams = this.filterService.filter.getValue();
     this.route.data
       .subscribe(data => {
         this.mountain = data.mountain;
+        this.lat = data.mountain.lat;
+        this.lng = data.mountain.lng;
       });
   }
 

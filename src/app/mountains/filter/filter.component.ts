@@ -10,7 +10,13 @@ import { FilterService } from '../../services/filter.service';
 })
 export class FilterComponent implements OnInit {
 
-  private sortForm: FormGroup;
+  private filterForm: FormGroup;
+  private filter = {
+    search: '',
+    byHeight: '',
+    byName: '',
+    heigherThen: ''
+  }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,24 +25,38 @@ export class FilterComponent implements OnInit {
     private filterService: FilterService) { }
 
   ngOnInit() {
+    this.setFormValues();
     this.createForm();
-    this.filterService.setFilter(null);
-    // this.route.queryParams.subscribe(params => {});
+  }
+//TODO what is wrong here?
+  setFormValues () {
+    const filter = this.filterService.filter.getValue();
+    Object.keys(filter).map((key) => {
+      console.log(this.filter)
+      if (this.filter[key]) {
+        this.filter[key] = filter[key]
+      }
+      console.log(this.filter)
+    })
   }
 
   createForm() {
-    this.sortForm = this.formBuilder.group({
-      search: [''],
-      byHeight: [''],
-      byName: [''],
-      heigherThen: ['']
+    this.filterForm = this.formBuilder.group({
+      search: [this.filter.search],
+      byHeight: [this.filter.byHeight],
+      byName: [this.filter.byName],
+      heigherThen: [this.filter.heigherThen]
     });
   }
 
   onSubmit() {
-    this.router.navigate(['mountains'], { queryParams: this.sortForm.value });
-    this.filterService.setFilter(this.sortForm.value);
-    //TODO setFilter not by submit - so you don't clear filter if you don't need to do
+    const queryParams = {};
+    Object.entries(this.filterForm.value).forEach(([key, value]) => {
+      if (value) {
+        queryParams[key] = value;
+      }
+    });
+    this.filterService.setFilter(queryParams);
   }
 
 }

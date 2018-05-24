@@ -18,4 +18,8 @@ export class HttpService {
     return this.httpClient.get(this.apiUrl, {params});
   }
 
+  public getMountain(id): Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}/${id}`);
+  }
+
 }

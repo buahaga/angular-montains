@@ -4,4 +4,8 @@ export class Mountain {
   mountain: string;
   height: number;
   img: string;
+  lat: number;
+  lng: number;
+  login: string;
+  comment: string;
 }

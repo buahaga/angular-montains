@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from './storage.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class FilterService {
 
-  constructor(private storage: StorageService) { }
+  constructor() { }
 
-  getFilter() {
-    const filter = JSON.parse(this.storage.get('userFilter'))
-    return filter ? filter : null
-  }
+  filter: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
-  setFilter(payload) {
-    this.storage.set('userFilter', JSON.stringify(payload))
+  setFilter(filter) {
+    this.filter.next(filter);
   }
 
 }

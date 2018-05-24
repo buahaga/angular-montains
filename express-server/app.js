@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const mountains = (require('./data'));
+const mountains = require('./data');
 const serverJWT_Secret = 'kpTxN=)7mX3W3SEJ58Ubt8-';
 const appUsers = {
   'admin@gmail.com': {
@@ -12,11 +12,13 @@ const appUsers = {
     expiration: 0,
   }
 };
+
 const checkExpiration = (req, res, next) => {
   if (req.method === 'GET') {
     const expiration = Number(req.headers.expiration);
     expiration > Date.now() ? next() : res.sendStatus(401);
-  } else next();
+  }
+  next();
 };
 
 app.use(cors());
@@ -26,13 +28,11 @@ app.use(checkExpiration);
 app.post('/api/login', (req, res) => {
   const user = appUsers[req.body.email];
   if (user && user.password === req.body.password) {
-    const userWithPassword = {...user};
-    delete userWithPassword.password;
-    const token = jwt.sign(userWithPassword, serverJWT_Secret);
+    const token = jwt.sign(user, serverJWT_Secret);
     const expiration = Date.now() + 3000000;
-    appUsers[req.body.email].expiration = expiration;
+    user.expiration = expiration;
     res.status(200).send({
-      user: userWithPassword.name,
+      user: user.name,
       token: token,
       expiration: expiration
     });
@@ -44,13 +44,18 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get('/api/mountains',(req, res) => {
-  const params = req.query.params;
-  params ? data = sortData(JSON.parse(params)) : data = mountains.slice();
+  const params = req.query.params || {};
+  const data = filterData(mountains, JSON.parse(params));
   res.status(200).send(data);
 });
 
-const sortData = (params) => {
+app.get('/api/mountains/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const mountain = mountains[id-1];
+  res.status(200).send(mountain);
+});
 
+function filterData(mountains, params) {
   let data = mountains.slice();
 
   if (params.heigherThen) {
@@ -58,44 +63,37 @@ const sortData = (params) => {
   }
 
   if (params.search) {
-    data = findMountain(data, params.search);
+    data = filterBy(data, params.search);
   }
 
   if (params.byHeight) {
-    params.byHeight === 'asc' ? data = sortByHeight() : data = sortByHeight().reverse();
+    data = sortBy(data, 'height', params.byHeight);
   }
 
   if (params.byName) {
-    params.byName === 'asc' ? data = sortByName() : data = sortByName().reverse();
+    data = sortBy(data, 'mountain', params.byName);
   }
 
   return data;
+}
 
-  function sortByName() {
-    let sortedByName = data.sort((a, b) => {
-      return (a.mountain > b.mountain) ? 1 :
-        (b.mountain > a.mountain) ? -1 : 0;
-    })
-    return sortedByName;
-  }
-
-  function sortByHeight() {
-    let sortedByHeight = data.sort((a, b) => {
-      return a.height - b.height;
-    })
-    return sortedByHeight;
-  }
-
-  function findMountain(arr, key) {
-    const data = []
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].mountain.toLowerCase().startsWith(key.toLowerCase())) {
-        data.push(arr[i]);
-      }
+function sortBy(array, key, direction) {
+  const sortedArray = array.sort((a, b) => {
+    if (a[key] > b[key]) {
+      return 1;
     }
-    return data;
-  }
+    if (b[key] > a[key]) {
+      return -1;
+    }
+    return 0;
+  });
+  return direction === 'asc' ? sortedArray : sortedArray.reverse();
+}
 
+function filterBy(arr, searchValue) {
+  return arr.filter((item) => (
+    item.mountain.toLowerCase().startsWith(searchValue.toLowerCase())
+  ));
 }
 
 app.listen(3200, () => console.log('Server listening on port 3200'));

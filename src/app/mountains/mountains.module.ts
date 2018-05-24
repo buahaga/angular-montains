@@ -1,25 +1,28 @@
 import { MountainsRouting } from './mountains.routing';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AgmCoreModule } from '@agm/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MountainsComponent } from './mountains.component';
 import { MountainsListComponent } from './mountains-list/mountains-list.component';
 import { MountainDetailsComponent } from './mountain-details/mountain-details.component';
-import { MapComponent } from './map/map.component';
 import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
+  schemas:  [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MountainsRouting
+    MountainsRouting,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA6aOYWefxgC3R_O7t-9h5z3KDx02e6nUY'
+    }),
   ],
   declarations: [
     MountainsComponent,
     MountainsListComponent,
     MountainDetailsComponent,
-    MapComponent,
     FilterComponent,
   ]
 })

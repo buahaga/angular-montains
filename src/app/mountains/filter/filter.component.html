@@ -1,16 +1,22 @@
-<form [formGroup]="sortForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
   <div>
-    <label class="search-field">Search: <input type="search" placeholder="" formControlName="search"></label>
+    <label class="search-field">
+      Search:
+      <input type="search" placeholder="" formControlName="search">
+    </label>
+
     <select name="height" id="byHeight" formControlName="byHeight">
       <option value="" selected>-- Sort by height --</option>
       <option value="desc">Highest first</option>
       <option value="asc">Smallest first</option>
     </select>
+
     <select name="name" id="byName" formControlName="byName">
       <option value="" selected>-- Sort by name --</option>
       <option value="asc">A - Z</option>
       <option value="desc">Z - A</option>
     </select>
+
     <span>
       <label><input type="radio" value="4000" formControlName="heigherThen">4000+</label>
       <label><input type="radio" value="5000" formControlName="heigherThen">5000+</label>

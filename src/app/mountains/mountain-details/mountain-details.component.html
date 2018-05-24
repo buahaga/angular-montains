@@ -31,4 +31,10 @@
   </div>
   <button><a routerLink="../" [queryParams]="queryParams">Go back</a></button>
 
+  <div class="map">
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+  </div>
+
 </div>

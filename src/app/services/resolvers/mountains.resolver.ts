@@ -6,7 +6,7 @@ import { HttpService } from '../http.service';
 import { Mountain } from '../../models/mountain';
 
 @Injectable()
-export class MountainsResolver implements Resolve<any> {
+export class MountainsResolver implements Resolve<Mountain[]> {
 
   constructor(private http: HttpService) { }
 

@@ -5,6 +5,9 @@
 }
 
 a {
+  display: block;
+  height: 100%;
+  padding: 5px;
   text-decoration: none;
   color: black;
 }
@@ -12,8 +15,19 @@ a {
 button {
   display: block;
   margin: 5px auto;
-  padding: 5px;
   cursor: pointer;
+}
+
+.map {
+  width: 90%;
+  margin: 20px auto;
+  border: thin solid yellow;
+}
+
+agm-map {
+  margin: 0 auto;
+  height: 300px;
+  width: 100%;
 }
 
 .column-left,
