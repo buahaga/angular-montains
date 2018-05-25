@@ -1,5 +1,5 @@
 <div>
-  <app-filter></app-filter>
+  <app-filter [currentPage]="currentPage"></app-filter>
 </div>
 
 <ul>
@@ -9,3 +9,5 @@
     </a>
   </li>
 </ul>
+
+<app-paginator [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)='onPageChange($event)'></app-paginator>

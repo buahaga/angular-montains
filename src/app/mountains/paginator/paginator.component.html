@@ -1,0 +1,5 @@
+<button (click)="changePage(-1)" [disabled]="(currentPage - 1) > 0 ? false : true">&#8666;</button>
+  <span>{{currentPage}}</span>
+<button (click)="changePage(1)" [disabled]="(currentPage + 1) <= totalPages ? false : true">&#8667;</button>
+
+<!-- <a routerLink="/mountains" [queryParams]="queryParams" (click)="changePage()" [class.disabled]="disabled">&#8667;</a> -->

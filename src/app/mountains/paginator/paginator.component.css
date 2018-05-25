@@ -1,0 +1,12 @@
+button {
+  margin: 10px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+
+/* a.disabled {
+  background-color: lightgrey;
+   pointer-events: none;
+   cursor: default;
+ } */

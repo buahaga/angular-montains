@@ -16,8 +16,6 @@ export class MountainDetailsComponent implements OnInit {
   private mountain: Mountain;
   private commentForm: FormGroup;
   private queryParams: Filter;
-  private lat: number;
-  private lng: number;
   private login: string;
   private comment: string;
   private currentUser: string;
@@ -36,8 +34,6 @@ export class MountainDetailsComponent implements OnInit {
     this.route.data
       .subscribe(data => {
         this.mountain = data.mountain;
-        this.lat = data.mountain.lat;
-        this.lng = data.mountain.lng;
         this.login = data.mountain.login;
         this.comment = data.mountain.comment;
       });

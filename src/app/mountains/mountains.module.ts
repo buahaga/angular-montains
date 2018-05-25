@@ -7,6 +7,7 @@ import { MountainsComponent } from './mountains.component';
 import { MountainsListComponent } from './mountains-list/mountains-list.component';
 import { MountainDetailsComponent } from './mountain-details/mountain-details.component';
 import { FilterComponent } from './filter/filter.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 @NgModule({
   schemas:  [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -24,6 +25,7 @@ import { FilterComponent } from './filter/filter.component';
     MountainsListComponent,
     MountainDetailsComponent,
     FilterComponent,
+    PaginatorComponent
   ]
 })
 export class MountainsModule { }

@@ -6,11 +6,11 @@ import { HttpService } from '../http.service';
 import { Mountain } from '../../models/mountain';
 
 @Injectable()
-export class MountainResolver implements Resolve<any> {
+export class MountainResolver implements Resolve<Mountain> {
 
   constructor(private http: HttpService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Mountain[]> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Mountain> {
         const id = route.params['id'];
         return this.http.getMountain(id)
     }

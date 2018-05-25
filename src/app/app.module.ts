@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
-// import { InfiniteScrollerDirective } from './services/directives/infinite-scroll.directive';
+import { InfiniteScrollerDirective } from './services/directives/infinite-scroll.directive';
 import { routing } from './app.routing';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationInterceptor } from './services/interceptors/authentication.interceptor'
@@ -18,7 +18,7 @@ import { MountainResolver } from './services/resolvers/mountain.resolver';
 @NgModule({
   declarations: [
     AppComponent,
-    // InfiniteScrollerDirective,
+    InfiniteScrollerDirective,
   ],
   imports: [
     BrowserModule,

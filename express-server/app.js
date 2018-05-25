@@ -7,10 +7,15 @@ const mountains = require('./data');
 const serverJWT_Secret = 'kpTxN=)7mX3W3SEJ58Ubt8-';
 const appUsers = {
   'admin@gmail.com': {
-    name: 'Herr Major',
+    name: 'Admin',
     password: '123',
     expiration: 0,
-  }
+  },
+  'guest@gmail.com': {
+    name: 'Guest',
+    password: '123',
+    expiration: 0,
+  },
 };
 
 const checkExpiration = (req, res, next) => {
@@ -72,6 +77,14 @@ function filterData(mountains, params) {
 
   if (params.byName) {
     data = sortBy(data, 'mountain', params.byName);
+  }
+
+  if (params.currentPage && params.itemsPerPage) {
+    data = data.slice((params.currentPage - 1) * params.itemsPerPage, params.currentPage * params.itemsPerPage);
+  }
+
+  if (!params.currentPage) {
+    data = data.slice(0, 12);
   }
 
   return data;
