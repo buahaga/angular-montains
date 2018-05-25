@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FilterService } from '../../services/filter.service';
+import { Filter } from '../../models/filter';
 
 @Component({
   selector: 'app-filter',
@@ -11,33 +12,26 @@ import { FilterService } from '../../services/filter.service';
 export class FilterComponent implements OnInit {
 
   private filterForm: FormGroup;
-  private filter = {
+  private filter: Filter = {
     search: '',
     byHeight: '',
     byName: '',
-    heigherThen: ''
+    heigherThen: '',
   }
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
     private filterService: FilterService) { }
 
   ngOnInit() {
-    this.setFormValues();
+    this.route.queryParams.subscribe(params => {
+        this.filterService.setFilter(params);
+        Object.keys(params).map((key) => {
+          this.filter[key] = params[key]
+        })
+    });
     this.createForm();
-  }
-//TODO what is wrong here?
-  setFormValues () {
-    const filter = this.filterService.filter.getValue();
-    Object.keys(filter).map((key) => {
-      console.log(this.filter)
-      if (this.filter[key]) {
-        this.filter[key] = filter[key]
-      }
-      console.log(this.filter)
-    })
   }
 
   createForm() {
