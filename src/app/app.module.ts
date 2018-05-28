@@ -14,6 +14,7 @@ import { RouteGuardService } from './services/guards/route.guard';
 import { HttpService } from './services/http.service';
 import { MountainsResolver } from './services/resolvers/mountains.resolver';
 import { MountainResolver } from './services/resolvers/mountain.resolver';
+import { MountainsCountResolver } from './services/resolvers/mountains-count.resolver';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MountainResolver } from './services/resolvers/mountain.resolver';
     HttpService,
     MountainsResolver,
     MountainResolver,
+    MountainsCountResolver,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,

@@ -49,8 +49,18 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get('/api/mountains',(req, res) => {
-  const params = req.query.params || {};
-  const data = filterData(mountains, JSON.parse(params));
+  const query = req.query.params || {};
+  const params = JSON.parse(query);
+  const itemsPerPage = params.itemsPerPage || 12;
+  const currentPage = params.currentPage || 1;
+  let data = filterData(mountains, params).slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  res.status(200).send(data);
+});
+
+app.get('/api/count', (req, res) => {
+  const query = req.query.params || {};
+  const params = JSON.parse(query);
+  const data = filterData(mountains, params).length.toString();
   res.status(200).send(data);
 });
 
@@ -77,14 +87,6 @@ function filterData(mountains, params) {
 
   if (params.byName) {
     data = sortBy(data, 'mountain', params.byName);
-  }
-
-  if (params.currentPage && params.itemsPerPage) {
-    data = data.slice((params.currentPage - 1) * params.itemsPerPage, params.currentPage * params.itemsPerPage);
-  }
-
-  if (!params.currentPage) {
-    data = data.slice(0, 12);
   }
 
   return data;

@@ -11,8 +11,8 @@ import { FilterService } from '../../services/filter.service';
 export class MountainsListComponent implements OnInit {
 
   private mountains: Mountain[];
-  private totalPages: number = 42;
-  private currentPage: number = 1;
+  private totalPages: number;
+  private currentPage: number;
   private itemsPerPage: number = 12;
 
   constructor(
@@ -21,27 +21,28 @@ export class MountainsListComponent implements OnInit {
     private filterService: FilterService) { }
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe(params => {
+        this.currentPage = params.currentPage ? Number(params.currentPage) : 1;
+    });
+
     this.filterService.filter
       .subscribe((data) => {
         const queryParams = data;
         this.router.navigate(['mountains'], { queryParams });
       });
 
-    this.route.queryParams.subscribe(params => {
-        this.currentPage = params.currentPage ? params.currentPage : 1;
-    });
-
     this.route.data
       .subscribe(data => {
         this.mountains = data.mountains;
+        this.totalPages = Math.ceil(data.count / this.itemsPerPage)
     });
-
   }
 
   onPageChange(page) {
     this.currentPage = page;
     const queryParams = JSON.parse(JSON.stringify(this.filterService.filter.getValue()));
-    this.filterService.setFilter(Object.assign(queryParams, {currentPage: this.currentPage, itemsPerPage: this.itemsPerPage }));
+    this.filterService.setFilter(Object.assign(queryParams, { itemsPerPage: this.itemsPerPage, currentPage: this.currentPage }));
   }
 
 }

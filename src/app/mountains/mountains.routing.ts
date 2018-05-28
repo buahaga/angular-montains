@@ -5,6 +5,7 @@ import { MountainsListComponent } from './mountains-list/mountains-list.componen
 import { MountainDetailsComponent } from './mountain-details/mountain-details.component'
 import { MountainsResolver } from '../services/resolvers/mountains.resolver';
 import { MountainResolver } from '../services/resolvers/mountain.resolver';
+import { MountainsCountResolver } from '../services/resolvers/mountains-count.resolver';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
           component: MountainsListComponent,
           runGuardsAndResolvers: 'paramsOrQueryParamsChange',
           resolve: {
-            mountains: MountainsResolver
+            mountains: MountainsResolver,
+            count: MountainsCountResolver
           }
         },
         {

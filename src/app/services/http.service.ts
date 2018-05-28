@@ -8,18 +8,24 @@ import { environment } from '../../environments/environment';
 })
 export class HttpService {
 
-  private apiUrl: string = environment.apiUrl + '/mountains';
+  private apiUrl: string = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) { }
 
   public getMountains(queryParams = {}): Observable<any> {
     const params = new HttpParams()
       .set('params', JSON.stringify(queryParams));
-    return this.httpClient.get(this.apiUrl, {params});
+    return this.httpClient.get(`${this.apiUrl}/mountains`, {params});
+  }
+
+  public getCount(queryParams = {}): Observable<any> {
+    const params = new HttpParams()
+    .set('params', JSON.stringify(queryParams));
+    return this.httpClient.get(`${this.apiUrl}/count`, {params});
   }
 
   public getMountain(id): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/${id}`);
+    return this.httpClient.get(`${this.apiUrl}/mountains/${id}`);
   }
 
 }
