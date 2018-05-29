@@ -8,7 +8,7 @@
 
   <label>
     Der Login:
-    <input type="email" placeholder="admin@gmail.com" formControlName="email">
+    <input class="login" type="email" placeholder="admin@gmail.com" formControlName="email">
   </label>
   <div class="error" *ngIf="form.controls.email.errors?.email">
     Email not valid.
@@ -16,7 +16,7 @@
 
   <label>
     Der Parol:
-    <input type="password" placeholder="123" formControlName="password">
+    <input class="password" type="password" placeholder="123" formControlName="password">
   </label>
   <div class="error" *ngIf="form.controls.password.errors?.minlength">
     Password not valid.
