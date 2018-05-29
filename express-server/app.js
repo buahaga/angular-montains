@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const mountains = require('./data').slice(0, 100);
+const mountains = require('./data');
 const serverJWT_Secret = 'kpTxN=)7mX3W3SEJ58Ubt8-';
 const appUsers = {
   'admin@gmail.com': {

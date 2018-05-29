@@ -8,6 +8,7 @@ import { FilterService } from '../../services/filter.service';
   templateUrl: './mountains-list.component.html',
   styleUrls: ['./mountains-list.component.css']
 })
+
 export class MountainsListComponent implements OnInit {
 
   private mountains: Mountain[];

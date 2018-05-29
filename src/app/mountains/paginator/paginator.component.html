@@ -1,5 +1,5 @@
-<button (click)="changePage(-1)" [disabled]="(currentPage - 1) > 0 ? false : true">&#8666;</button>
-  <span>{{currentPage}}</span>
-<button (click)="changePage(1)" [disabled]="(currentPage + 1) <= totalPages ? false : true">&#8667;</button>
-
-<!-- <a routerLink="/mountains" [queryParams]="queryParams" (click)="changePage()" [class.disabled]="disabled">&#8667;</a> -->
+<div *ngIf="totalPages > 1">
+  <button class="previous" (click)="changePage(-1)" [disabled]="(currentPage - 1) > 0 ? false : true">&#8666;</button>
+    <span class="pagination"><button *ngFor="let page of pagination" (click)="selectPage($event)">{{page}}</button></span>
+  <button class="next" (click)="changePage(1)" [disabled]="(currentPage + 1) <= totalPages ? false : true">&#8667;</button>
+</div>

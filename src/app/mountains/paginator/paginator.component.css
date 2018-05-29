@@ -4,9 +4,6 @@ button {
   border-radius: 5px;
 }
 
-
-/* a.disabled {
-  background-color: lightgrey;
-   pointer-events: none;
-   cursor: default;
- } */
+button:focus {
+  background-color: #6496fa;
+}
