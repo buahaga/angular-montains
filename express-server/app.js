@@ -51,7 +51,7 @@ app.post('/api/login', (req, res) => {
 app.get('/api/mountains',(req, res) => {
   const query = req.query.params || {};
   const params = JSON.parse(query);
-  const itemsPerPage = params.itemsPerPage || 12;
+  const itemsPerPage = params.itemsPerPage || 10;
   const currentPage = params.currentPage || 1;
   let data = filterData(mountains, params).slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
   res.status(200).send(data);
@@ -60,7 +60,8 @@ app.get('/api/mountains',(req, res) => {
 app.get('/api/count', (req, res) => {
   const query = req.query.params || {};
   const params = JSON.parse(query);
-  const data = filterData(mountains, params).length.toString();
+  const itemsPerPage = params.itemsPerPage || 10;
+  const data = Math.ceil(filterData(mountains, params).length / itemsPerPage).toString();
   res.status(200).send(data);
 });
 

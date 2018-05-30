@@ -17,6 +17,7 @@ export class FilterComponent implements OnInit {
     byHeight: '',
     byName: '',
     heigherThen: '',
+    currentPage: ''
   }
 
   constructor(

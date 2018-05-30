@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+.mountain-details {
+  margin-top: 20px;
+}
+
 a {
   display: block;
   height: 100%;
@@ -14,7 +18,7 @@ a {
 
 button {
   display: block;
-  margin: 5px auto;
+  margin: 10px auto;
   cursor: pointer;
 }
 
@@ -33,9 +37,8 @@ agm-map {
 .column-left,
 .column-right {
   display: inline-block;
-  margin: 10px;
   text-align: left;
-  width: 40%;
+  width: 45%;
 }
 
 .column-right {
@@ -62,4 +65,11 @@ agm-map {
 .login {
   font-weight: 700;
   text-decoration: underline;
+}
+
+img {
+  display: inline-block;
+  margin: 1px;
+  width: 220px;
+  height: 220px;
 }

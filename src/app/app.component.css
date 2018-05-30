@@ -1,6 +1,16 @@
 div {
-  margin: 20px;
   text-align: center;
   background-color: #7FFFD4;
   border: thin solid grey;
+}
+
+h1 {
+  margin: 30px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin: 5px;
+  font-style: italic;
+  font-weight: 400;
 }

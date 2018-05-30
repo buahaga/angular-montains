@@ -5,22 +5,22 @@
       <input class="search-input" type="search" placeholder="" formControlName="search">
     </label>
 
-    <select name="height" id="byHeight" formControlName="byHeight">
+    <select class="select-height" name="height" id="byHeight" formControlName="byHeight">
       <option value="" selected>-- Sort by height --</option>
       <option value="desc">Highest first</option>
       <option value="asc">Smallest first</option>
     </select>
 
-    <select name="name" id="byName" formControlName="byName">
+    <select class="select-name" name="name" id="byName" formControlName="byName">
       <option value="" selected>-- Sort by name --</option>
       <option value="asc">A - Z</option>
       <option value="desc">Z - A</option>
     </select>
 
     <span>
-      <label><input type="radio" value="4000" formControlName="heigherThen">4000+</label>
-      <label><input type="radio" value="5000" formControlName="heigherThen">5000+</label>
-      <label><input type="radio" value="6000" formControlName="heigherThen">6000+</label>
+      <label><input class="filter-4000" type="radio" value="4000" formControlName="heigherThen">4000+</label>
+      <label><input class="filter-5000" type="radio" value="5000" formControlName="heigherThen">5000+</label>
+      <label><input class="filter-6000" type="radio" value="6000" formControlName="heigherThen">6000+</label>
     </span>
   </div>
   <button class="filter-submit">Filter</button>

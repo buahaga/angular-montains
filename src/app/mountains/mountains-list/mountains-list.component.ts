@@ -14,7 +14,7 @@ export class MountainsListComponent implements OnInit {
   private mountains: Mountain[];
   private totalPages: number;
   private currentPage: number;
-  private itemsPerPage: number = 12;
+  // private itemsPerPage: number = 12;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,14 +36,14 @@ export class MountainsListComponent implements OnInit {
     this.route.data
       .subscribe(data => {
         this.mountains = data.mountains;
-        this.totalPages = Math.ceil(data.count / this.itemsPerPage)
+        this.totalPages = data.count;
     });
   }
 
   onPageChange(page) {
     this.currentPage = page;
-    const queryParams = JSON.parse(JSON.stringify(this.filterService.filter.getValue()));
-    this.filterService.setFilter(Object.assign(queryParams, { itemsPerPage: this.itemsPerPage, currentPage: this.currentPage }));
+    const queryParams = this.filterService.filter.getValue();
+    this.filterService.setFilter(Object.assign({}, queryParams, { currentPage: this.currentPage }));
   }
 
 }

@@ -34,7 +34,7 @@ describe('PaginatorComponent', () => {
   }));
 
   it('should create pagination array whit dots', (() => {
-    const expected = [1,2,'...',10];
+    const expected = [1,2,3,'...',10];
     const text = component.makePaginator(component.totalPages, component.currentPage);
     expect(text).toEqual(expected);
   }));

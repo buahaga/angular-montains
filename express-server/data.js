@@ -3,7 +3,7 @@ module.exports = [
     "id": 1,
     "country": "Indonesia",
     "mountain": "Lycopodiaceae",
-    "height": 6377,
+    "height": 3377,
     "img": "http://dummyimage.com/250x250.bmp/5fa2dd/ffffff",
     "lat": -7.4234223,
     "lng": 108.7422767,

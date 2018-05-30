@@ -3,4 +3,5 @@ export class Filter {
   byHeight: string;
   byName: string;
   heigherThen: string;
+  currentPage: string;
 }
