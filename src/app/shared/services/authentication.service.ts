@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
-import { TokenService } from '../services/token.service';
-import { LoginModel } from '../models/login-model';
-import { AuthorisedModel } from '../models/authorised-model'
-import { Token } from '../models/token';
+import { environment } from '../../../environments/environment';
+import { TokenService } from './token.service';
+import { LoginModel } from '../interfaces/login';
+import { AuthorisedModel } from '../interfaces/authorised'
+import { Token } from '../interfaces/token';
 
 @Injectable()
 export class AuthenticationService {

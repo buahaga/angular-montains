@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HttpService } from '../http.service';
-import { Mountain } from '../../models/mountain';
+import { HttpService } from '../services/http.service';
+import { Mountain } from '../interfaces/mountain';
 
 @Injectable()
 export class MountainsCountResolver implements Resolve<number> {

@@ -3,9 +3,9 @@ import { ModuleWithProviders } from '@angular/core';
 import { MountainsComponent } from './mountains.component';
 import { MountainsListComponent } from './mountains-list/mountains-list.component';
 import { MountainDetailsComponent } from './mountain-details/mountain-details.component'
-import { MountainsResolver } from '../services/resolvers/mountains.resolver';
-import { MountainResolver } from '../services/resolvers/mountain.resolver';
-import { MountainsCountResolver } from '../services/resolvers/mountains-count.resolver';
+import { MountainsResolver } from '../shared/resolvers/mountains.resolver';
+import { MountainResolver } from '../shared/resolvers/mountain.resolver';
+import { MountainsCountResolver } from '../shared/resolvers/mountains-count.resolver';
 
 const routes: Routes = [
   {

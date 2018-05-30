@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { Mountain } from '../models/mountain';
+import { environment } from '../../../environments/environment';
+import { Mountain } from '../interfaces/mountain';
 
 @Injectable({
   providedIn: 'root'

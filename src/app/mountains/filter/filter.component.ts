@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { FilterService } from '../../services/filter.service';
-import { Filter } from '../../models/filter';
+import { FilterService } from '../../shared/services/filter.service';
+import { Filter } from '../../shared/interfaces/filter';
 
 @Component({
   selector: 'app-filter',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Mountain } from '../../models/mountain';
-import { FilterService } from '../../services/filter.service';
+import { Mountain } from '../../shared/interfaces/mountain';
+import { FilterService } from '../../shared/services/filter.service';
 
 @Component({
   selector: 'app-mountains-list',

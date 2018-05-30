@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
-import { Token } from '../models/token';
+import { Token } from '../interfaces/token';
 
 @Injectable()
 export class TokenService {

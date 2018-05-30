@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Mountain } from '../../models/mountain';
-import { TokenService } from '../../services/token.service';
-import { FilterService } from '../../services/filter.service';
-import { Filter } from '../../models/filter';
+import { Mountain } from '../../shared/interfaces/mountain';
+import { TokenService } from '../../shared/services/token.service';
+import { FilterService } from '../../shared/services/filter.service';
+import { Filter } from '../../shared/interfaces/filter';
 
 @Component({
   selector: 'app-mountain-details',
