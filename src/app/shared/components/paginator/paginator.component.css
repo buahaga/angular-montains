@@ -1,0 +1,23 @@
+button:focus {
+  background-color: #6496fa;
+}
+
+ul.pagination {
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+  margin: 5px;
+}
+
+.previous,
+.next {
+  padding: 10px 30px;
+  border-radius: 5px;
+}
+
+.page-button {
+  padding: 5px 15px;
+  border-radius: 5px;
+}

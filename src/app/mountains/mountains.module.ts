@@ -7,34 +7,35 @@ import { MountainsComponent } from './mountains.component';
 import { MountainsListComponent } from './components/mountains-list/mountains-list.component';
 import { MountainDetailsComponent } from './components/mountain-details/mountain-details.component';
 import { FilterComponent } from './components/filter/filter.component';
-import { PaginatorComponent } from './components/paginator/paginator.component';
 import { FilterService } from './services/filter.service';
-import { HttpService } from './services/http.service';
+import { MountainsService } from './services/mountains.service';
 import { MountainsResolver } from './resolvers/mountains.resolver';
 import { MountainResolver } from './resolvers/mountain.resolver';
 import { MountainsCountResolver } from './resolvers/mountains-count.resolver';
+import { SharedModule } from '../shared/shared.module';
+import { environment } from '../../environments/environment'
 
 @NgModule({
-  schemas:  [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MountainsRouting,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA6aOYWefxgC3R_O7t-9h5z3KDx02e6nUY'
+      apiKey: environment.apiKey,
     }),
+    SharedModule,
   ],
   declarations: [
     MountainsComponent,
     MountainsListComponent,
     MountainDetailsComponent,
     FilterComponent,
-    PaginatorComponent
   ],
   providers: [
     FilterService,
-    HttpService,
+    MountainsService,
     MountainsResolver,
     MountainResolver,
     MountainsCountResolver,

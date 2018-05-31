@@ -1,24 +1,43 @@
 <div class="mountain-details">
 
-  <h2>{{ mountain.mountain | uppercase }}:</h2>
+  <h2>Mountain "{{ mountain.mountain | uppercase }}"</h2>
 
-  <div class="column-left">
+  <p class="country">
+    <b>Country: </b><span>{{ mountain.country }}</span>
+  </p>
+
+  <p class="height">
+    <b>Height: </b><span>{{ mountain.height }} m.</span>
+  </p>
+
+  <div class="mountain-photo">
+    <img [src]="mountain.img" [alt]="mountain.mountain" />
     <img [src]="mountain.img" [alt]="mountain.mountain" />
     <img [src]="mountain.img" [alt]="mountain.mountain" />
     <img [src]="mountain.img" [alt]="mountain.mountain" />
   </div>
 
-  <div class="column-right">
-    <div class="country">
-      <h3>Country:</h3>
-      {{ mountain.country }}
-    </div>
-    <div class="height">
-      <h3>Height:</h3>
-      {{ mountain.height }} m.
+  <button class="go-back-btn">
+    <a routerLink="../" [queryParams]="queryParams">Go back to List <b>&#8634;</b></a>
+  </button>
+
+  <div class="comments">
+
+    <div class="related-comments">
+      <h3>Related comments:</h3>
+
+      <div>
+        <b>{{login}}:</b><br/>
+        <span>{{comment}}</span>
+      </div>
+
+      <div *ngFor="let comment of comments">
+        <b>{{currentUser}}:</b><br/>
+        <span><i>{{comment}}</i></span>
+      </div>
     </div>
 
-    <form [formGroup]="commentForm" (ngSubmit)="sendComment()">
+    <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="sendComment()">
       <label>
         <h3>Leave comment:</h3>
         <textarea formControlName="comment" rows="5" cols="25"></textarea><br/>
@@ -26,23 +45,7 @@
       </label>
     </form>
 
-    <div>
-      <h4>Related comments:</h4>
-
-      <div>
-        <span class="login">{{login}}:</span><br/>
-        <span class="comment">{{comment}}</span>
-      </div>
-
-      <div *ngFor="let comment of comments">
-        <span class="login">{{currentUser}}:</span><br/>
-        <span><i>{{comment}}</i></span>
-      </div>
-
-    </div>
   </div>
-
-  <button><a routerLink="../" [queryParams]="queryParams">Go back</a></button>
 
   <div class="map">
     <agm-map [latitude]="mountain.lat" [longitude]="mountain.lng">

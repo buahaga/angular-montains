@@ -7,6 +7,7 @@ form {
   display: flex;
   align-items: center;
 }
+
 div {
   width: 70%;
 
@@ -17,12 +18,19 @@ button {
   height: 50px;
   margin-left: 10px;
 }
+
+button:active {
+  background-color: #6496fa;
+}
+
 select {
   margin: 5px;
 }
+
 label {
   cursor: pointer;
 }
+
 .search-field,
 span {
   display: block;

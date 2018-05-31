@@ -1,4 +1,4 @@
-export class Filter {
+export interface Filter {
   search: string;
   byHeight: string;
   byName: string;

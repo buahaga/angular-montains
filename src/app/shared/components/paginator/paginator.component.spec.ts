@@ -9,9 +9,9 @@ describe('PaginatorComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ PaginatorComponent ]
+      declarations: [PaginatorComponent]
     })
-    .compileComponents()
+      .compileComponents()
   }));
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('PaginatorComponent', () => {
     component = fixture.componentInstance;
     component.totalPages = 10;
     component.currentPage = 1;
-    component.pagination = [1,2,'...',10];
+    component.pagination = [1, 2, '...', 10];
     fixture.detectChanges();
   });
 
@@ -28,13 +28,13 @@ describe('PaginatorComponent', () => {
   });
 
   it('should create array from min to max', (() => {
-    const expected = [1,2,3,4,5,6,7,8,9,10];
+    const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const text = component.makeArray(component.totalPages);
     expect(text).toEqual(expected);
   }));
 
   it('should create pagination array whit dots', (() => {
-    const expected = [1,2,3,'...',10];
+    const expected = [1, 2, 3, '...', 10];
     const text = component.makePaginator(component.totalPages, component.currentPage);
     expect(text).toEqual(expected);
   }));

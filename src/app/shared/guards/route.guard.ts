@@ -7,13 +7,9 @@ export class RouteGuardService implements CanActivate {
 
   constructor(
     private tokenService: TokenService,
-    private router: Router) {}
+    private router: Router) { }
 
   canActivate(): boolean {
-    // const token = this.tokenService.getToken();
-    // console.log(token)
-    // let userToken, userTokenExpires;
-    // token ? { userToken, userTokenExpires } = token : userToken = false;
     let userToken: string | boolean = false;
     let userTokenExpires: string | boolean = false;
     if (this.tokenService.getToken()) {

@@ -6,7 +6,7 @@ import { TokenService } from '../services/token.service';
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {
 
-  constructor(public tokenService: TokenService) {}
+  constructor(public tokenService: TokenService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let userToken: string | boolean = false;

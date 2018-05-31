@@ -1,75 +1,57 @@
-* {
-  vertical-align: top;
-  margin: 0;
+button:active {
+  background-color: #6496fa;
+}
+
+.go-back-btn {
+  margin: 20px auto;
   padding: 0;
+  border-radius: 5px;
 }
 
-.mountain-details {
-  margin-top: 20px;
-}
-
-a {
+.go-back-btn a {
   display: block;
-  height: 100%;
-  padding: 5px;
+  padding: 10px;
   text-decoration: none;
   color: black;
 }
 
-button {
-  display: block;
-  margin: 10px auto;
-  cursor: pointer;
+.mountain-photo img {
+  margin: 1px;
+  width: 200px;
+  height: 200px;
 }
 
 .map {
-  width: 90%;
-  margin: 20px auto;
   border: thin solid yellow;
+  margin: 30px 5% ;
+}
+
+.comments {
+  display: flex;
+  vertical-align: top;
+  margin: 0 5%;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  background-color: #6496fa;
+}
+
+.comment-form,
+.related-comments {
+  width: 60%;
+  text-align: left;
+  padding: 0 5% 10px;
+}
+
+.comment-form {
+  width: 40%;
+}
+
+.related-comments div {
+  margin-top: 10px;
 }
 
 agm-map {
   margin: 0 auto;
   height: 300px;
   width: 100%;
-}
-
-.column-left,
-.column-right {
-  display: inline-block;
-  text-align: left;
-  width: 45%;
-}
-
-.column-right {
-  width: 50%;
-  padding: 10px;
-  padding-bottom: 50px;
-  background-color: #6496fa;
-}
-
-.column-right div {
-  margin: 10px;
-}
-
-.column-right button,
-.column-righ textarea {
-  display: inline-block;
-}
-
-.column-right button {
-  margin-top: 10px;
-  padding: 5px;
-}
-
-.login {
-  font-weight: 700;
-  text-decoration: underline;
-}
-
-img {
-  display: inline-block;
-  margin: 1px;
-  width: 220px;
-  height: 220px;
 }

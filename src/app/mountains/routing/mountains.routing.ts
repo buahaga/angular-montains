@@ -11,24 +11,24 @@ const routes: Routes = [
   {
     path: '',
     component: MountainsComponent,
-      children: [
-        {
-          path: '',
-          component: MountainsListComponent,
-          runGuardsAndResolvers: 'paramsOrQueryParamsChange',
-          resolve: {
-            mountains: MountainsResolver,
-            count: MountainsCountResolver
-          }
-        },
-        {
-          path: ':id',
-          component: MountainDetailsComponent,
-          resolve: {
-            mountain: MountainResolver
-          }
-         }
-      ]
+    children: [
+      {
+        path: '',
+        component: MountainsListComponent,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+        resolve: {
+          mountains: MountainsResolver,
+          count: MountainsCountResolver
+        }
+      },
+      {
+        path: ':id',
+        component: MountainDetailsComponent,
+        resolve: {
+          mountain: MountainResolver
+        }
+      }
+    ]
   }
 ];
 export const MountainsRouting: ModuleWithProviders = RouterModule.forChild(routes);

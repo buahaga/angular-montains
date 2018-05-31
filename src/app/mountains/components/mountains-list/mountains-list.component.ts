@@ -14,7 +14,6 @@ export class MountainsListComponent implements OnInit {
   private mountains: Mountain[];
   private totalPages: number;
   private currentPage: number;
-  // private itemsPerPage: number = 12;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +23,7 @@ export class MountainsListComponent implements OnInit {
   ngOnInit() {
 
     this.route.queryParams.subscribe(params => {
-        this.currentPage = params.currentPage ? Number(params.currentPage) : 1;
+      this.currentPage = params.currentPage ? Number(params.currentPage) : 1;
     });
 
     this.filterService.filter
@@ -37,7 +36,7 @@ export class MountainsListComponent implements OnInit {
       .subscribe(data => {
         this.mountains = data.mountains;
         this.totalPages = data.count;
-    });
+      });
   }
 
   onPageChange(page) {

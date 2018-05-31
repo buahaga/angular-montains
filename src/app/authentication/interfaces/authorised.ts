@@ -1,6 +1,6 @@
 import { LoginModel } from './login';
 
-export class AuthorisedModel {
+export interface AuthorisedModel {
   user: string;
   expiration: number;
   token: string;

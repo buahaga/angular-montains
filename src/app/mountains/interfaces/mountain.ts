@@ -1,4 +1,4 @@
-export class Mountain {
+export interface Mountain {
   id: string;
   country: string;
   mountain: string;

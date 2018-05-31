@@ -1,0 +1,11 @@
+<ul *ngIf="totalPages > 1" class="pagination">
+
+  <li><button class="previous" (click)="changePage(-1)" [disabled]="(currentPage - 1) > 0 ? false : true">&#8666;</button></li>
+
+  <li *ngFor="let page of pagination" (click)="selectPage(page)">
+    <button class="page-button">{{page}}</button>
+  </li>
+
+  <li><button class="next" (click)="changePage(1)" [disabled]="(currentPage + 1) <= totalPages ? false : true">&#8667;</button></li>
+
+</ul>

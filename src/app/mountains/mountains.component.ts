@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MountainsComponent implements OnInit {
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
   }

@@ -11,6 +11,10 @@ label {
   margin: 10px;
 }
 
+button:active {
+  background-color: #6496fa;
+}
+
 .error {
   margin: 10px;
   font-style: italic;

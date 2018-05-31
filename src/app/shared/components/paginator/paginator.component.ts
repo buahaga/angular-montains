@@ -16,9 +16,8 @@ export class PaginatorComponent implements OnChanges {
     this.pagination = this.makePaginator(this.totalPages, this.currentPage);
   }
 
-  selectPage(evt) {
-    const val = Number(evt.target.textContent);
-    (val) ? this.pageChange.emit(val) : false;
+  selectPage(page) {
+    (page !== '...') ? this.pageChange.emit(Number(page)) : false;
   }
 
   changePage(increase: number) {
@@ -48,36 +47,36 @@ export class PaginatorComponent implements OnChanges {
     let length;
     let rangeWithDots = [];
 
-    if (current > 1 && current < last-1) {
+    if (current > 1 && current < last - 1) {
       range.push(current);
       range.push(last);
-      for (let i = 1; i <= ((delta*2)-2)/2; i++) {
-        range.push(current+i);
-        range.push(current-i);
+      for (let i = 1; i <= ((delta * 2) - 2) / 2; i++) {
+        range.push(current + i);
+        range.push(current - i);
       }
       range.sort((a, b) => (a - b));
-    } else if (current > (last - delta*2) || current > last-1) {
+    } else if (current > (last - delta * 2) || current > last - 1) {
       const arr = this.makeArray(this.totalPages);
-      range = arr.slice(arr.length - delta*2);
+      range = arr.slice(arr.length - delta * 2);
     } else {
-      const arr = this.makeArray(delta*2-1);
+      const arr = this.makeArray(delta * 2 - 1);
       arr.push(last);
       range = arr;
       range.sort((a, b) => (a - b));
     }
 
-      for (let i of range) {
-        if (length) {
-          if (i - length === 2) {
-            rangeWithDots.push(length + 1);
-          } else if (i - length !== 1) {
-            rangeWithDots.push('...');
-          }
+    for (let i of range) {
+      if (length) {
+        if (i - length === 2) {
+          rangeWithDots.push(length + 1);
+        } else if (i - length !== 1) {
+          rangeWithDots.push('...');
         }
-        rangeWithDots.push(i);
-        length = i;
       }
-      return rangeWithDots;
+      rangeWithDots.push(i);
+      length = i;
     }
+    return rangeWithDots;
+  }
 
 }

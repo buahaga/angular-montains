@@ -7,7 +7,7 @@ export class FilterService {
 
   constructor() { }
 
-  filter: BehaviorSubject<Filter> = new BehaviorSubject<Filter | any>({});
+  filter: BehaviorSubject<Partial<Filter>> = new BehaviorSubject({});
 
   setFilter(filter) {
     this.filter.next(filter);

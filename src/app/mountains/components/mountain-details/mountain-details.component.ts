@@ -15,7 +15,7 @@ export class MountainDetailsComponent implements OnInit {
 
   private mountain: Mountain;
   private commentForm: FormGroup;
-  private queryParams: Filter;
+  private queryParams: Filter | {};
   private login: string;
   private comment: string;
   private currentUser: string;
