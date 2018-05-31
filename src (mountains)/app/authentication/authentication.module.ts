@@ -1,9 +1,8 @@
-import { AuthenticationRouting } from './routing/authentication.routing';
+import { AuthenticationRouting } from './authentication.routing';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthenticationComponent } from './authentication.component';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationComponent } from './authentication.component'
 
 @NgModule({
   imports: [
@@ -14,9 +13,6 @@ import { AuthenticationService } from './services/authentication.service';
   ],
   declarations: [
     AuthenticationComponent,
-  ],
-  providers: [
-    AuthenticationService,
   ],
 })
 export class AuthenticationModule { }

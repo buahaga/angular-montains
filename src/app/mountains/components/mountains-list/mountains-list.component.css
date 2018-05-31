@@ -1,0 +1,31 @@
+ul {
+  list-style: none;
+  margin: 0 auto;
+  width: 80%;
+  padding: 0;
+  text-align: left;
+  font-size: 24px;
+}
+
+li a {
+  display: block;
+  margin: 5px;
+  padding: 10px;
+  background: #6496fa;
+  border: 5px solid #6496fa;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+div {
+  margin: 0 auto;
+  padding: 5px 10px;
+  width: 70%;
+  background-color: #F08080;
+  border-radius: 5px;
+}
+
+div {
+  margin-bottom: 30px;
+}

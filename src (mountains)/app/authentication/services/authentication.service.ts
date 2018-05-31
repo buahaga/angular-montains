@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { TokenService } from './token.service';
+import { TokenService } from '../../shared/services/token.service';
 import { LoginModel } from '../interfaces/login';
-import { AuthorisedModel } from '../interfaces/authorised'
-import { Token } from '../interfaces/token';
+import { AuthorisedModel } from '../interfaces/authorised';
+import { Token } from '../../shared/interfaces/token';
 
 @Injectable()
 export class AuthenticationService {

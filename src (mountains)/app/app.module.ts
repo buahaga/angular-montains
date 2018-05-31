@@ -4,10 +4,16 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
+import { AuthenticationService } from './authentication/services/authentication.service';
 import { AuthenticationInterceptor } from './shared/interceptors/authentication.interceptor'
-import { TokenService } from './shared/services/token.service';
 import { StorageService } from './shared/services/storage.service';
+import { TokenService } from './shared/services/token.service';
+import { FilterService } from './shared/services/filter.service';
 import { RouteGuardService } from './shared/guards/route.guard';
+import { HttpService } from './shared/services/http.service';
+import { MountainsResolver } from './shared/resolvers/mountains.resolver';
+import { MountainResolver } from './shared/resolvers/mountain.resolver';
+import { MountainsCountResolver } from './shared/resolvers/mountains-count.resolver';
 
 @NgModule({
   declarations: [
@@ -20,9 +26,15 @@ import { RouteGuardService } from './shared/guards/route.guard';
     routing,
   ],
   providers: [
-    TokenService,
+    AuthenticationService,
     StorageService,
+    TokenService,
+    FilterService,
     RouteGuardService,
+    HttpService,
+    MountainsResolver,
+    MountainResolver,
+    MountainsCountResolver,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
