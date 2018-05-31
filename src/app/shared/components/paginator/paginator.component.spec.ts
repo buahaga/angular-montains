@@ -53,8 +53,8 @@ describe('PaginatorComponent', () => {
   }))
 
   it('should display paginator buttons between previous and next', (() => {
-    const spanPages = fixture.debugElement.query(By.css('.pagination')).nativeElement.textContent;
-    const expected = '12...10';
+    const spanPages = fixture.debugElement.query(By.css('.pagination')).nativeElement.textContent.slice(1,-1);
+    const expected = "12...10";
     expect(spanPages).toEqual(expected);
   }))
 

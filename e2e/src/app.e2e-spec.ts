@@ -56,15 +56,15 @@ describe('MountainsSearch - App', () => {
       });
   })
 
-  it('should render 5 pagination buttons', () => {
+  it('should render 7 pagination buttons', () => {
     page.getPaginatorPages().then((btn) => {
-      expect(btn.length).toBe(5);
+      expect(btn.length).toBe(7);
     })
   })
 
   it('should go to selected page if page-button clicked', () => {
     page.getPaginatorPages().then((btn) => {
-      btn[1].click().then(() => {
+      btn[2].click().then(() => {
         browser.waitForAngular();
         expect(page.getFirstMountain().getText()).toEqual('11. Rhamnaceae')
       })

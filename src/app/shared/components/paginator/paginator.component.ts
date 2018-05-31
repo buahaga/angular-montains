@@ -32,7 +32,7 @@ export class PaginatorComponent implements OnChanges {
   }
 
   makeArray(n: number) {
-    let arr = [];
+    const arr = [];
     for (let i = 1; i <= n; i++) {
       arr.push(i);
     }
@@ -43,9 +43,9 @@ export class PaginatorComponent implements OnChanges {
     const current = first;
     const last = final;
     const delta = 2;
+    const rangeWithDots = [];
     let range = [];
     let length;
-    let rangeWithDots = [];
 
     if (current > 1 && current < last - 1) {
       range.push(current);
@@ -65,7 +65,7 @@ export class PaginatorComponent implements OnChanges {
       range.sort((a, b) => (a - b));
     }
 
-    for (let i of range) {
+    for (const i of range) {
       if (length) {
         if (i - length === 2) {
           rangeWithDots.push(length + 1);
