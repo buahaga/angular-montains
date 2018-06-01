@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Token } from '../interfaces/token';
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
 export class StorageService {
 
   private storage = sessionStorage;

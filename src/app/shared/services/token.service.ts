@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { Token } from '../interfaces/token';
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
 export class TokenService {
 
   constructor(private storage: StorageService) { }

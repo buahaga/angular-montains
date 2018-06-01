@@ -2,6 +2,8 @@
 
   <div>
 
+    <app-range-slider [dangerFormGroup]="filterForm.get('danger')"></app-range-slider>
+
     <label class="search-field">
       Search:
       <input class="search-input" type="search" placeholder="" formControlName="search">
@@ -28,5 +30,5 @@
   </div>
 
   <button class="filter-submit">Filter</button>
-  
+
 </form>

@@ -1,0 +1,14 @@
+<div class="slider">
+  <div class="left-handle"
+    [draggable]
+    dragHandle=".left-handle"
+    oppositeHandle=".right-handle"
+    dragField=".slider"
+    (drag)="onDragLeft($event)"></div>
+  <div class="right-handle"
+    [draggable]
+    dragHandle=".right-handle"
+    oppositeHandle=".left-handle"
+    dragField=".slider"
+    (drag)="onDragRight($event)"></div>
+</div>

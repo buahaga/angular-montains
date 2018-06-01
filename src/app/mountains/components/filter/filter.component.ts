@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FilterService } from '../../services/filter.service';
 import { Filter } from '../../interfaces/filter';
@@ -40,7 +40,11 @@ export class FilterComponent implements OnInit {
       search: [this.filter.search],
       byHeight: [this.filter.byHeight],
       byName: [this.filter.byName],
-      heigherThen: [this.filter.heigherThen]
+      heigherThen: [this.filter.heigherThen],
+      danger: new FormGroup({
+          minDanger: new FormControl(0),
+          maxDanger: new FormControl(24),
+      }),
     });
   }
 
