@@ -17,7 +17,9 @@ export class FilterComponent implements OnInit {
     byHeight: '',
     byName: '',
     heigherThen: '',
-    currentPage: ''
+    currentPage: '',
+    minDanger: 0,
+    maxDanger: 10,
   }
 
   constructor(
@@ -43,7 +45,7 @@ export class FilterComponent implements OnInit {
       heigherThen: [this.filter.heigherThen],
       danger: new FormGroup({
           minDanger: new FormControl(0),
-          maxDanger: new FormControl(24),
+          maxDanger: new FormControl(10)
       }),
     });
   }
@@ -51,8 +53,14 @@ export class FilterComponent implements OnInit {
   onSubmit() {
     const queryParams = {};
     Object.entries(this.filterForm.value).forEach(([key, value]) => {
-      if (value) {
-        queryParams[key] = value;
+      if (typeof value === 'object') {
+        const obj = value;
+        const query = Object.keys(value);
+        for (let i = 0; i < query.length; i++) {
+          queryParams[query[i]] = obj[query[i]];
+        }
+      } else if (value) {
+        queryParams[key] = value;;
       }
     });
     this.filterService.setFilter(queryParams);

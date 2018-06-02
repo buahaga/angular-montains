@@ -1,7 +1,23 @@
 .slider {
   position: relative;
   height: 10px;
-  width: 300px;
+  width: 110px;
+  margin: 10px auto;
+  background-color: white;
+}
+
+.slider-handler {
+  position: absolute;
+  top: -5px;
+  height: 20px;
+  width: 10px;
+  background-color: black;
+}
+
+/* .slider {
+  position: relative;
+  height: 10px;
+  width: 100px;
   margin: 10px 5px;
   background-color: white;
   margin: 10px auto;
@@ -23,4 +39,4 @@
 .right-handle {
   right: 0px;
   background-color: green;
-}
+} */

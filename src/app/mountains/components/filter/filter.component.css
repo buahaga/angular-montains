@@ -36,3 +36,8 @@ span {
   display: block;
   margin-bottom: 5px;
 }
+
+app-range-slider {
+  display: inline-block;
+  vertical-align: middle;
+}

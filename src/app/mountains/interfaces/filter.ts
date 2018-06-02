@@ -4,4 +4,6 @@ export interface Filter {
   byName: string;
   heigherThen: string;
   currentPage: string;
+  minDanger: number;
+  maxDanger: number;
 }
