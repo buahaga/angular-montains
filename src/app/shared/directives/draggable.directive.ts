@@ -6,7 +6,6 @@ import { map, tap, mergeMap, takeUntil } from 'rxjs/operators';
   selector: '[appDraggable]',
 })
 export class DraggableDirective {
-  // @Input() dragField: string;
   @Output() dragStart: EventEmitter<number> = new EventEmitter<number>();
   @Output() dragEnd: EventEmitter<number> = new EventEmitter<number>();
   @Output() drag: EventEmitter<number> = new EventEmitter<number>();

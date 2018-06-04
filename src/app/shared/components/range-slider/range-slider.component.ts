@@ -1,10 +1,6 @@
 import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
-interface Danger {
-  minDanger: number;
-  maxDanger: number;
-}
+import { Danger } from '../../interfaces/danger';
 
 @Component({
   selector: 'app-range-slider',
@@ -37,7 +33,6 @@ export class RangeSliderComponent implements OnInit {
   onDragEnd() {
     this.dangerFormGroup.setValue({...this.handlersValues});
     this.dangerFormGroup.markAsDirty();
-    console.log(this.dangerFormGroup.value)
   }
 
 }

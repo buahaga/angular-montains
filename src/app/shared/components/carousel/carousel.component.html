@@ -1,0 +1,9 @@
+<section id="carousel" appCarousel curSlide={{curSlide}}
+(swipe)="onSwipe($event, 1)"
+>
+  <ul class="carousel-ul">
+    <li *ngFor="let picture of pictures" class="carousel-li"><img src="{{picture}}" />
+  </ul>
+  <div class="prev-button" (click)="increase(-1)"><</div>
+  <div class="next-button" (click)="increase(1)">></div>
+</section>

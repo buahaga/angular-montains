@@ -15,14 +15,7 @@ button:active {
   color: black;
 }
 
-.mountain-photo img {
-  margin: 1px;
-  width: 200px;
-  height: 200px;
-}
-
 .map {
-  border: thin solid yellow;
   margin: 30px 5% ;
 }
 
@@ -31,7 +24,6 @@ button:active {
   vertical-align: top;
   margin: 0 5%;
   margin-bottom: 30px;
-  border-radius: 5px;
   background-color: #6496fa;
 }
 
@@ -49,6 +41,7 @@ button:active {
 .related-comments div {
   margin-top: 10px;
 }
+
 
 agm-map {
   margin: 0 auto;

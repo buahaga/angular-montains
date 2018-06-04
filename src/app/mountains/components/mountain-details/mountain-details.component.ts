@@ -20,6 +20,7 @@ export class MountainDetailsComponent implements OnInit {
   private comment: string;
   private currentUser: string;
   private comments = [];
+  private pictures = ["http://dummyimage.com/1200x300.png/cc0000/ffffff", "http://dummyimage.com/1200x300.png/ff4444/ffffff",  "http://dummyimage.com/1200x300.png/5fa2dd/ffffff", "http://dummyimage.com/1200x300.png/dddddd/ffffff", "http://dummyimage.com/1200x300.png/5fa2dd/ffffff"]
 
   constructor(
     private formBuilder: FormBuilder,

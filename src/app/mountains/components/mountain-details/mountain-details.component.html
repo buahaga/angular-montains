@@ -10,12 +10,7 @@
     <b>Height: </b><span>{{ mountain.height }} m.</span>
   </p>
 
-  <div class="mountain-photo">
-    <img [src]="mountain.img" [alt]="mountain.mountain" />
-    <img [src]="mountain.img" [alt]="mountain.mountain" />
-    <img [src]="mountain.img" [alt]="mountain.mountain" />
-    <img [src]="mountain.img" [alt]="mountain.mountain" />
-  </div>
+  <app-carousel [pictures]="pictures"></app-carousel>
 
   <button class="go-back-btn">
     <a routerLink="../" [queryParams]="queryParams">Go back to List <b>&#8634;</b></a>
