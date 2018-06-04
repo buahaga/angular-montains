@@ -57,7 +57,7 @@ export class PaginatorComponent implements OnChanges {
       range.sort((a, b) => (a - b));
     } else if (current > (last - delta * 2) || current > last - 1) {
       const arr = this.makeArray(this.totalPages);
-      range = arr.slice(arr.length - delta * 2);
+      range = (arr.length >= delta * 2) ? arr.slice(arr.length - delta * 2) : arr.slice();
     } else {
       const arr = this.makeArray(delta * 2 - 1);
       arr.push(last);

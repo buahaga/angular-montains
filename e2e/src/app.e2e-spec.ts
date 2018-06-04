@@ -45,14 +45,14 @@ describe('MountainsSearch - App', () => {
   it('should not change list of items if paginator clicked to previous by default', () => {
     page.getPaginatorPrevious().click().then(() => {
         browser.waitForAngular();
-        expect(page.getFirstMountain().getText()).toEqual('1. Lycopodiaceae')
+        expect(page.getFirstMountain().getText()).toEqual('1. Cup Lichen')
       });
   })
 
   it('should change list of items if paginator clicked to next', () => {
     page.getPaginatorNext().click().then(() => {
         browser.waitForAngular();
-        expect(page.getFirstMountain().getText()).toEqual('11. Rhamnaceae')
+        expect(page.getFirstMountain().getText()).toEqual('11. Cream Avens')
       });
   })
 
@@ -66,16 +66,16 @@ describe('MountainsSearch - App', () => {
     page.getPaginatorPages().then((btn) => {
       btn[2].click().then(() => {
         browser.waitForAngular();
-        expect(page.getFirstMountain().getText()).toEqual('11. Rhamnaceae')
+        expect(page.getFirstMountain().getText()).toEqual('11. Cream Avens')
       })
     })
   })
 
-  it('should display list of only 7 items if filter form is set to search on "B"', () => {
-    page.getSearchInput().sendKeys('B');
+  it('should display list of only 5 items if filter form is set to search on "B"', () => {
+    page.getSearchInput().sendKeys('A');
     page.getFilterSubmitBtn().click().then(() => {
         browser.waitForAngular();
-        expect(page.getMountains().count()).toEqual(7)
+        expect(page.getMountains().count()).toEqual(5)
       });
   })
 
@@ -83,7 +83,7 @@ describe('MountainsSearch - App', () => {
     page.getSelectHeight().click();
     page.getFilterSubmitBtn().click().then(() => {
         browser.waitForAngular();
-        expect(page.getFirstMountain().getText()).toEqual('107. Campanulaceae')
+        expect(page.getFirstMountain().getText()).toEqual('68. Palo De Cachimbo')
       });
   })
 
@@ -91,7 +91,7 @@ describe('MountainsSearch - App', () => {
     page.getSelectName().click();
     page.getFilterSubmitBtn().click().then(() => {
         browser.waitForAngular();
-        expect(page.getFirstMountain().getText()).toEqual('42. Viscaceae')
+        expect(page.getFirstMountain().getText()).toEqual('119. Wydler\'s Ticktrefoil')
       });
   })
 
@@ -99,7 +99,7 @@ describe('MountainsSearch - App', () => {
     page.getFilter6000().click();
     page.getFilterSubmitBtn().click().then(() => {
         browser.waitForAngular();
-        expect(page.getFirstMountain().getText()).toEqual('3. Fabaceae')
+        expect(page.getFirstMountain().getText()).toEqual('4. Parry\'s Lousewort')
       });
   })
 
@@ -110,8 +110,8 @@ describe('MountainsSearch - App', () => {
     page.getFilter6000().click();
     page.getFilterSubmitBtn().click().then(() => {
         browser.waitForAngular();
-        expect(page.getFirstMountain().getText()).toEqual('57. Flacourtiaceae');
-        expect(page.getMountains().count()).toEqual(5);
+        expect(page.getFirstMountain().getText()).toEqual('71. Fourspike Heliotrope');
+        expect(page.getMountains().count()).toEqual(4);
       });
   })
 

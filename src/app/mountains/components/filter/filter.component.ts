@@ -44,8 +44,8 @@ export class FilterComponent implements OnInit {
       byName: [this.filter.byName],
       heigherThen: [this.filter.heigherThen],
       danger: new FormGroup({
-          minDanger: new FormControl(0),
-          maxDanger: new FormControl(10)
+          minDanger: new FormControl(this.filter.minDanger),
+          maxDanger: new FormControl(this.filter.maxDanger)
       }),
     });
   }
@@ -57,7 +57,10 @@ export class FilterComponent implements OnInit {
         const obj = value;
         const query = Object.keys(value);
         for (let i = 0; i < query.length; i++) {
-          queryParams[query[i]] = obj[query[i]];
+          const checkDefault = obj[query[i]] == "" || obj[query[i]] == 10
+          if (!checkDefault) {
+            queryParams[query[i]] = obj[query[i]];
+          }
         }
       } else if (value) {
         queryParams[key] = value;;

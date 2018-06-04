@@ -34,7 +34,7 @@ app.post('/api/login', (req, res) => {
   const user = appUsers[req.body.email];
   if (user && user.password === req.body.password) {
     const token = jwt.sign(user, serverJWT_Secret);
-    const expiration = Date.now() + 3000000;
+    const expiration = Date.now() + 6000000;
     user.expiration = expiration;
     res.status(200).send({
       user: user.name,
@@ -80,6 +80,14 @@ function filterData(mountains, params) {
 
   if (params.search) {
     data = filterBy(data, params.search);
+  }
+
+  if (params.minDanger) {
+    data = data.filter((mountain) => mountain.danger >= params.minDanger);
+  }
+
+  if (params.maxDanger) {
+    data = data.filter((mountain) => mountain.danger <= params.maxDanger)
   }
 
   if (params.byHeight) {
