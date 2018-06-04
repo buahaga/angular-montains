@@ -82,12 +82,12 @@ function filterData(mountains, params) {
     data = filterBy(data, params.search);
   }
 
-  if (params.minDanger) {
-    data = data.filter((mountain) => mountain.danger >= params.minDanger);
+  if (params.minDifficulty) {
+    data = data.filter((mountain) => mountain.difficulty >= params.minDifficulty);
   }
 
-  if (params.maxDanger) {
-    data = data.filter((mountain) => mountain.danger <= params.maxDanger)
+  if (params.maxDifficulty) {
+    data = data.filter((mountain) => mountain.difficulty <= params.maxDifficulty)
   }
 
   if (params.byHeight) {

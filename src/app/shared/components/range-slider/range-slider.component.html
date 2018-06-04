@@ -1,31 +1,13 @@
 <div class="slider">
-  <div appDraggable
-    (drag)="onDrag($event, 'minDanger')"
-    (dragEnd)="onDragEnd()">
-  <div
-    class="slider-handler"
-    [style.left]="handlersValues.minDanger * 10 + 'px'"></div>
-  </div>
-  <div appDraggable
-    (drag)="onDrag($event, 'maxDanger')"
-    (dragEnd)="onDragEnd()">
-    <div
-      class="slider-handler"
-      [style.left]="handlersValues.maxDanger * 10 + 'px'"></div>
-  </div>
-</div>
 
-<!-- <div class="slider">
-  <div class="left-handle"
-    [draggable]
-    dragHandle=".left-handle"
-    oppositeHandle=".right-handle"
-    dragField=".slider"
-    (drag)="onDragLeft($event)"></div>
-  <div class="right-handle"
-    [draggable]
-    dragHandle=".right-handle"
-    oppositeHandle=".left-handle"
-    dragField=".slider"
-    (drag)="onDragRight($event)"></div>
-</div> -->
+  <app-range-slider-handler
+    [(position)]="minHandlerPosition"
+    [control]="rangeFormGroup.get('minDifficulty')"
+  ></app-range-slider-handler>
+
+  <app-range-slider-handler
+    [(position)]="maxHandlerPosition"
+    [control]="rangeFormGroup.get('maxDifficulty')"
+  ></app-range-slider-handler>
+
+</div>

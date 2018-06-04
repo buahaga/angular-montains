@@ -18,8 +18,8 @@ export class FilterComponent implements OnInit {
     byName: '',
     heigherThen: '',
     currentPage: '',
-    minDanger: 0,
-    maxDanger: 10,
+    minDifficulty: 0,
+    maxDifficulty: 10,
   }
 
   constructor(
@@ -43,9 +43,9 @@ export class FilterComponent implements OnInit {
       byHeight: [this.filter.byHeight],
       byName: [this.filter.byName],
       heigherThen: [this.filter.heigherThen],
-      danger: new FormGroup({
-          minDanger: new FormControl(this.filter.minDanger),
-          maxDanger: new FormControl(this.filter.maxDanger)
+      difficulty: new FormGroup({
+          minDifficulty: new FormControl(this.filter.minDifficulty),
+          maxDifficulty: new FormControl(this.filter.maxDifficulty)
       }),
     });
   }

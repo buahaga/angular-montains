@@ -4,7 +4,7 @@ export interface Mountain {
   mountain: string;
   height: number;
   img: string;
-  danger: number;
+  difficulty: number;
   lat: number;
   lng: number;
   login: string;
