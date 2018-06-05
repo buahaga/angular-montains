@@ -29,10 +29,10 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-        this.filterService.setFilter(params);
-        Object.keys(params).map((key) => {
-          this.filter[key] = params[key]
-        })
+      this.filterService.setFilter(params);
+      Object.keys(params).map((key) => {
+        this.filter[key] = params[key]
+      })
     });
     this.createForm();
   }
@@ -44,8 +44,8 @@ export class FilterComponent implements OnInit {
       byName: [this.filter.byName],
       heigherThen: [this.filter.heigherThen],
       difficulty: new FormGroup({
-          minDifficulty: new FormControl(this.filter.minDifficulty),
-          maxDifficulty: new FormControl(this.filter.maxDifficulty)
+        minDifficulty: new FormControl(this.filter.minDifficulty),
+        maxDifficulty: new FormControl(this.filter.maxDifficulty)
       }),
     });
   }

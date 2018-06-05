@@ -9,12 +9,13 @@
     </li>
   </ul>
 
-  <span class="carousel-controls">
-    <i class="carousel-controls-item"
+  <ul class="carousel-controls">
+    <li class="carousel-controls-item"
     *ngFor="let control of imagesSrc; let i=index;"
-    [class.active]="currentSlide === i"
-    (click)="setControl(i)"></i>
-  </span>
+    [class.active]="currentSlide === i">
+      <button (click)="setControl(i)"></button>
+    </li>
+  </ul>
 
   <button class="carousel-prev-button" (click)="prevSlide()">&#8249;</button>
   <button class="carousel-next-button" (click)="nextSlide()">&#8250;</button>

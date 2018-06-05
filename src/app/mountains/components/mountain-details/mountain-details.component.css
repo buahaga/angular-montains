@@ -43,10 +43,9 @@ button:active {
 }
 
 .slider-carousel {
-  width: 500px;
+  width: 90%;
   height: 300px;
   margin: 0 auto;
-  border: 3px solid yellow;
 }
 
 

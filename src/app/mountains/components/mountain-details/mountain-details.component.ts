@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Mountain } from '../../interfaces/mountain';
 import { TokenService } from '../../../shared/services/token.service';
 import { FilterService } from '../../services/filter.service';
@@ -20,7 +20,13 @@ export class MountainDetailsComponent implements OnInit {
   private comment: string;
   private currentUser: string;
   private comments = [];
-  private imagesSrc = ["http://dummyimage.com/500x300.png/cc0000/ffffff", "http://dummyimage.com/900x200.png/5fa2dd/ffffff", "http://dummyimage.com/1200x800.png/ff4444/ffffff", "http://dummyimage.com/1200x300.png/dddddd/ffffff", "http://dummyimage.com/800x800.png/5fa2dd/ffffff"];
+  private imagesSrc = [
+    "http://dummyimage.com/1200x300.png/cc0000/ffffff",
+    "http://dummyimage.com/900x300.png/5fa2dd/ffffff",
+    "http://dummyimage.com/1400x400.png/ff4444/ffffff",
+    "http://dummyimage.com/1200x400.png/dddddd/ffffff",
+    "http://dummyimage.com/1000x300.png/5fa2dd/ffffff"
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,12 +48,15 @@ export class MountainDetailsComponent implements OnInit {
 
   createForm() {
     this.commentForm = this.formBuilder.group({
-      comment: ['']
+      comment: new FormControl('')
     });
   }
 
   sendComment() {
-    this.comments.push(this.commentForm.value.comment);
+    if (this.commentForm.value.comment) {
+      this.comments.push(this.commentForm.value.comment);
+      this.commentForm.get('comment').setValue('');
+    }
   }
 
 }

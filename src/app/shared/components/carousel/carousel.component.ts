@@ -1,13 +1,5 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
-
-interface Rect {
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-  top: number
-}
-
+import { Rect } from '../../interfaces/rect';
 
 @Component({
   selector: 'app-carousel',
@@ -17,20 +9,20 @@ interface Rect {
 export class CarouselComponent implements OnInit {
 
   @Input() imagesSrc: string[];
-  private currentSlide: number = 0;
-  private element: HTMLElement = this.elementRef.nativeElement;
-  private containerPosition: string = '0px';
-  private containerSize: Rect;
+  public currentSlide: number = 0;
+  public element: HTMLElement = this.elementRef.nativeElement;
+  public containerPosition: string = '0px';
+  public containerSize: Rect;
 
-  constructor( private elementRef: ElementRef ) { }
+  constructor( public elementRef: ElementRef ) { }
 
   ngOnInit() {
+    console.log(this.element)
     this.containerSize = this.element.querySelector('.carousel-div').getBoundingClientRect() as Rect;
   }
 
   setContainerPosition() {
     const newPosition = -1 * (this.currentSlide * this.containerSize.width);
-    console.log(newPosition);
     if ( newPosition > (this.containerSize.width * this.imagesSrc.length * -1) && newPosition < 0 ) {
       this.containerPosition = `${newPosition}px`;
     } else {
@@ -38,7 +30,6 @@ export class CarouselComponent implements OnInit {
       this.containerPosition = `0px`;
     }
   }
-
 
   nextSlide() {
     this.currentSlide += 1;

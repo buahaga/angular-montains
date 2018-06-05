@@ -22,6 +22,6 @@ export class RouteGuardService implements CanActivate {
       return false;
     }
     return true;
-
   }
+  
 }
