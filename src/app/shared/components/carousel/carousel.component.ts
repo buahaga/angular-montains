@@ -1,44 +1,62 @@
-import { Component, OnInit, Input, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
+
+interface Rect {
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  top: number
+}
+
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css']
 })
-export class CarouselComponent implements AfterViewInit {
+export class CarouselComponent implements OnInit {
 
-  @Input() pictures: string[];
-  private currentSlide: number = 1;
+  @Input() imagesSrc: string[];
+  private currentSlide: number = 0;
   private element: HTMLElement = this.elementRef.nativeElement;
+  private containerPosition: string = '0px';
+  private containerSize: Rect;
 
   constructor( private elementRef: ElementRef ) { }
 
-  ngAfterViewInit() {
-    this.setSlide();
-    this.nextSlide();
+  ngOnInit() {
+    this.containerSize = this.element.querySelector('.carousel-div').getBoundingClientRect() as Rect;
   }
 
-  setSlide() {
-    const containerEl: HTMLElement = this.element.querySelector('.carousel-ul');
-    const slides = this.element.querySelectorAll('.carousel-li');
-    const num = (this.currentSlide % slides.length) + 1;
-    containerEl.style.left = (-1 * 100 * (num - 1)) + '%';
-    containerEl.style.width = (slides.length * 100) + '%';
-    for (let i = 0; i < slides.length; i++) {
-      const slideEl = slides[i] as HTMLElement;
-      slideEl.style.display = 'inline-block';
-      slideEl.style.width = (100 / slides.length) + '%';
+  setContainerPosition() {
+    const newPosition = -1 * (this.currentSlide * this.containerSize.width);
+    console.log(newPosition);
+    if ( newPosition > (this.containerSize.width * this.imagesSrc.length * -1) && newPosition < 0 ) {
+      this.containerPosition = `${newPosition}px`;
+    } else {
+      this.currentSlide = 0;
+      this.containerPosition = `0px`;
     }
   }
 
+
   nextSlide() {
     this.currentSlide += 1;
-    this.setSlide();
+    this.setContainerPosition();
   }
 
   prevSlide() {
-    this.setSlide();
-    this.currentSlide -= 1;
+    if (this.currentSlide > 0) {
+      this.currentSlide -= 1;
+    } else {
+      this.currentSlide = this.imagesSrc.length - 1;
+    }
+    this.setContainerPosition();
+  }
+
+  setControl(index: number) {
+    this.currentSlide = index;
+    this.setContainerPosition();
   }
 
   onSwipe(evt) {

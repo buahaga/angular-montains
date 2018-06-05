@@ -1,11 +1,22 @@
-<section id="carousel"
-(swipe)="onSwipe($event)"
->
-  <ul class="carousel-ul">
-    <li *ngFor="let picture of pictures" class="carousel-li">
-      <img [src]="picture" />
+<div class="carousel-div" (swipe)="onSwipe($event)">
+
+  <ul class="carousel-container" [style.left]="containerPosition">
+    <li class="carousel-item"
+      [style.width.px]="containerSize.width"
+      [style.height.px]="containerSize.height"
+      *ngFor="let slide of imagesSrc">
+      <img class="carousel-img" [src]="slide" />
     </li>
   </ul>
-  <div class="prev-button" (click)="prevSlide()"><</div>
-  <div class="next-button" (click)="nextSlide()">></div>
-</section>
+
+  <span class="carousel-controls">
+    <i class="carousel-controls-item"
+    *ngFor="let control of imagesSrc; let i=index;"
+    [class.active]="currentSlide === i"
+    (click)="setControl(i)"></i>
+  </span>
+
+  <button class="carousel-prev-button" (click)="prevSlide()">&#8249;</button>
+  <button class="carousel-next-button" (click)="nextSlide()">&#8250;</button>
+
+</div>
