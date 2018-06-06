@@ -1,13 +1,15 @@
 <div class="slider">
 
   <app-range-slider-handler
-    [(position)]="minHandlerPosition"
+    [position]="minHandlerPosition"
     [control]="rangeFormGroup.get('minDifficulty')"
+    (positionChange)="setMinHandlerPosition($event)"
   ></app-range-slider-handler>
 
   <app-range-slider-handler
-    [(position)]="maxHandlerPosition"
+    [position]="maxHandlerPosition"
     [control]="rangeFormGroup.get('maxDifficulty')"
+    (positionChange)="setMaxHandlerPosition($event)"
   ></app-range-slider-handler>
 
 </div>

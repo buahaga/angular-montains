@@ -19,8 +19,8 @@ describe('CarouselComponent', () => {
     component = fixture.componentInstance;
     component.imagesSrc = [
       'http://dummyimage.com/1200x300.png/cc0000/ffffff',
-      'http://dummyimage.com/900x300.png/5fa2dd/ffffff',
-      'http://dummyimage.com/1400x400.png/ff4444/ffffff',
+      'http://dummyimage.com/1000x400.png/5fa2dd/ffffff',
+      'http://dummyimage.com/1100x400.png/ff4444/ffffff',
       'http://dummyimage.com/1200x400.png/dddddd/ffffff',
       'http://dummyimage.com/1000x300.png/5fa2dd/ffffff'
     ];

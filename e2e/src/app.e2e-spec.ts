@@ -123,12 +123,65 @@ describe('MountainsSearch - App', () => {
       });
   })
 
-  // it('should set search input to "B" if url has queryParams', () => {
-  //   page.navigateToSearchB().then(() => {
-  //       browser.waitForAngular();
-  //       browser.sleep(3000);
-  //       expect(page.getSearchInput().getText()).toMatch('b');
-  //     });
-  // })
+  it('should not move range left on drag', () => {
+    browser.actions()
+    .mouseMove(page.getFirstRange(), {x: 5, y: 5})
+    .mouseDown()
+    .mouseMove({x: -40, y: 0})
+    .perform();
+    expect(page.getFirstRange().getCssValue('left')).toEqual('0px');
+  })
+
+  it('should change range position on drag', () => {
+    browser.actions()
+      .mouseMove(page.getFirstRange(), {x: 5, y: 5})
+      .mouseDown()
+      .mouseMove({x: 40, y: 0})
+      .perform();
+    expect(page.getFirstRange().getCssValue('left')).toEqual('40px');
+  });
+
+  it('should not change range more then max length of the range', () => {
+    browser.actions()
+    .mouseMove(page.getFirstRange(), {x: 5, y: 5})
+    .mouseDown()
+    .mouseMove({x: 95, y: 0})
+    .perform();
+    expect(page.getFirstRange().getCssValue('left')).toEqual('90px');
+  });
+
+  it('should not change postion on collision', () => {
+    browser.actions()
+    .mouseMove(page.getFirstRange(), {x: 5, y: 5})
+    .mouseDown()
+    .mouseMove({x: 40, y: 0})
+    .mouseUp()
+    .mouseMove(page.getSecondRange(), {x: 5, y: 5})
+    .mouseDown()
+    .mouseMove({x: -45, y: 0})
+    .perform();
+    expect(page.getSecondRange().getCssValue('left')).toEqual('50px');
+  });
+
+  it('should change carousel position on click by carousel prev button', () => {
+    browser.get('/mountains/1');
+    browser.actions()
+    .mouseMove(page.getCarouselPrev(), {x: 5, y: 5}).click().perform();
+    expect(page.getCarouselLeftPosition()).toBeLessThan(0)
+  })
+
+  it('should change carousel position on click by carousel next button', () => {
+    browser.get('/mountains/1');
+    browser.actions()
+    .mouseMove(page.getCarouselNext(), {x: 5, y: 5}).click().perform();
+    expect(page.getCarouselLeftPosition()).toBeLessThan(0)
+  })
+
+  it('should change carousel position on click by controls in slider bottom', () => {
+    browser.get('/mountains/1');
+    browser.actions()
+    .mouseMove(page.getFourthControlItem(), {x: 3, y: 3}).click().perform();
+    expect(page.getCarouselLeftPosition()).toBeLessThan(0)
+  })
 
 });

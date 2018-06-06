@@ -78,4 +78,29 @@ export class AppPage {
     return url.split('?')[1];
   }
 
+  getFirstRange() {
+    return element(by.css('.slider-handler'));
+  }
+
+  getSecondRange() {
+    return element.all(by.css('.slider-handler')).get(1);
+  }
+
+  async getCarouselLeftPosition() {
+    const elem = await element(by.css('.carousel-container')).getCssValue('left');
+    return Number(elem.slice(0, elem.length-2));
+  }
+
+  getCarouselPrev() {
+    return element(by.css('.carousel-prev-button'));
+  }
+
+  getCarouselNext() {
+    return element(by.css('.carousel-next-button'));
+  }
+
+  getFourthControlItem() {
+    return element.all(by.css('.carousel-controls-item button')).get(3);
+  }
+
 }
