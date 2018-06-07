@@ -11,11 +11,11 @@ import { Token } from '../../shared/interfaces/token';
 @Injectable()
 export class AuthenticationService {
 
-  private apiUrl: string = environment.apiUrl + '/login';
+  public apiUrl: string = environment.apiUrl + '/login';
 
   constructor(
-    private http: HttpClient,
-    private tokenService: TokenService) { }
+    public http: HttpClient,
+    public tokenService: TokenService) { }
 
   login(login: LoginModel): Observable<any> {
     return this.http.post(this.apiUrl, login)

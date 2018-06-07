@@ -13,14 +13,14 @@ import { Filter } from '../../interfaces/filter';
 })
 export class MountainDetailsComponent implements OnInit {
 
-  private mountain: Mountain;
-  private commentForm: FormGroup;
-  private queryParams: Filter | {};
-  private login: string;
-  private comment: string;
-  private currentUser: string;
-  private comments = [];
-  private imagesSrc = [
+  public mountain: Mountain;
+  public commentForm: FormGroup;
+  public queryParams: Filter | {};
+  public login: string;
+  public comment: string;
+  public currentUser: string;
+  public comments = [];
+  public imagesSrc = [
     "http://dummyimage.com/1200x300.png/cc0000/ffffff",
     "http://dummyimage.com/900x300.png/5fa2dd/ffffff",
     "http://dummyimage.com/1400x400.png/ff4444/ffffff",
@@ -29,10 +29,10 @@ export class MountainDetailsComponent implements OnInit {
   ];
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private token: TokenService,
-    private filterService: FilterService) { }
+    public formBuilder: FormBuilder,
+    public route: ActivatedRoute,
+    public token: TokenService,
+    public filterService: FilterService) { }
 
   ngOnInit() {
     this.currentUser = this.token.getToken().user;

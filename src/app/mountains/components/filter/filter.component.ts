@@ -11,8 +11,8 @@ import { Filter } from '../../interfaces/filter';
 })
 export class FilterComponent implements OnInit {
 
-  private filterForm: FormGroup;
-  private filter: Filter = {
+  public filterForm: FormGroup;
+  public filter: Filter = {
     search: '',
     byHeight: '',
     byName: '',
@@ -23,9 +23,9 @@ export class FilterComponent implements OnInit {
   }
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private filterService: FilterService) { }
+    public formBuilder: FormBuilder,
+    public route: ActivatedRoute,
+    public filterService: FilterService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

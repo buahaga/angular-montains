@@ -12,7 +12,7 @@ import { LoginModel } from './interfaces/login';
 })
 export class AuthenticationComponent implements OnInit {
 
-  private form: FormGroup;
+  public form: FormGroup;
 
   constructor(
     public authenticationService: AuthenticationService,

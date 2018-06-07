@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-todos": {
+    "angular-mountains": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-todos",
+            "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-todos:build"
+            "browserTarget": "angular-mountains:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-todos:build:production"
+              "browserTarget": "angular-mountains:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-todos:build"
+            "browserTarget": "angular-mountains:build"
           }
         },
         "test": {
@@ -92,10 +92,18 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "src/tsconfig.server.json"
+          }
         }
       }
     },
-    "angular-todos-e2e": {
+    "angular-mountains-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,7 +111,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-todos:serve"
+            "devServerTarget": "angular-mountains:serve"
           }
         },
         "lint": {
@@ -118,5 +126,5 @@
       }
     }
   },
-  "defaultProject": "angular-todos"
+  "defaultProject": "angular-mountains"
 }

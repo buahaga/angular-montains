@@ -7,7 +7,7 @@ import { Mountain } from '../interfaces/mountain';
 @Injectable()
 export class MountainsResolver implements Resolve<Mountain[]> {
 
-  constructor(private http: MountainsService) { }
+  constructor(public http: MountainsService) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Mountain[]> {
     const queryParams = route.queryParams;

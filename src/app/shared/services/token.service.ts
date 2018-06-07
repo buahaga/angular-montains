@@ -7,7 +7,7 @@ import { Token } from '../interfaces/token';
 })
 export class TokenService {
 
-  constructor(private storage: StorageService) { }
+  constructor(public storage: StorageService) { }
 
   getToken(): Token {
     const token = JSON.parse(this.storage.get('userToken'))

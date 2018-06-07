@@ -6,7 +6,7 @@ import { Token } from '../interfaces/token';
 })
 export class StorageService {
 
-  private storage = sessionStorage;
+  public storage = sessionStorage;
 
   get(key: string) {
     return this.storage.getItem(key);

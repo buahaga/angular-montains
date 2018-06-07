@@ -10,7 +10,7 @@ export class DraggableDirective {
   @Output() dragEnd: EventEmitter<number> = new EventEmitter<number>();
   @Output() drag: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private elementRef: ElementRef) {
+  constructor(public elementRef: ElementRef) {
 
     const domNode: HTMLElement = this.elementRef.nativeElement;
 

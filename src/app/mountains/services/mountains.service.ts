@@ -11,9 +11,9 @@ import { Mountain } from '../interfaces/mountain';
 })
 export class MountainsService {
 
-  private apiUrl: string = environment.apiUrl;
+  public apiUrl: string = environment.apiUrl;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(public httpClient: HttpClient) { }
 
   public getMountains(queryParams = {}): Observable<Mountain[]> {
     const params = new HttpParams()

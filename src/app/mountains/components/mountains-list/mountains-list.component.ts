@@ -11,14 +11,14 @@ import { FilterService } from '../../services/filter.service';
 
 export class MountainsListComponent implements OnInit {
 
-  private mountains: Mountain[];
-  private totalPages: number;
-  private currentPage: number;
+  public mountains: Mountain[];
+  public totalPages: number;
+  public currentPage: number;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private filterService: FilterService) { }
+    public route: ActivatedRoute,
+    public router: Router,
+    public filterService: FilterService) { }
 
   ngOnInit() {
 
