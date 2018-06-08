@@ -19,7 +19,7 @@
 .carousel-img {
   width: inherit;
   height: inherit%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .carousel-controls {

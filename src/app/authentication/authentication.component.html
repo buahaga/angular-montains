@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="login()">
+<form [formGroup]="form" (ngSubmit)="login()" *ngIf="isPlatformBrowser()">
 
   <h3>Authentication Form</h3>
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
@@ -15,12 +16,18 @@ export class AuthenticationComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     public authenticationService: AuthenticationService,
     public formBuilder: FormBuilder,
     public router: Router) { }
 
   ngOnInit() {
-    this.createForm();
+      this.createForm();
+  }
+
+  isPlatformBrowser() {
+    console.log('we are in browser authentication')
+    return isPlatformBrowser(this.platformId);
   }
 
   createForm() {
