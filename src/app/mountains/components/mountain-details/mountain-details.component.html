@@ -24,11 +24,11 @@
       <h3>Related comments:</h3>
 
       <div>
-        <b>{{login}}:</b><br/>
-        <span>{{comment}}</span>
+        <b>{{mountain.login}}:</b><br/>
+        <span>{{mountain.comment}}</span>
       </div>
 
-      <div *ngFor="let comment of comments">
+      <div *ngFor="let comment of currentUserComments">
         <b>{{currentUser}}:</b><br/>
         <span><i>{{comment}}</i></span>
       </div>

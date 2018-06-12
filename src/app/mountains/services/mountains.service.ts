@@ -25,13 +25,18 @@ export class MountainsService {
   public getCount(queryParams = {}): Observable<string> {
     const params = new HttpParams()
       .set('params', JSON.stringify(queryParams));
-    return this.httpClient.get(`${this.apiUrl}/count`, { params })
+    return this.httpClient.get(`${this.apiUrl}/mountains/count`, { params })
       .pipe(map(data => JSON.stringify(data)));
   }
 
   public getMountain(id): Observable<Mountain> {
     return this.httpClient.get(`${this.apiUrl}/mountains/${id}`)
       .pipe(map(data => <Mountain>data));
+  }
+
+  public postComment(comment): Observable<any> {
+    console.log(comment + ' sent');
+    return this.httpClient.post(`${this.apiUrl}/comments`, comment)
   }
 
 }

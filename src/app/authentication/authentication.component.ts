@@ -26,7 +26,6 @@ export class AuthenticationComponent implements OnInit {
   }
 
   isPlatformBrowser() {
-    console.log('we are in browser authentication')
     return isPlatformBrowser(this.platformId);
   }
 

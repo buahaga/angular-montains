@@ -19,16 +19,15 @@ export class AuthenticationService {
 
   login(login: LoginModel): Observable<any> {
     return this.http.post(this.apiUrl, login)
-      .pipe(
-        map((data: AuthorisedModel) => {
-          const token: Token = {
-            user: data.user,
-            userToken: data.token,
-            userTokenExpires: data.expiration.toString()
-          }
-          this.tokenService.setToken(token);
-          return data;
-        })
-    );
+      .pipe(map((data: AuthorisedModel) => {
+        const token: Token = {
+          user: data.user,
+          userToken: data.token,
+          userTokenExpires: data.expiration.toString()
+        }
+        this.tokenService.setToken(token);
+        return data;
+      })
+      );
   }
 }
