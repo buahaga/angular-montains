@@ -5,6 +5,7 @@ import { MountainsListComponent } from '../components/mountains-list/mountains-l
 import { MountainDetailsComponent } from '../components/mountain-details/mountain-details.component'
 import { MountainsResolver } from '../resolvers/mountains.resolver';
 import { MountainResolver } from '../resolvers/mountain.resolver';
+import { CommentsResolver } from '../resolvers/comments.resolver';
 import { MountainsCountResolver } from '../resolvers/mountains-count.resolver';
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
         path: ':id',
         component: MountainDetailsComponent,
         resolve: {
-          mountain: MountainResolver
+          mountain: MountainResolver,
+          comments: CommentsResolver
         }
       }
     ]

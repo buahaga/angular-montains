@@ -5,6 +5,7 @@ import { Mountain } from '../../interfaces/mountain';
 import { TokenService } from '../../../shared/services/token.service';
 import { FilterService } from '../../services/filter.service';
 import { MountainsService } from '../../services/mountains.service';
+import { CommentsService } from '../../services/comments.service';
 import { Filter } from '../../interfaces/filter';
 
 @Component({
@@ -18,7 +19,7 @@ export class MountainDetailsComponent implements OnInit {
   public commentForm: FormGroup;
   public queryParams: Filter | {};
   public currentUser: string;
-  public currentUserComments = [];
+  public comments = [];
   public imagesSrc = [
     "http://dummyimage.com/1200x300.png/cc0000/ffffff",
     "http://dummyimage.com/900x300.png/5fa2dd/ffffff",
@@ -29,6 +30,7 @@ export class MountainDetailsComponent implements OnInit {
 
   constructor(
     public http: MountainsService,
+    public httpComments: CommentsService,
     public formBuilder: FormBuilder,
     public route: ActivatedRoute,
     public token: TokenService,
@@ -41,6 +43,7 @@ export class MountainDetailsComponent implements OnInit {
     this.route.data
       .subscribe(data => {
         this.mountain = data.mountain;
+        this.comments = data.comments;
       });
   }
 
@@ -52,12 +55,12 @@ export class MountainDetailsComponent implements OnInit {
 
   sendComment() {
     if (this.commentForm.value.comment) {
-      // TODO is it right post from component or ther is another way?
-      this.http.postComment({ mountain: this.mountain.id, user: this.currentUser, comment: this.commentForm.value.comment })
-        .subscribe((resp) => {
-        console.log(resp);
-        this.currentUserComments = resp
-      });
+      this.httpComments.postComment({
+        mountain: this.mountain.id,
+        user: this.currentUser,
+        comment: this.commentForm.value.comment
+      })
+        .subscribe();
       this.commentForm.get('comment').setValue('');
     }
   }

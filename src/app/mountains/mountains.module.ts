@@ -11,6 +11,7 @@ import { FilterService } from './services/filter.service';
 import { MountainsService } from './services/mountains.service';
 import { MountainsResolver } from './resolvers/mountains.resolver';
 import { MountainResolver } from './resolvers/mountain.resolver';
+import { CommentsResolver } from './resolvers/comments.resolver';
 import { MountainsCountResolver } from './resolvers/mountains-count.resolver';
 import { SharedModule } from '../shared/shared.module';
 import { environment } from '../../environments/environment'
@@ -38,6 +39,7 @@ import { environment } from '../../environments/environment'
     MountainsService,
     MountainsResolver,
     MountainResolver,
+    CommentsResolver,
     MountainsCountResolver,
   ]
 })

@@ -34,9 +34,4 @@ export class MountainsService {
       .pipe(map(data => <Mountain>data));
   }
 
-  public postComment(comment): Observable<any> {
-    console.log(comment + ' sent');
-    return this.httpClient.post(`${this.apiUrl}/comments`, comment)
-  }
-
 }

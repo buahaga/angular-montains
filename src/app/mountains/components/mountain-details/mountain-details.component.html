@@ -28,9 +28,9 @@
         <span>{{mountain.comment}}</span>
       </div>
 
-      <div *ngFor="let comment of currentUserComments">
-        <b>{{currentUser}}:</b><br/>
-        <span><i>{{comment}}</i></span>
+      <div *ngFor="let comment of comments">
+        <b>{{comment.user}}:</b><br/>
+        <span><i>{{comment.comment}}</i></span>
       </div>
     </div>
 

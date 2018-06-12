@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const routes = require('./routes');
-const initializeDatabases = require('./dbs')
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -13,10 +12,4 @@ app.use(check.checkExpiration);
 
 app.use('/api', routes);
 
-initializeDatabases().then(dbs => {
-  routes(app, dbs).listen(3200, () => console.log('Listening on port 3000'))
-}).catch(err => {
-  console.error('Failed to make database connection!')
-  console.error(err)
-  process.exit(1)
-})
+app.listen(3500, () => console.log('Server listening on port 3500'));
