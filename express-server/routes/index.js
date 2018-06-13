@@ -1,14 +1,31 @@
-const routes = require('express').Router();
-const mountains = require('./mountains');
-const login = require('./login');
-const comments = require('./comments');
+const mountains = require('../utils/mountains');
+const login = require('../utils/login');
 
-routes.use('/mountains', mountains);
-routes.use('/login', login);
-routes.use('/comments', comments);
+module.exports = (app, dbs) => {
 
-routes.get('/', (req, res) => {
-  res.status(200).json({ message: 'Connected!' });
-});
+  app.post('/api/login', login.postLogin);
 
-module.exports = routes;
+  app.get('/api/mountains', mountains.getAllMountains);
+  app.get('/api/mountains/count', mountains.getMountainsCount);
+  app.get('/api/mountains/:id', mountains.getChoosenMountain);
+
+  app.post('/api/comments', (req, res) => {
+    const comment = {
+      mountain: req.body.mountain,
+      user: req.body.user,
+      comment: req.body.comment
+    };
+    dbs.comments.collection('comments').insertOne(comment, (err, result) => {
+      err ? res.error(err) : res.status(200);
+    });
+  });
+
+  app.get('/api/comments/:id', (req, res) => {
+    const id = Number(req.params.id);
+    dbs.comments.collection('comments').find({mountain: id}).toArray((err, comments) => {
+      err ? res.error(err) : res.json(comments);
+    })
+  });
+
+  return app
+}

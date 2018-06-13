@@ -30,7 +30,7 @@ import { isPlatformBrowser } from '@angular/common';
       multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(

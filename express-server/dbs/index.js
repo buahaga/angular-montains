@@ -1,11 +1,14 @@
-const config = require('../config/db');
-const MongoClient = require('mongodb').MongoClient
-const URL = require('../dbs/config').url;
+const MongoClient = require('mongodb').MongoClient;
+const URI = require('./config').url;
 
-function connect(url) {
-  return MongoClient.connect(url).then(client => client.db())
-}
+const connect = (url) => {
+  return MongoClient.connect(url, {
+    reconnectTries: 30,
+    autoReconnect: true
+  }).then(client => client.db())
+};
 
-module.exports = async function() {
-  let databases = await Promise(connect(URL));
-}
+module.exports = async () => {
+  let dbs = await Promise.all([connect(URI)]);
+  return {comments: dbs[0]}
+};

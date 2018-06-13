@@ -16,7 +16,6 @@ export class CommentsService {
   constructor(public httpClient: HttpClient) { }
 
   public postComment(comment): Observable<any> {
-    console.log(comment)
     return this.httpClient.post(`${this.apiUrl}/comments`, comment)
   }
 

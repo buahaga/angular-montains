@@ -27,7 +27,7 @@
     "@angular/platform-server": "^6.0.4",
     "@angular/router": "^6.0.0",
     "@auth0/angular-jwt": "^2.0.0",
-    "@ng-toolkit/universal": "^1.1.16",
+    "@ng-toolkit/universal": "^1.1.20",
     "@nguniversal/express-engine": "^6.0.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
     "core-js": "^2.5.4",

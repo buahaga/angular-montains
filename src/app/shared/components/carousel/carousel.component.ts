@@ -17,7 +17,6 @@ export class CarouselComponent implements OnInit {
   constructor( public elementRef: ElementRef ) { }
 
   ngOnInit() {
-    console.log(this.element)
     this.containerSize = this.element.querySelector('.carousel-div').getBoundingClientRect() as Rect;
   }
 
