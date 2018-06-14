@@ -18,8 +18,8 @@
 
 .carousel-img {
   width: inherit;
-  height: inherit%;
-  object-fit: fill;
+  height: inherit;
+  object-fit: cover;
 }
 
 .carousel-controls {

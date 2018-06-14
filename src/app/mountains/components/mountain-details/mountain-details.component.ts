@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Mountain } from '../../interfaces/mountain';
 import { TokenService } from '../../../shared/services/token.service';
@@ -15,30 +15,24 @@ import { Filter } from '../../interfaces/filter';
 })
 export class MountainDetailsComponent implements OnInit {
 
-  public mountain: Mountain;
   public commentForm: FormGroup;
   public queryParams: Filter | {};
   public currentUser: string;
+  public mountain: Mountain;
   public comments = [];
-  public imagesSrc = [
-    "http://dummyimage.com/1200x300.png/cc0000/ffffff",
-    "http://dummyimage.com/900x300.png/5fa2dd/ffffff",
-    "http://dummyimage.com/1400x400.png/ff4444/ffffff",
-    "http://dummyimage.com/1200x400.png/dddddd/ffffff",
-    "http://dummyimage.com/1000x300.png/5fa2dd/ffffff"
-  ];
 
   constructor(
     public http: MountainsService,
     public httpComments: CommentsService,
     public formBuilder: FormBuilder,
     public route: ActivatedRoute,
+    public router: Router,
     public token: TokenService,
     public filterService: FilterService) { }
 
   ngOnInit() {
-    this.currentUser = this.token.getToken().user;
     this.createForm();
+    this.currentUser = this.token.getToken().user;
     this.queryParams = this.filterService.filter.getValue();
     this.route.data
       .subscribe(data => {
@@ -55,13 +49,14 @@ export class MountainDetailsComponent implements OnInit {
 
   sendComment() {
     if (this.commentForm.value.comment) {
-      this.httpComments.postComment({
+      this.httpComments.addComment({
         mountain: this.mountain.id,
         user: this.currentUser,
         comment: this.commentForm.value.comment
-      })
-        .subscribe();
-      this.commentForm.get('comment').setValue('');
+      }).subscribe(() => {
+        this.commentForm.get('comment').setValue('');
+        this.router.navigate([`/mountains/${this.mountain.id}`]);
+      });
     }
   }
 

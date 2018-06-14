@@ -11,12 +11,13 @@ import { MountainsCountResolver } from '../resolvers/mountains-count.resolver';
 const routes: Routes = [
   {
     path: '',
+    runGuardsAndResolvers: `always`,
     component: MountainsComponent,
     children: [
       {
         path: '',
-        component: MountainsListComponent,
         runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+        component: MountainsListComponent,
         resolve: {
           mountains: MountainsResolver,
           count: MountainsCountResolver
@@ -24,13 +25,14 @@ const routes: Routes = [
       },
       {
         path: ':id',
+        runGuardsAndResolvers: `always`,
         component: MountainDetailsComponent,
         resolve: {
           mountain: MountainResolver,
           comments: CommentsResolver
         }
       }
-    ]
+    ],
   }
 ];
 export const MountainsRouting: ModuleWithProviders = RouterModule.forChild(routes);

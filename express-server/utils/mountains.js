@@ -1,26 +1,48 @@
-const mockData = require('../data');
+const mockData = require('../mock-data');
+const BaseDataAccessService = require('../models').BaseDataAccessService;
 
-module.exports.getAllMountains = (req, res) => {
+module.exports.MockDataRepository = class MockDataRepository {
+  constructor(mockDataAccessService) {
+    this.mockDataAccessService = mockDataAccessService;
+  }
+  get(query) {
+    return this.mockDataAccessService.get(query);
+  }
+  add(entity) {
+    return this.mockDataAccessService.add(entity);
+  }
+}
+
+module.exports.MockDataAccessService = class MockDataAccessService extends BaseDataAccessService {
+  get(query = {}) {
+    return mockData
+  }
+  add(entity) {
+    throw new Error('not implemented yet');
+  }
+}
+
+module.exports.getAllMountains = (mockData, req) => {
   const query = req.query.params || {};
   const params = JSON.parse(query);
   const itemsPerPage = params.itemsPerPage || 10;
   const currentPage = params.currentPage || 1;
   let data = filterData(mockData, params).slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-  res.status(200).send(data);
+  return data;
 };
 
-module.exports.getMountainsCount = (req, res) => {
+module.exports.getMountainsCount = (mockData, req) => {
   const query = req.query.params || {};
   const params = JSON.parse(query);
   const itemsPerPage = params.itemsPerPage || 10;
   const data = Math.ceil(filterData(mockData, params).length / itemsPerPage).toString();
-  res.status(200).send(data);
+  return data;
 };
 
-module.exports.getChoosenMountain = (req, res) => {
+module.exports.getChoosenMountain = (mockData, req) => {
   const id = Number(req.params.id);
-  const mountain = mockData[id-1];
-  res.status(200).send(mountain);
+  const mountain = mockData[id - 1];
+  return mountain;
 };
 
 function filterData(mockData, params) {
@@ -63,11 +85,11 @@ function sortBy(array, key, direction) {
     }
     return 0;
   });
-  return direction === 'asc' ? sortedArray : sortedArray.reverse();
+  return direction === 'asc'
+    ? sortedArray
+    : sortedArray.reverse();
 }
 
 function filterBy(arr, searchValue) {
-  return arr.filter((item) => (
-    item.mountain.toLowerCase().startsWith(searchValue.toLowerCase())
-  ));
+  return arr.filter((item) => (item.mountain.toLowerCase().startsWith(searchValue.toLowerCase())));
 }

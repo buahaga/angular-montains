@@ -15,13 +15,13 @@ export class CommentsService {
 
   constructor(public httpClient: HttpClient) { }
 
-  public postComment(comment): Observable<any> {
-    return this.httpClient.post(`${this.apiUrl}/comments`, comment)
-  }
-
   public getComments(id): Observable<Comment[]> {
     return this.httpClient.get(`${this.apiUrl}/comments/${id}`)
       .pipe(map(data => <Comment[]>data));
+  }
+
+  public addComment(comment): Observable<any> {
+    return this.httpClient.post(`${this.apiUrl}/comments`, comment)
   }
 
 }

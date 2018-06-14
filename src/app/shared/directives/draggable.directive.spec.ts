@@ -11,7 +11,6 @@ class TestDragComponent {
   @Input() position: number;
 }
 
-// TODO how to set position from directive direct to component
 describe('DraggableDirective', () => {
   let component: TestDragComponent;
   let fixture: ComponentFixture<TestDragComponent>;
