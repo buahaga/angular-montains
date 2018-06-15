@@ -6,13 +6,13 @@ import { CommentsService } from '../services/comments.service';
 import { Comment } from '../interfaces/comment';
 
 @Injectable()
-export class CommentsResolver implements Resolve<any> {
+export class CommentsResolver implements Resolve<Comment[]> {
 
-  constructor(public http: CommentsService) { }
+  constructor(private http: CommentsService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Comment[]> {
     const id = route.params['id'];
-    return this.http.getComments(id)
+    return this.http.getComments(id);
   }
 
 }

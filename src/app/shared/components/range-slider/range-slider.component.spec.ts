@@ -13,7 +13,7 @@ describe('RangeSliderComponent', () => {
       declarations: [RangeSliderComponent],
       schemas: [NO_ERRORS_SCHEMA]
     })
-      .compileComponents()
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -11,7 +11,7 @@ describe('CarouselComponent', () => {
     TestBed.configureTestingModule({
       declarations: [CarouselComponent]
     })
-      .compileComponents()
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -37,38 +37,38 @@ describe('CarouselComponent', () => {
     const expected = 5;
     const slidesLength = fixture.debugElement.queryAll(By.css('.carousel-item')).length;
     expect(slidesLength).toEqual(expected);
-  }))
+  }));
 
   it('should create slider whit 7 control buttons', (() => {
     const expected = 7;
     const buttons = fixture.debugElement.queryAll(By.css('button')).length;
     expect(buttons).toEqual(expected);
-  }))
+  }));
 
   it('should change containerPostition on nextSlide()', (() => {
     const expected = `-${component.containerSize.width}px`;
     component.nextSlide();
     expect(component.containerPosition).toEqual(expected);
-  }))
+  }));
 
   it('should change containerPosition on prevSlide()', (() => {
     const expected = `-${component.containerSize.width * 4}px`;
-    console.log(component.containerSize.width)
+    console.log(component.containerSize.width);
     component.prevSlide();
     expect(component.containerPosition).toEqual(expected);
-  }))
+  }));
 
   it('should increase currentSlide value on nextSlide()', (() => {
     const expected = 1;
     component.nextSlide();
     expect(component.currentSlide).toEqual(expected);
-  }))
+  }));
 
   it('should change currentSlide value on first nextSlide() to 4', (() => {
     const expected = 4;
-        console.log(component.currentSlide)
+        console.log(component.currentSlide);
     component.prevSlide();
     expect(component.currentSlide).toEqual(expected);
-  }))
+  }));
 
 });

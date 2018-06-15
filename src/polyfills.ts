@@ -79,5 +79,4 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * APPLICATION IMPORTS
  */
 
-// map
-import { map } from 'rxjs/operators/';
+import { Observable } from 'rxjs';

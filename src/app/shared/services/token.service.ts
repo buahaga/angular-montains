@@ -3,19 +3,19 @@ import { StorageService } from './storage.service';
 import { Token } from '../interfaces/token';
 
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root'
 })
 export class TokenService {
 
-  constructor(public storage: StorageService) { }
+  constructor(private storage: StorageService) { }
 
   getToken(): Token {
-    const token = JSON.parse(this.storage.get('userToken'))
-    return token ? token : null
+    const token = JSON.parse(this.storage.get('userToken'));
+    return token ? token : null;
   }
 
   setToken(payload: Token | null) {
-    this.storage.set('userToken', JSON.stringify(payload))
+    this.storage.set('userToken', JSON.stringify(payload));
   }
 
 }

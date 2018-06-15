@@ -12,7 +12,7 @@ import { Filter } from '../../interfaces/filter';
 export class FilterComponent implements OnInit {
 
   public filterForm: FormGroup;
-  public filter: Filter = {
+  private filter: Filter = {
     search: '',
     byHeight: '',
     byName: '',
@@ -20,19 +20,19 @@ export class FilterComponent implements OnInit {
     currentPage: '',
     minDifficulty: 0,
     maxDifficulty: 10,
-  }
+  };
 
   constructor(
-    public formBuilder: FormBuilder,
-    public route: ActivatedRoute,
-    public filterService: FilterService) { }
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private filterService: FilterService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.filterService.setFilter(params);
       Object.keys(params).map((key) => {
-        this.filter[key] = params[key]
-      })
+        this.filter[key] = params[key];
+      });
     });
     this.createForm();
   }
@@ -57,13 +57,13 @@ export class FilterComponent implements OnInit {
         const obj = value;
         const query = Object.keys(value);
         for (let i = 0; i < query.length; i++) {
-          const checkDefault = obj[query[i]] == "" || obj[query[i]] == 10
+          const checkDefault = obj[query[i]] === '' || obj[query[i]] === 0 || obj[query[i]] === 10;
           if (!checkDefault) {
             queryParams[query[i]] = obj[query[i]];
           }
         }
       } else if (value) {
-        queryParams[key] = value;;
+        queryParams[key] = value;
       }
     });
     this.filterService.setFilter(queryParams);

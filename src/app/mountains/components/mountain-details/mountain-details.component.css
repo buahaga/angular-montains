@@ -27,6 +27,11 @@ button:active {
   background-color: #6496fa;
 }
 
+.textarea {
+  width: 90%;
+  height: 30%;
+}
+
 .comment-form,
 .related-comments {
   width: 60%;

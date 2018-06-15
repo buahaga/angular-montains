@@ -9,7 +9,7 @@ export class FilterService {
 
   filter: BehaviorSubject<Partial<Filter>> = new BehaviorSubject({});
 
-  setFilter(filter) {
+  public setFilter(filter) {
     this.filter.next(filter);
   }
 

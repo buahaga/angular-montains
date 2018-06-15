@@ -37,17 +37,17 @@
     <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="sendComment()">
       <label>
         <h3>Leave comment:</h3>
-        <textarea formControlName="comment" rows="5" cols="25"></textarea><br/>
+        <textarea class="textarea" formControlName="comment"></textarea><br/>
         <button>Send comment</button>
       </label>
     </form>
 
   </div>
 
-  <!-- <div class="map">
+  <div class="map">
     <agm-map [latitude]="mountain.lat" [longitude]="mountain.lng">
       <agm-marker [latitude]="mountain.lat" [longitude]="mountain.lng"></agm-marker>
     </agm-map>
-  </div> -->
+  </div>
 
 </div>

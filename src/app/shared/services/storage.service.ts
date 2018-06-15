@@ -9,18 +9,20 @@ export class StorageService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
-  public storage = sessionStorage;
+  private storage = sessionStorage;
 
   get(key: string) {
-    if (isPlatformBrowser) {
-      return this.storage.getItem(key);
-    }
+    // if (isPlatformBrowser) {
+    //   return this.storage.getItem(key);
+    // }
+    return this.storage.getItem(key);
   }
 
   set(key: string, payload: string) {
-    if (isPlatformBrowser) {
-      this.storage.setItem(key, payload);
-    }
+    // if (isPlatformBrowser) {
+    //   this.storage.setItem(key, payload);
+    // }
+    this.storage.setItem(key, payload);
   }
 
 }

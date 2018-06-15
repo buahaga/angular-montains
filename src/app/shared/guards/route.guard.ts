@@ -6,8 +6,8 @@ import { TokenService } from '../services/token.service';
 export class RouteGuardService implements CanActivate {
 
   constructor(
-    public tokenService: TokenService,
-    public router: Router) { }
+    private tokenService: TokenService,
+    private router: Router) { }
 
   canActivate(): boolean {
     let userToken: string | boolean = false;
@@ -23,5 +23,5 @@ export class RouteGuardService implements CanActivate {
     }
     return true;
   }
-  
+
 }

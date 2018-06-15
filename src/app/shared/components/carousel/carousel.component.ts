@@ -9,12 +9,12 @@ import { Rect } from '../../interfaces/rect';
 export class CarouselComponent implements OnInit {
 
   @Input() imagesSrc: string[];
-  public currentSlide: number = 0;
-  public element: HTMLElement = this.elementRef.nativeElement;
-  public containerPosition: string = '0px';
+  public currentSlide = 0;
+  public containerPosition = '0px';
   public containerSize: Rect;
+  private element: HTMLElement = this.elementRef.nativeElement;
 
-  constructor( public elementRef: ElementRef ) { }
+  constructor( private elementRef: ElementRef ) { }
 
   ngOnInit() {
     this.containerSize = this.element.querySelector('.carousel-div').getBoundingClientRect() as Rect;

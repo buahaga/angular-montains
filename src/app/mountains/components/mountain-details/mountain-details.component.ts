@@ -17,22 +17,22 @@ export class MountainDetailsComponent implements OnInit {
 
   public commentForm: FormGroup;
   public queryParams: Filter | {};
-  public currentUser: string;
   public mountain: Mountain;
   public comments = [];
+  private currentUser: string;
 
   constructor(
-    public http: MountainsService,
-    public httpComments: CommentsService,
-    public formBuilder: FormBuilder,
-    public route: ActivatedRoute,
-    public router: Router,
-    public token: TokenService,
-    public filterService: FilterService) { }
+    private http: MountainsService,
+    private httpComments: CommentsService,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private tokenService: TokenService,
+    private filterService: FilterService) { }
 
   ngOnInit() {
     this.createForm();
-    this.currentUser = this.token.getToken().user;
+    this.currentUser = this.tokenService.getToken().user;
     this.queryParams = this.filterService.filter.getValue();
     this.route.data
       .subscribe(data => {

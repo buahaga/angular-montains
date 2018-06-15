@@ -18,9 +18,9 @@ export class MountainsListComponent implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    public route: ActivatedRoute,
-    public router: Router,
-    public filterService: FilterService) { }
+    private route: ActivatedRoute,
+    private router: Router,
+    private filterService: FilterService) { }
 
   ngOnInit() {
     if (isPlatformBrowser) {

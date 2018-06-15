@@ -13,13 +13,13 @@ import { LoginModel } from './interfaces/login';
 })
 export class AuthenticationComponent implements OnInit {
 
-  public form: FormGroup;
+  private form: FormGroup;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    public authenticationService: AuthenticationService,
-    public formBuilder: FormBuilder,
-    public router: Router) { }
+    private authenticationService: AuthenticationService,
+    private formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnInit() {
       this.createForm();
@@ -45,7 +45,7 @@ export class AuthenticationComponent implements OnInit {
         }, (error) => {
           this.form.setErrors({ incorrectLoginOrPassword: true });
         }
-      )
+      );
   }
 
 }

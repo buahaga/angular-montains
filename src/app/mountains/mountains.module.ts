@@ -1,7 +1,7 @@
 import { MountainsRouting } from './routing/mountains.routing';
 import { CommonModule } from '@angular/common';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-// import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MountainsComponent } from './mountains.component';
 import { MountainsListComponent } from './components/mountains-list/mountains-list.component';
@@ -14,7 +14,7 @@ import { MountainResolver } from './resolvers/mountain.resolver';
 import { CommentsResolver } from './resolvers/comments.resolver';
 import { MountainsCountResolver } from './resolvers/mountains-count.resolver';
 import { SharedModule } from '../shared/shared.module';
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -23,9 +23,9 @@ import { environment } from '../../environments/environment'
     FormsModule,
     ReactiveFormsModule,
     MountainsRouting,
-    // AgmCoreModule.forRoot({
-    //   apiKey: environment.apiKey,
-    // }),
+    AgmCoreModule.forRoot({
+      apiKey: environment.apiKey,
+    }),
     SharedModule,
   ],
   declarations: [

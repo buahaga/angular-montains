@@ -7,11 +7,11 @@ import { Mountain } from '../interfaces/mountain';
 @Injectable()
 export class MountainsResolver implements Resolve<Mountain[]> {
 
-  constructor(public http: MountainsService) { }
+  constructor(private http: MountainsService) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Mountain[]> {
     const queryParams = route.queryParams;
-    return this.http.getMountains(queryParams)
+    return this.http.getMountains(queryParams);
   }
 
 }

@@ -20,7 +20,7 @@ describe('DraggableDirective', () => {
     TestBed.configureTestingModule({
       declarations: [TestDragComponent, DraggableDirective]
     })
-      .compileComponents()
+      .compileComponents();
   }));
 
   beforeEach(() => {

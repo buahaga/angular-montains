@@ -8,12 +8,12 @@ import { Mountain } from '../interfaces/mountain';
 @Injectable()
 export class MountainsCountResolver implements Resolve<number> {
 
-  constructor(public http: MountainsService) { }
+  constructor(private http: MountainsService) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<number> {
     const queryParams = route.queryParams;
     return this.http.getCount(queryParams)
-      .pipe(map(resp => Number(resp)))
+      .pipe(map(resp => Number(resp)));
   }
 
 }

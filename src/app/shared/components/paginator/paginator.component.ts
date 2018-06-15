@@ -17,7 +17,7 @@ export class PaginatorComponent implements OnChanges {
   }
 
   selectPage(page) {
-    (page !== '...') ? this.pageChange.emit(Number(page)) : false;
+    (page !== '...') ? this.pageChange.emit(Number(page)) : null;
   }
 
   changePage(increase: number) {

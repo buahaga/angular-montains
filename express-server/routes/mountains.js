@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.get('/count', (req, res) => {
   const mockData = mockDataRepository.get()
-  res.status(200).json(getMountainsCount(mockData, req))
+  res.status(200).send(getMountainsCount(mockData, req))
 });
 
 router.get('/:id', (req, res) => {

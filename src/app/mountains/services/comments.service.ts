@@ -11,17 +11,17 @@ import { Comment } from '../interfaces/comment';
 })
 export class CommentsService {
 
-  public apiUrl: string = environment.apiUrl;
+  private apiUrl: string = environment.apiUrl;
 
-  constructor(public httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   public getComments(id): Observable<Comment[]> {
     return this.httpClient.get(`${this.apiUrl}/comments/${id}`)
       .pipe(map(data => <Comment[]>data));
   }
 
-  public addComment(comment): Observable<any> {
-    return this.httpClient.post(`${this.apiUrl}/comments`, comment)
+  public addComment(comment): Observable<Partial<Comment>> {
+    return this.httpClient.post(`${this.apiUrl}/comments`, comment);
   }
 
 }

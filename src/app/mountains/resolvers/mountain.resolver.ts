@@ -8,11 +8,11 @@ import { Mountain } from '../interfaces/mountain';
 @Injectable()
 export class MountainResolver implements Resolve<Mountain> {
 
-  constructor(public http: MountainsService) { }
+  constructor(private http: MountainsService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Mountain> {
     const id = route.params['id'];
-    return this.http.getMountain(id)
+    return this.http.getMountain(id);
   }
 
 }

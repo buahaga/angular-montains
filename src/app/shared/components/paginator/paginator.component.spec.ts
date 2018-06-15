@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, DebugElement } from "@angular/core";
+import { Component, DebugElement } from '@angular/core';
 import { PaginatorComponent } from './paginator.component';
-import { By } from "@angular/platform-browser";
+import { By } from '@angular/platform-browser';
 
 describe('PaginatorComponent', () => {
   let component: PaginatorComponent;
@@ -11,7 +11,7 @@ describe('PaginatorComponent', () => {
     TestBed.configureTestingModule({
       declarations: [PaginatorComponent]
     })
-      .compileComponents()
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -43,19 +43,19 @@ describe('PaginatorComponent', () => {
     const btnPrevious = fixture.debugElement.query(By.css('.previous')).nativeElement.disabled;
     const expected = true;
     expect(btnPrevious).toEqual(expected);
-  }))
+  }));
 
   it('should emit event on click by right arrow button', (() => {
     const btnNext = fixture.debugElement.query(By.css('.next')).nativeElement;
     spyOn(component.pageChange, 'emit');
     btnNext.click();
     expect(component.pageChange.emit).toHaveBeenCalled();
-  }))
+  }));
 
   it('should display paginator buttons between previous and next', (() => {
-    const spanPages = fixture.debugElement.query(By.css('.pagination')).nativeElement.textContent.slice(1,-1);
-    const expected = "12...10";
+    const spanPages = fixture.debugElement.query(By.css('.pagination')).nativeElement.textContent.slice(1, -1);
+    const expected = '12...10';
     expect(spanPages).toEqual(expected);
-  }))
+  }));
 
 });
