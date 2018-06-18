@@ -30,10 +30,6 @@ li a {
 .map {
   width: 80%;
   margin: 30px auto;
-  padding: 0;
-  background-color: none;
-  border-radius: none;
-  border: thin solid black;
 }
 
 agm-map {

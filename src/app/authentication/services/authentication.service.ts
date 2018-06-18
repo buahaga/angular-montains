@@ -24,8 +24,7 @@ export class AuthenticationService {
       .pipe(map((data: AuthorisedModel) => {
         const token: Token = {
           user: data.user,
-          userToken: data.token,
-          userTokenExpires: data.expiration.toString()
+          userToken: data.token
         };
         if (isPlatformBrowser) {
           this.tokenService.setToken(token);

@@ -1,23 +1,10 @@
 const connect = require('../dbs');
-const BaseDataAccessService = require('../models').BaseDataAccessService;
 
-module.exports.CommentsRepository = class CommentsRepository {
-  constructor(dataAccessService) {
-    this.dataAccessService = dataAccessService;
-  }
-  get(query) {
-    return this.dataAccessService.get(query);
-  }
-  add(comment) {
-    return this.dataAccessService.add(comment);
-  }
-}
-
-module.exports.MongoDbDataAccessService = class MongoDbDataAccessService extends BaseDataAccessService {
+module.exports = class CommentsDataAccessService {
   constructor(config) {
-    super();
     this.collection = config;
   }
+
   get(query) {
     return new Promise((resolve, reject) => {
       connect().then((client) => {
@@ -31,6 +18,7 @@ module.exports.MongoDbDataAccessService = class MongoDbDataAccessService extends
       }).catch((err) => reject(err));
     });
   }
+
   add(entity) {
     return new Promise((resolve, reject) => {
       connect().then((client) => {

@@ -15,6 +15,7 @@ export class MountainsListComponent implements OnInit {
   public mountains: Mountain[];
   public totalPages: number;
   public currentPage: number;
+  private itemsPerPage: number = 10;
   private mapLat: number = 36.1100;
   private mapLng: number = 16.9500;
 
@@ -39,7 +40,7 @@ export class MountainsListComponent implements OnInit {
       this.route.data
         .subscribe(data => {
           this.mountains = data.mountains;
-          this.totalPages = data.count;
+          this.totalPages = Math.ceil(data.count / this.itemsPerPage);
         });
     }
   }
@@ -52,6 +53,14 @@ export class MountainsListComponent implements OnInit {
 
   markerClick(id: number) {
     this.router.navigate([`mountains/${id}`])
+  }
+
+  mouseOver(infoWindow) {
+    infoWindow.open();
+  }
+
+  mouseOut(infoWindow) {
+    infoWindow.close();
   }
 
 }

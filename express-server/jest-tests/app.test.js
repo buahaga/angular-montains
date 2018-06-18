@@ -9,7 +9,6 @@ describe('GET /', () => {
       .get('/')
       .expect(401)
       .then(res => {
-        console.log(res.text);
         expect(res.text).to.equal('Unauthorized');
       });
   });

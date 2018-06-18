@@ -53,7 +53,6 @@ describe('CarouselComponent', () => {
 
   it('should change containerPosition on prevSlide()', (() => {
     const expected = `-${component.containerSize.width * 4}px`;
-    console.log(component.containerSize.width);
     component.prevSlide();
     expect(component.containerPosition).toEqual(expected);
   }));
@@ -66,7 +65,6 @@ describe('CarouselComponent', () => {
 
   it('should change currentSlide value on first nextSlide() to 4', (() => {
     const expected = 4;
-        console.log(component.currentSlide);
     component.prevSlide();
     expect(component.currentSlide).toEqual(expected);
   }));

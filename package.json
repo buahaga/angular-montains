@@ -34,6 +34,7 @@
     "express": "^4.16.3",
     "express-engine": "^1.0.1",
     "express-minify-html": "^0.12.0",
+    "jwt-decode": "^2.2.0",
     "ngx-toastr": "^8.6.0",
     "rxjs": "^6.2.0",
     "ts-loader": "^3.5.0",

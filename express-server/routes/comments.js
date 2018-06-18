@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const CommentsRepository = require('../utils/comments').CommentsRepository;
-const MongoDbDataAccessService = require('../utils/comments').MongoDbDataAccessService;
-const commentsRepository = new CommentsRepository(new MongoDbDataAccessService('comments'));
+const CommentsRepository = require('../repositories/comments-repository');
+const CommentsDataAccessService = require('../services/comments-service');
+const commentsRepository = new CommentsRepository(new CommentsDataAccessService('comments'));
 
 router.post('/', (req, res) => {
   const comment = {

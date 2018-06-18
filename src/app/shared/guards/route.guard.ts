@@ -2,6 +2,7 @@ import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, CanActivate } from '@angular/router';
 import { TokenService } from '../services/token.service';
+import * as jwt from 'jwt-decode';
 
 @Injectable()
 export class RouteGuardService implements CanActivate {
@@ -12,14 +13,13 @@ export class RouteGuardService implements CanActivate {
     private router: Router) { }
 
   canActivate(): boolean {
-    let userToken: string | boolean = false;
-    let userTokenExpires: string | boolean = false;
+    let isTokenActive: number | boolean = false;
+    const decoded = (token) => jwt(token).expiration;
     if (isPlatformBrowser) {
       if (this.tokenService.getToken()) {
-        userToken = this.tokenService.getToken().userToken;
-        userTokenExpires = this.tokenService.getToken().userTokenExpires;
+        isTokenActive = decoded(this.tokenService.getToken().userToken);
       }
-      if (!userToken || !(Number(userTokenExpires) > Date.now())) {
+      if (!isTokenActive || isTokenActive < Date.now()) {
         this.tokenService.setToken(null);
         this.router.navigate(['login']);
         return false;

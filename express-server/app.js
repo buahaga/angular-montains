@@ -5,7 +5,7 @@ const PORT = 2400;
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const authMiddleWare = require('./middleware/auth');
+const authMiddleWare = require('./middleware/authentication-middleware');
 
 app.use(cors());
 app.use(bodyParser.json());

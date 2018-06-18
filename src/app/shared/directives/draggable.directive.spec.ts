@@ -39,7 +39,6 @@ describe('DraggableDirective', () => {
     dragElement.triggerEventHandler('mousemove', { pageX: 50 });
     dragElement.triggerEventHandler('mouseup', null);
     fixture.detectChanges();
-    console.log(dragElement, component.position);
     expect(dragElement.nativeElement.style.left).toBe('');
   });
 

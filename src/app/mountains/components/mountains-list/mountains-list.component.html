@@ -1,9 +1,13 @@
 <div class="map">
   <agm-map [latitude]="mapLat" [longitude]="mapLng" [scrollwheel]="false" [zoom]="2">
     <agm-marker *ngFor="let mountain of mountains"
-    [latitude]="mountain.lat"
-    [longitude]="mountain.lng"
-    (markerClick)="markerClick(mountain.id)"></agm-marker>
+      [latitude]="mountain.lat"
+      [longitude]="mountain.lng"
+      (mouseOver)="mouseOver(infoWindow)"
+      (mouseOut)="mouseOut(infoWindow)"
+      (markerClick)="markerClick(mountain.id)">
+      <agm-info-window #infoWindow [disableAutoPan]="true">{{ mountain.mountain }}</agm-info-window>
+    </agm-marker>
   </agm-map>
 </div>
 
