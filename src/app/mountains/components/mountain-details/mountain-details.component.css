@@ -15,10 +15,6 @@ button:active {
   color: black;
 }
 
-.map {
-  margin: 30px 5% ;
-}
-
 .comments {
   display: flex;
   vertical-align: top;
@@ -53,6 +49,9 @@ button:active {
   margin: 0 auto;
 }
 
+.map {
+  margin: 30px 5% ;
+}
 
 agm-map {
   margin: 0 auto;

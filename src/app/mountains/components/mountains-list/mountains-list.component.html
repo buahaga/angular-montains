@@ -1,4 +1,13 @@
-<div>
+<div class="map">
+  <agm-map [latitude]="mapLat" [longitude]="mapLng" [scrollwheel]="false" [zoom]="2">
+    <agm-marker *ngFor="let mountain of mountains"
+    [latitude]="mountain.lat"
+    [longitude]="mountain.lng"
+    (markerClick)="markerClick(mountain.id)"></agm-marker>
+  </agm-map>
+</div>
+
+<div class="filter">
   <app-filter [currentPage]="currentPage"></app-filter>
 </div>
 

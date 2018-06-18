@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Mountain } from '../../interfaces/mountain';
-import { FilterService } from '../../services/filter.service';
 import { isPlatformBrowser } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FilterService } from '../../services/filter.service';
+import { Mountain } from '../../interfaces/mountain';
 
 @Component({
   selector: 'app-mountains-list',
@@ -15,6 +15,8 @@ export class MountainsListComponent implements OnInit {
   public mountains: Mountain[];
   public totalPages: number;
   public currentPage: number;
+  private mapLat: number = 36.1100;
+  private mapLng: number = 16.9500;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -42,10 +44,14 @@ export class MountainsListComponent implements OnInit {
     }
   }
 
-  onPageChange(page) {
+  onPageChange(page: number) {
     this.currentPage = page;
     const queryParams = this.filterService.filter.getValue();
     this.filterService.setFilter(Object.assign({}, queryParams, { currentPage: this.currentPage }));
+  }
+
+  markerClick(id: number) {
+    this.router.navigate([`mountains/${id}`])
   }
 
 }

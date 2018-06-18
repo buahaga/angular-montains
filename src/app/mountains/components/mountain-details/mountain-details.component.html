@@ -45,7 +45,7 @@
   </div>
 
   <div class="map">
-    <agm-map [latitude]="mountain.lat" [longitude]="mountain.lng">
+    <agm-map [latitude]="mountain.lat" [longitude]="mountain.lng" [scrollwheel]="false">
       <agm-marker [latitude]="mountain.lat" [longitude]="mountain.lng"></agm-marker>
     </agm-map>
   </div>

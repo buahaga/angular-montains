@@ -18,14 +18,32 @@ li a {
   text-decoration: none;
 }
 
-div {
+.filter {
   margin: 0 auto;
+  margin-bottom: 30px;
   padding: 5px 10px;
   width: 70%;
   background-color: #F08080;
   border-radius: 5px;
 }
 
-div {
-  margin-bottom: 30px;
+.map {
+  width: 80%;
+  margin: 30px auto;
+  padding: 0;
+  background-color: none;
+  border-radius: none;
+  border: thin solid black;
+}
+
+agm-map {
+  margin: 0 auto;
+  height: 300px;
+  width: 100%;
+}
+
+.marker {
+  width: 30px;
+  height: 30px;
+  border: thin solid red;
 }
