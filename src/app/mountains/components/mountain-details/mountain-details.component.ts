@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Mountain } from '../../interfaces/mountain';
@@ -22,6 +23,7 @@ export class MountainDetailsComponent implements OnInit {
   private currentUser: string;
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private http: MountainsService,
     private httpComments: CommentsService,
     private formBuilder: FormBuilder,
@@ -32,7 +34,9 @@ export class MountainDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.currentUser = this.tokenService.getToken().user;
+    if (isPlatformBrowser) {
+      this.currentUser = this.tokenService.getToken().user;
+    }
     this.queryParams = this.filterService.filter.getValue();
     this.route.data
       .subscribe(data => {

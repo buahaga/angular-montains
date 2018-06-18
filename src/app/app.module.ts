@@ -6,32 +6,30 @@ import { AuthenticationInterceptor } from './shared/interceptors/authentication.
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { RouteGuardService } from './shared/guards/route.guard';
-
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule.withServerTransition({ appId: 'angular-mountains' }),
     FormsModule,
     HttpClientModule,
-    routing,
+    routing
   ],
   providers: [
     RouteGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
-      multi: true,
+      multi: true
     },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
+
 export class AppModule {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,

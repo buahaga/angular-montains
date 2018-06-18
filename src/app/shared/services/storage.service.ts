@@ -1,6 +1,6 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { Token } from '../interfaces/token';
 import { isPlatformBrowser } from '@angular/common';
+import { Token } from '../interfaces/token';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +12,15 @@ export class StorageService {
   private storage = sessionStorage;
 
   get(key: string) {
-    // if (isPlatformBrowser) {
-    //   return this.storage.getItem(key);
-    // }
-    return this.storage.getItem(key);
+    if (isPlatformBrowser) {
+      return this.storage.getItem(key);
+    }
   }
 
   set(key: string, payload: string) {
-    // if (isPlatformBrowser) {
-    //   this.storage.setItem(key, payload);
-    // }
-    this.storage.setItem(key, payload);
+    if (isPlatformBrowser) {
+      this.storage.setItem(key, payload);
+    }
   }
 
 }

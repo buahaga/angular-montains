@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { StorageService } from './storage.service';
 import { Token } from '../interfaces/token';
 
@@ -7,15 +8,21 @@ import { Token } from '../interfaces/token';
 })
 export class TokenService {
 
-  constructor(private storage: StorageService) { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private storage: StorageService) { }
 
   getToken(): Token {
-    const token = JSON.parse(this.storage.get('userToken'));
-    return token ? token : null;
+    if (isPlatformBrowser) {
+      const token = JSON.parse(this.storage.get('userToken'));
+      return token ? token : null;
+    }
   }
 
   setToken(payload: Token | null) {
-    this.storage.set('userToken', JSON.stringify(payload));
+    if (isPlatformBrowser) {
+      this.storage.set('userToken', JSON.stringify(payload));
+    }
   }
 
 }

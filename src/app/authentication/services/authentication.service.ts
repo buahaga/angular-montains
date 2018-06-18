@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID  } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -14,6 +15,7 @@ export class AuthenticationService {
   private apiUrl: string = environment.apiUrl + '/login';
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private http: HttpClient,
     private tokenService: TokenService) { }
 
@@ -25,7 +27,9 @@ export class AuthenticationService {
           userToken: data.token,
           userTokenExpires: data.expiration.toString()
         };
-        this.tokenService.setToken(token);
+        if (isPlatformBrowser) {
+          this.tokenService.setToken(token);
+        }
         return data;
       })
       );

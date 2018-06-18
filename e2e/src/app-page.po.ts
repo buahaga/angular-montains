@@ -5,6 +5,14 @@ export class AppPage {
     return browser.get('/');
   }
 
+  navigateToMountainsList() {
+    return browser.get('/mountains');
+  }
+
+  navigateToMountain() {
+    return browser.get('/mountains/1');
+  }
+
   getParagraphText() {
     return element(by.css('app-root h1')).getText();
   }
@@ -22,7 +30,7 @@ export class AppPage {
   }
 
   getError() {
-    return element(by.css('.error')).getText()
+    return element(by.css('.error')).getText();
   }
 
   getMountains() {
@@ -88,7 +96,7 @@ export class AppPage {
 
   async getCarouselLeftPosition() {
     const elem = await element(by.css('.carousel-container')).getCssValue('left');
-    return Number(elem.slice(0, elem.length-2));
+    return Number(elem.slice(0, elem.length - 2));
   }
 
   getCarouselPrev() {

@@ -49,8 +49,4 @@ export class CarouselComponent implements OnInit {
     this.setContainerPosition();
   }
 
-  onSwipe(evt) {
-    evt.deltaX > 0 ? this.nextSlide() : this.prevSlide();
-  }
-
 }

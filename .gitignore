@@ -8,6 +8,7 @@
 # dependencies
 /node_modules
 /express-server/node_modules
+/express-server/dist
 /src/node_modules
 
 # IDEs and editors
