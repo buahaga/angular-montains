@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationComponent } from './authentication.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
@@ -14,6 +16,8 @@ import { AuthenticationService } from './services/authentication.service';
   ],
   declarations: [
     AuthenticationComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [
     AuthenticationService,

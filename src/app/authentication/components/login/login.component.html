@@ -1,0 +1,29 @@
+<form class="login-form" [formGroup]="form" (ngSubmit)="login()" *ngIf="isPlatformBrowser()">
+
+  <a class="register" routerLink="/login/reg-new-user">Register</a>
+
+  <h3>Authentication Form</h3>
+
+  <div *ngIf="form.errors?.incorrectLoginOrPassword" class="error fatal">
+    Please check e-mail and password are correct!
+  </div>
+
+  <label>
+    Der Login:
+    <input class="login" type="email" placeholder="admin@gmail.com" formControlName="email">
+  </label>
+  <div class="error" *ngIf="form.controls.email.errors?.email">
+    Email not valid.
+  </div>
+
+  <label>
+    Der Parol:&nbsp;
+    <input class="password" type="password" placeholder="123" formControlName="password">
+  </label>
+  <div class="error" *ngIf="form.controls.password.errors?.minlength">
+    Password not valid.
+  </div>
+
+  <button [disabled]="!form.valid" type="submit">Submit</button>
+
+</form>

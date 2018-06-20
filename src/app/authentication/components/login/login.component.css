@@ -1,0 +1,37 @@
+.login-form {
+  width: 50%;
+  margin: 5px auto;
+  padding: 5px;
+  background-color: #F08080;
+  border: thin solid grey;
+}
+
+.login-form label {
+  display: block;
+  margin: 10px;
+}
+
+.login-form button:active {
+  background-color: #6496fa;
+}
+
+.error {
+  margin: 10px;
+  font-style: italic;
+  color: red;
+}
+
+.fatal {
+  width: 50%;
+  margin: 0 auto;
+  padding: 5px;
+  border: thin solid red;
+}
+
+.register {
+  float: right;
+  font-style: italic;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}

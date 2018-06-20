@@ -1,0 +1,60 @@
+.reg-container {
+  width: 600px;
+  margin: 30px auto;
+  padding: 5px;
+  background: #6496fa;
+  border: thin solid grey;
+  text-align: center;
+  z-index: 100;
+}
+
+.reg-form {
+  text-align: right;
+  width: 70%;
+  margin: 30px auto;
+}
+
+.reg-form label {
+  display: block;
+  margin-left: 10px;
+}
+
+.reg-form input {
+  width: 150px;
+}
+
+.reg-form button {
+  margin-top: 10px;
+}
+
+.reg-form button:active {
+  background-color: #6496fa;
+}
+
+.reg-status {
+  margin: 10px;
+  padding: 10px;
+  font-style: italic;
+  background-color: white;
+}
+
+.error {
+  margin: 10px;
+  font-style: italic;
+  color: red;
+}
+
+.fatal {
+  width: 50%;
+  margin: 0 auto;
+  padding: 5px;
+  border: thin solid red;
+}
+
+.login {
+  float: right;
+  font-style: italic;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
