@@ -4,7 +4,7 @@ const authentication = require('./authentication');
 const mountains = require('./mountains');
 const comments = require('./comments');
 
-router.use('/api/login', authentication);
+router.use('/api/auth', authentication);
 router.use('/api/mountains', mountains);
 router.use('/api/comments', comments);
 

@@ -12,7 +12,7 @@ import { Token } from '../../shared/interfaces/token';
 @Injectable()
 export class AuthenticationService {
 
-  private apiUrl: string = environment.apiUrl + '/login';
+  private apiUrl: string = environment.apiUrl + '/auth';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -20,7 +20,7 @@ export class AuthenticationService {
     private tokenService: TokenService) { }
 
   login(login: LoginModel): Observable<any> {
-    return this.http.post(this.apiUrl, login)
+    return this.http.post(this.apiUrl  + '/login', login)
       .pipe(map((data: AuthorisedModel) => {
         const token: Token = {
           user: data.user,
@@ -32,5 +32,10 @@ export class AuthenticationService {
         return data;
       })
       );
+  }
+
+  register(regData: LoginModel): Observable<any> {
+    return this.http.post(this.apiUrl + '/register', regData)
+      .pipe(map((data) => data));
   }
 }

@@ -1,14 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const AuthenticationRepository = require('../repositories/authentication-repository');
 const AuthenticationAccessService = require('../services/authentication-service');
-const authenticationRepository = new AuthenticationRepository(new AuthenticationAccessService());
+const authenticationService = new AuthenticationAccessService();
 
-router.post('/', (req, res) => {
+router.post('/login', (req, res) => {
   const credentials = req.body;
-  authenticationRepository.check(credentials)
+  authenticationService.check(credentials)
     .then((token) => res.status(200).json(token))
     .catch((err) => res.send(err));
+});
+
+router.post('/register', (req, res) => {
+  res.status(200).json('registered successfully');
 });
 
 module.exports = router;

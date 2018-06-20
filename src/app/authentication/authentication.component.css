@@ -1,4 +1,4 @@
-form {
+.login-form {
  width: 50%;
  margin: 5px auto;
  padding: 5px;
@@ -6,12 +6,12 @@ form {
  border: thin solid grey;
 }
 
-label {
+.login-form label {
   display: block;
   margin: 10px;
 }
 
-button:active {
+.login-form button:active {
   background-color: #6496fa;
 }
 
@@ -26,4 +26,66 @@ button:active {
   margin: 0 auto;
   padding: 5px;
   border: thin solid red;
+}
+
+.register {
+  float: right;
+  background: none;
+  border: none;
+  outline: none;
+  font-style: italic;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modal-container {
+    position:  fixed;
+    top: 100px;
+    left: 50%;
+    width: 600px;
+    background: #6496fa;
+    margin-left: -300px;
+    text-align: center;
+    z-index: 100;
+}
+
+#modal-overlay {
+    position: absolute;
+    top: 0px;
+    left:  0px;
+    width:  100%;
+    height: 100%;
+    z-index: 90;
+    background-color:  rgba(0,0,0,0.8);
+}
+
+.modal-close {
+  float: right;
+  margin: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.modal-close:hover {
+  margin: 8px;
+  font-size: 24px;
+}
+
+.reg-form {
+  text-align: right;
+  width: 70%;
+  margin: 30px auto;
+}
+
+.reg-form label {
+  display: block;
+  margin-left: 10px;
+}
+
+.reg-status {
+  margin: 10px;
+  padding: 10px;
+  font-style: italic;
+  background-color: white;
 }
