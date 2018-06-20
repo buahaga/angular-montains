@@ -1,45 +1,54 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, DebugElement, Input } from '@angular/core';
+import { Component, DebugElement, Input, Output, ElementRef, ViewChild, EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { DraggableDirective } from './draggable.directive';
+import * as sinon from 'sinon';
 
 @Component({
-  template: `<div position="absolute" [style.left]="position + 'px'" top="0" width="20px" height="20px" appDraggable>[DIV]<div>`,
-  styles: ['div:hover { background-color: red; }']
+  selector: 'app-test',
+  template: `<div class="handler" appDraggable [style.left]="position + 'px'" (drag)="onDrag($event)"></div>`,
+  styles: [
+      `.handler {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: black;`
+      ]
 })
 class TestDragComponent {
-  @Input() position: number;
+  position: number;
+  onDrag = sinon.spy();
 }
 
 describe('DraggableDirective', () => {
   let component: TestDragComponent;
   let fixture: ComponentFixture<TestDragComponent>;
   let dragElement: DebugElement;
+  let directiveInstance: DraggableDirective;
 
   beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [TestDragComponent, DraggableDirective]
     })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(TestDragComponent);
     component = fixture.componentInstance;
-    dragElement = fixture.debugElement.query(By.css('div'));
+    component.position = 0;
+    dragElement = fixture.debugElement.query(By.directive(DraggableDirective));
+    directiveInstance = dragElement.injector.get(DraggableDirective);
     fixture.detectChanges();
-  });
+  }));
 
-  it('should create', () => {
+  it('it should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should change position on drag', () => {
-    dragElement.triggerEventHandler('mousedown', { pageX: 5, pageY: 5 });
-    dragElement.triggerEventHandler('mousemove', { pageX: 50 });
-    dragElement.triggerEventHandler('mouseup', null);
-    fixture.detectChanges();
-    expect(dragElement.nativeElement.style.left).toBe('');
+  it('it should emit event on drag', () => {
+    spyOn(directiveInstance.drag, 'emit');
+    dragElement.triggerEventHandler('mousedown', { clientX: 5, clientY: 5 });
+    dragElement.triggerEventHandler('mousemove', { clientX: 50, clientY: 5 });
+    dragElement.triggerEventHandler('mouseup', { clientX: 50, clientY: 5 });
+    // expect(component.onDrag.getCall()).toHaveBeenCalled();
+    expect(directiveInstance.drag.emit).toHaveBeenCalled();
   });
 
 });

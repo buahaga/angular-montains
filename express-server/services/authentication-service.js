@@ -16,7 +16,7 @@ const appUsers = {
 module.exports = class AuthenticationAccessService {
   check(credentials) {
     const user = appUsers[credentials.email];
-    user.expiration = Date.now() + 6000;
+    user.expiration = Date.now() + 6000000;
     if (user.password === credentials.password) {
       const token = jwt.sign(user, serverJWT_Secret);
       return Promise.resolve({ user: user.name, token: token });

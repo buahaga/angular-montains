@@ -10,7 +10,8 @@ const authMiddleWare = require('./middleware/authentication-middleware');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(authMiddleWare);
+app.use('/', routes);
 
-routes(app).listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 module.exports = app;

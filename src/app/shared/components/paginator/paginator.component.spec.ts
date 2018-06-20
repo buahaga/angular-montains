@@ -58,4 +58,18 @@ describe('PaginatorComponent', () => {
     expect(spanPages).toEqual(expected);
   }));
 
+  it('should emit event whit pagenumber 2 on click by 2 button', (() => {
+    const secondBtn = fixture.debugElement.queryAll(By.css('.page-button'))[1].nativeElement;
+    spyOn(component.pageChange, 'emit');
+    secondBtn.click();
+    expect(component.pageChange.emit).toHaveBeenCalledWith(2);
+  }))
+
+  it('should not emit event if you click on ... button in paginator', (() => {
+    const emptyBtn = fixture.debugElement.queryAll(By.css('.page-button'))[2].nativeElement;
+    spyOn(component.pageChange, 'emit');
+    emptyBtn.click();
+    expect(component.pageChange.emit).not.toHaveBeenCalled();
+  }))
+
 });

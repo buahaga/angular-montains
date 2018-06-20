@@ -19,11 +19,23 @@ describe('RangeSliderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RangeSliderComponent);
     component = fixture.componentInstance;
+    component.minHandlerPosition = 10;
+    component.maxHandlerPosition = 1;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change minHandlerPosition if position changed', (() => {
+    component.setMinHandlerPosition(4);
+    expect(component.minHandlerPosition).toBe(4);
+  }))
+
+  it('should change maxHandlerPosition if position changed', (() => {
+    component.setMaxHandlerPosition(5);
+    expect(component.maxHandlerPosition).toBe(5);
+  }))
 
 });
