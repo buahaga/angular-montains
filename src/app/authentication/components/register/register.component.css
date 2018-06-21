@@ -1,41 +1,35 @@
-.reg-container {
+.form {
   width: 50%;
   margin: 30px auto;
   padding: 5px;
-  background: #6496fa;
-  border: thin solid grey;
-  text-align: center;
-  z-index: 100;
-}
-
-.reg-form {
-  text-align: right;
-  width: 400px;
-  margin: 30px auto;
-}
-
-.reg-form label {
-  display: block;
-  margin-left: 10px;
-}
-
-.reg-form input {
-  width: 150px;
-}
-
-.reg-form button {
-  margin-top: 10px;
-}
-
-.reg-form button:active {
   background-color: #6496fa;
+  border: thin solid grey;
 }
 
-.reg-status {
+.field {
+  width: 70%;
+  text-align: right;
+  margin: 0 auto;
+}
+
+@media (max-width: 748px) {
+  .field {
+    width: 90%;
+  }
+}
+
+.form label {
+  display: block;
   margin: 10px;
-  padding: 10px;
-  font-style: italic;
-  background-color: white;
+}
+
+.form button {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.form button:active {
+  background-color: #6496fa;
 }
 
 .error {
@@ -45,25 +39,16 @@
 }
 
 .fatal {
-  width: 50%;
-  margin: 0 auto;
-  padding: 5px;
-  border: thin solid red;
+  margin: 10px;
+  padding: 10px;
+  font-style: italic;
+  background-color: white;
 }
 
-.login {
+.lnk {
   float: right;
   font-style: italic;
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
-}
-
-@media (max-width: 748px) {
-  .reg-container {
-    width: 80%;
-  }
-  .reg-form {
-    width: 200px;
-  }
 }

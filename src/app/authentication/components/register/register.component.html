@@ -1,40 +1,37 @@
-<div class="reg-container">
+<form class="form" [formGroup]="form" (ngSubmit)="register()">
 
-  <a class="login" routerLink="/login">Login</a>
+  <a class="lnk" routerLink="/login">Login</a>
+  <h3>Register New User</h3>
 
-  <form class="reg-form" [formGroup]="regForm" (ngSubmit)="register()">
-
-    <h3>Register New User</h3>
-
+  <div class="field">
+    <div *ngIf="regStatus" class="fatal">
+      {{ regStatus }}
+    </div>
+    
     <label>
-      E-mail/Login:&#160;
-      <input class="login" type="email" placeholder="example@email.com" formControlName="regEmail">
-    </label>
+    E-mail/Login:
+    <input class="login" type="email" placeholder="example@email.com" formControlName="email">
+  </label>
 
-    <div class="error" *ngIf="regForm.controls.regEmail.errors?.email">
+    <div class="error" *ngIf="form.controls.email.errors?.email">
       Email not valid.
     </div>
 
     <label>
-      Password:
-      <input class="password" type="password" formControlName="regPassword">
-    </label>
+    Password:
+    <input class="password" type="password" formControlName="password">
+  </label>
 
     <label>
-      Confirm Password:
-      <input class="password" type="password" formControlName="confirmPassword">
-    </label>
+    Confirm Password:
+    <input class="password" type="password" formControlName="confirmPassword">
+  </label>
 
-    <div class="error" *ngIf="regForm.controls.confirmPassword.errors?.noMatch">
+    <div class="error" *ngIf="form.errors?.notMatching">
       Passwords don't match!
     </div>
 
-    <button [disabled]="!regForm.valid" type="submit">Register</button>
+    <button [disabled]="!form.valid" type="submit">Register</button>
+  </div>
 
-    <div *ngIf="regStatus" class="reg-status">
-      {{ regStatus }}
-    </div>
-
-  </form>
-
-</div>
+</form>

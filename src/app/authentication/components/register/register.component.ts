@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
+import { ValidationService } from '../../../shared/services/validation.service';
 import { LoginModel } from '../../interfaces/login';
 
 
@@ -12,38 +13,32 @@ import { LoginModel } from '../../interfaces/login';
 })
 export class RegisterComponent implements OnInit {
 
-  private regForm: FormGroup;
+  private form: FormGroup;
+  private password: FormControl;
   private regStatus: string;
 
   constructor(
     private authenticationService: AuthenticationService,
+    private validationService: ValidationService,
     private formBuilder: FormBuilder,
     private router: Router) { }
 
   ngOnInit() {
-    this.createRegisterForm();
+    this.createForm();
   }
 
-  createRegisterForm() {
-    this.regForm = this.formBuilder.group({
-      regEmail: ['example@gmail.com', { validators: [Validators.required, Validators.email], updateOn: 'blur' }],
-      regPassword: ['', { validators: [Validators.required, Validators.minLength(1)] }],
-      confirmPassword: ['', { validators: [Validators.required, Validators.minLength(1)] }]
-    }, {
-        validator: this.checkPasswordMatch, updateOn: 'blur'
-      });
-  }
-
-  checkPasswordMatch(ac: AbstractControl) {
-    const regPassword = ac.get('regPassword').value;
-    const confirmPassword = ac.get('confirmPassword').value;
-    (regPassword !== confirmPassword) ? ac.get('confirmPassword').setErrors({ noMatch: true }) : null;
+  createForm() {
+    this.form = new FormGroup({
+      'email': new FormControl('guest@gmail.com', { validators: [Validators.required, Validators.email], updateOn: 'blur' }),
+      'password': new FormControl('', [Validators.required, Validators.minLength(1)]),
+      'confirmPassword': new FormControl('', [Validators.required, Validators.minLength(1)])
+    }, this.validationService.checkPasswordsMatch('password', 'confirmPassword'));
   }
 
   register() {
     const regModel: LoginModel = {
-      email: this.regForm.controls.regEmail.value,
-      password: this.regForm.controls.confirmPassword.value
+      email: this.form.controls.email.value,
+      password: this.form.controls.password.value
     };
     this.authenticationService.register(regModel)
       .subscribe(
