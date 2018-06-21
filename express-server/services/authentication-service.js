@@ -1,25 +1,55 @@
-const serverJWT_Secret = require('../middleware/jwt');
+const connect = require('../dbs');
 const jwt = require('jsonwebtoken');
-const appUsers = {
-  'admin@gmail.com': {
-    name: 'Admin',
-    password: '123',
-    expiration: 0
-  },
-  'guest@gmail.com': {
-    name: 'Guest',
-    password: '123',
-    expiration: 0
-  }
-};
+const _JWTSECRET = 'kpTxN=)7mX3W3SEJ58Ubt8-';
 
 module.exports = class AuthenticationAccessService {
+
+  constructor(config) {
+    this.collection = config;
+  }
+
   check(credentials) {
-    const user = appUsers[credentials.email];
-    user.expiration = Date.now() + 6000000;
-    if (user.password === credentials.password) {
-      const token = jwt.sign(user, serverJWT_Secret);
-      return Promise.resolve({ user: user.name, token: token });
+    const userToFind = {
+      email: credentials.email,
+      password: jwt.sign(credentials.password, _JWTSECRET)
     }
+    return new Promise((resolve, reject) => {
+      connect().then((client) => {
+        client.collection(this.collection).find(userToFind).toArray((err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            const token = result[0] ? {
+                user: userToFind.email,
+                token: jwt.sign({ ...userToFind, expiration: Date.now() + 6000000 }, _JWTSECRET)
+              }
+              : null;
+            resolve(token);
+          }
+        });
+      }).catch((err) => reject(err));
+    });
+  }
+
+  register(credentials) {
+    const newUser = {
+      email: credentials.email,
+      password: jwt.sign(credentials.password, _JWTSECRET)
+    }
+    return new Promise((resolve, reject) => {
+      connect().then((client) => {
+        client.collection(this.collection).insertOne(newUser, (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        });
+      }).catch((err) => reject(err));
+    });
+  }
+
+  decode(data) {
+    return jwt.decode(data, _JWTSECRET);
   }
 }

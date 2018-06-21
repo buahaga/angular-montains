@@ -14,10 +14,10 @@ export class RouteGuardService implements CanActivate {
 
   canActivate(): boolean {
     let isTokenActive: number | boolean = false;
-    const decoded = (token) => jwt(token).expiration;
+    const decoded = (token) => jwt(token.userToken);
     if (isPlatformBrowser) {
       if (this.tokenService.getToken()) {
-        isTokenActive = decoded(this.tokenService.getToken().userToken);
+        isTokenActive = decoded(this.tokenService.getToken()).expiration;
       }
       if (!isTokenActive || isTokenActive < Date.now()) {
         this.tokenService.setToken(null);

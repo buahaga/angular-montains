@@ -1,5 +1,5 @@
 .reg-container {
-  width: 600px;
+  width: 50%;
   margin: 30px auto;
   padding: 5px;
   background: #6496fa;
@@ -10,7 +10,7 @@
 
 .reg-form {
   text-align: right;
-  width: 70%;
+  width: 400px;
   margin: 30px auto;
 }
 
@@ -57,4 +57,13 @@
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media (max-width: 748px) {
+  .reg-container {
+    width: 80%;
+  }
+  .reg-form {
+    width: 200px;
+  }
 }
