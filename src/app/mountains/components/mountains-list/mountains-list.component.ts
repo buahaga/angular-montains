@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { trigger, style, transition, animate, stagger, query, animateChild } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FilterService } from '../../services/filter.service';
@@ -7,7 +8,21 @@ import { Mountain } from '../../interfaces/mountain';
 @Component({
   selector: 'app-mountains-list',
   templateUrl: './mountains-list.component.html',
-  styleUrls: ['./mountains-list.component.css']
+  styleUrls: ['./mountains-list.component.css'],
+  animations: [
+    trigger('list', [
+      transition(':enter', [
+        query('@listitems', stagger(10, animateChild()))
+      ]),
+    ]),
+    trigger('listitems', [
+      transition(':enter', [
+        style({ transform: 'scale(0.5)', opacity: 0 }),
+        animate('1s cubic-bezier(0.8, -0.6, 0.2, 1.2)',
+          style({ transform: 'scale(1)', opacity: 1 }))
+      ])
+    ])
+  ]
 })
 
 export class MountainsListComponent implements OnInit {

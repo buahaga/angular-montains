@@ -35,8 +35,7 @@ export class MountainDetailsComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     if (isPlatformBrowser) {
-      const userName = this.tokenService.getToken().user.split('@')[0];
-      this.currentUser = userName.charAt(0).toUpperCase() + userName.slice(1);
+      this.currentUser = this.tokenService.getToken().user;
     }
     this.queryParams = this.filterService.filter.getValue();
     this.route.data

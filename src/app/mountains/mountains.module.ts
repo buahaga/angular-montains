@@ -26,7 +26,7 @@ import { environment } from '../../environments/environment';
     AgmCoreModule.forRoot({
       apiKey: environment.apiKey,
     }),
-    SharedModule,
+    SharedModule
   ],
   declarations: [
     MountainsComponent,

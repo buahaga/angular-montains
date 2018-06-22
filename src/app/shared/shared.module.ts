@@ -5,6 +5,7 @@ import { RangeSliderComponent } from './components/range-slider/range-slider.com
 import { RangeSliderHandlerComponent } from './components/range-slider-handler/range-slider-handler.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { DraggableDirective } from './directives/draggable.directive';
+import { EmailToLoginPipe } from './pipes/email-login.pipe';
 
 @NgModule({
   imports: [CommonModule],
@@ -14,12 +15,14 @@ import { DraggableDirective } from './directives/draggable.directive';
     RangeSliderHandlerComponent,
     CarouselComponent,
     DraggableDirective,
+    EmailToLoginPipe,
   ],
   exports: [
     PaginatorComponent,
     RangeSliderComponent,
     RangeSliderHandlerComponent,
     CarouselComponent,
+    EmailToLoginPipe,
   ],
 })
 
