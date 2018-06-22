@@ -42,11 +42,8 @@ export class RegisterComponent implements OnInit {
     };
     this.authenticationService.register(regModel)
       .subscribe(
-        resp => {
-          this.regStatus = 'You registered successfully! LOG IN!';
-        }, (error) => {
-          this.regStatus = 'Smth. went wrong! Please, try another time...';
-        }
+        (data) => { this.regStatus = 'You registered successfully!' },
+        (error) => { this.regStatus = 'Smth. went wrong!' }
       );
   }
 

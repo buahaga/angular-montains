@@ -15,15 +15,14 @@ module.exports = class AuthenticationAccessService {
     }
     return new Promise((resolve, reject) => {
       connect().then((client) => {
-        client.collection(this.collection).find(userToFind).toArray((err, result) => {
+        client.collection(this.collection).findOne(userToFind, (err, result) => {
           if (err) {
-            reject(err);
+            reject(err)
           } else {
-            const token = result[0] ? {
+            const token = (result) ? {
                 user: userToFind.email,
                 token: jwt.sign({ ...userToFind, expiration: Date.now() + 6000000 }, _JWTSECRET)
-              }
-              : null;
+              } : null
             resolve(token);
           }
         });
@@ -38,7 +37,7 @@ module.exports = class AuthenticationAccessService {
     }
     return new Promise((resolve, reject) => {
       connect().then((client) => {
-        client.collection(this.collection).insertOne(newUser, (err, result) => {
+        client.collection(this.collection).insertOne({ _id: newUser.email, ...newUser }, (err, result) => {
           if (err) {
             reject(err);
           } else {

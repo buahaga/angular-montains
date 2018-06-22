@@ -36,6 +36,5 @@ export class AuthenticationService {
 
   register(regData: LoginModel): Observable<any> {
     return this.http.post(this.apiUrl + '/register', regData)
-      .pipe(map((data) => data));
   }
 }

@@ -13,8 +13,12 @@ router.post('/login', (req, res) => {
 router.post('/register', (req, res) => {
   const credentials = req.body;
   authenticationService.register(credentials)
-    .then((data) => res.status(200).json('registred successfully'))
-    .catch((err) => res.send(err));
+    .then((data) => {
+      res.status(200).json(data)
+    })
+    .catch((err) => {
+      res.status(418).send(err)
+    });
 });
 
 module.exports = router;
