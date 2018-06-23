@@ -1,8 +1,8 @@
 const connect = require('../dbs');
 
-module.exports = class CommentsDataAccessService {
-  constructor(config) {
-    this.collection = config;
+module.exports = class MongoDBCommentsDataAccessService {
+  constructor(collectionName) {
+    this.collection = collectionName;
   }
 
   get(query) {

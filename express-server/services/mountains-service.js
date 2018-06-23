@@ -1,6 +1,6 @@
 const mockData = require('../mock-data');
 
-module.exports = class MountainsAccessService {
+module.exports = class FakeMountainsAccessService {
   getAll(query = {}) {
     const params = JSON.parse(query);
     const itemsPerPage = params.itemsPerPage || 10;

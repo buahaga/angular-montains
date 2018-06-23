@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
-import { ValidationService } from '../../../shared/services/validation.service';
+import { CustomValidator } from '../../validators/custom-validator';
 import { LoginModel } from '../../interfaces/login';
 
 
@@ -19,7 +19,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private validationService: ValidationService,
     private formBuilder: FormBuilder,
     private router: Router) { }
 
@@ -32,7 +31,7 @@ export class RegisterComponent implements OnInit {
       'email': new FormControl('guest@gmail.com', { validators: [Validators.required, Validators.email], updateOn: 'blur' }),
       'password': new FormControl('', [Validators.required, Validators.minLength(1)]),
       'confirmPassword': new FormControl('', [Validators.required, Validators.minLength(1)])
-    }, this.validationService.checkPasswordsMatch('password', 'confirmPassword'));
+    }, CustomValidator.isEqual);
   }
 
   register() {

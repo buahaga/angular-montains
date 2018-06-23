@@ -12,7 +12,7 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'reg-new-user',
+    path: 'add-new-user',
     component: RegisterComponent
   }
 ];

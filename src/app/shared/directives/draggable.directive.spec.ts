@@ -5,8 +5,10 @@ import { DraggableDirective } from './draggable.directive';
 import * as sinon from 'sinon';
 
 @Component({
+
+  //TODO go back to styles check
   selector: 'app-test',
-  template: `<div class="handler" appDraggable [style.left]="position + 'px'" (drag)="onDrag($event)"></div>`,
+  template: `<div class="handler" appDraggable [style.left.px]="position" (drag)="onDrag($event)"></div>`,
   styles: [
       `.handler {
         position: absolute;

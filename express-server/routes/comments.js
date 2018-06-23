@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.Router();
 const CommentsRepository = require('../repositories/comments-repository');
-const CommentsDataAccessService = require('../services/comments-service');
-const commentsRepository = new CommentsRepository(new CommentsDataAccessService('comments'));
+const MongoDBCommentsDataAccessService = require('../services/comments-service');
+const commentsRepository = new CommentsRepository(new MongoDBCommentsDataAccessService('comments'));
+const router = express.Router();
 
 router.post('/', (req, res) => {
   const comment = {
@@ -12,14 +12,14 @@ router.post('/', (req, res) => {
   };
   commentsRepository.add(comment)
     .then((comment) => res.status(200).json(comment))
-    .catch((err) => res.send(err));
+    .catch((err) => res.status(403).send(err));
 });
 
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id);
   commentsRepository.get({mountain: id})
     .then((comments) => res.status(200).json(comments))
-    .catch((err) => res.send(err));
+    .catch((err) => res.status(403).send(err));
 });
 
 module.exports = router;
