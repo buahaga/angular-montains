@@ -3,7 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Token } from '../interfaces/token';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
 

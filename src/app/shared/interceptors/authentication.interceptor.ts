@@ -20,7 +20,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       request = request.clone({
         setHeaders: {
           Authorization: userToken ? userToken : '',
-        }
+        },
       });
       return next.handle(request);
     }

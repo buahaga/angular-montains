@@ -12,17 +12,17 @@ import { Mountain } from '../../interfaces/mountain';
   animations: [
     trigger('list', [
       transition(':enter', [
-        query('@listitems', stagger(10, animateChild()))
+        query('@listitems', stagger(10, animateChild())),
       ]),
     ]),
     trigger('listitems', [
       transition(':enter', [
         style({ transform: 'scale(0.5)', opacity: 0 }),
         animate('1s cubic-bezier(0.8, -0.6, 0.2, 1.2)',
-          style({ transform: 'scale(1)', opacity: 1 }))
-      ])
-    ])
-  ]
+          style({ transform: 'scale(1)', opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 
 export class MountainsListComponent implements OnInit {
@@ -30,9 +30,9 @@ export class MountainsListComponent implements OnInit {
   public mountains: Mountain[];
   public totalPages: number;
   public currentPage: number;
-  private itemsPerPage: number = 10;
-  private mapLat: number = 36.1100;
-  private mapLng: number = 16.9500;
+  private itemsPerPage = 10;
+  private mapLat = 36.1100;
+  private mapLng = 16.9500;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -67,7 +67,7 @@ export class MountainsListComponent implements OnInit {
   }
 
   markerClick(id: number) {
-    this.router.navigate([`mountains/${id}`])
+    this.router.navigate([`mountains/${id}`]);
   }
 
   mouseOver(infoWindow) {

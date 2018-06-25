@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const connect = require('../dbs');
 const _JWTSECRET = 'kpTxN=)7mX3W3SEJ58Ubt8-';
-const _EXPIRATION_TIME = Date.now() + 6000000;
+const expirationTime = () => Date.now() + 6000000;
 
 module.exports = class AuthenticationAccessService {
 
@@ -9,7 +9,7 @@ module.exports = class AuthenticationAccessService {
     this.collection = collectionName;
   }
 
-  check({ email, password }) {
+  login({ email, password }) {
     const user = {
       email,
       password: jwt.sign(password, _JWTSECRET),
@@ -23,7 +23,7 @@ module.exports = class AuthenticationAccessService {
           } else if (result) {
             resolve({
               user: user.email,
-              token: jwt.sign({ ...user, expiration: _EXPIRATION_TIME }, _JWTSECRET),
+              token: jwt.sign({ ...user, expiration: expirationTime() }, _JWTSECRET),
             });
           } else {
             throw new Error(`The user ${email} doesn't exist`);

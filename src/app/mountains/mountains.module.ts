@@ -26,7 +26,7 @@ import { environment } from '../../environments/environment';
     AgmCoreModule.forRoot({
       apiKey: environment.apiKey,
     }),
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     MountainsComponent,
@@ -41,6 +41,6 @@ import { environment } from '../../environments/environment';
     MountainResolver,
     CommentsResolver,
     MountainsCountResolver,
-  ]
+  ],
 })
 export class MountainsModule { }

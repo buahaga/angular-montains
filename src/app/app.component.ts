@@ -20,7 +20,7 @@ import { Component, OnInit } from '@angular/core';
     margin: 5px;
     font-style: italic;
     font-weight: 400;
-  }`]
+  }`],
 })
 
 export class AppComponent {

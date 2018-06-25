@@ -4,7 +4,7 @@ import { StorageService } from './storage.service';
 import { Token } from '../interfaces/token';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenService {
 

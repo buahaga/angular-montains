@@ -20,8 +20,8 @@ const routes: Routes = [
         component: MountainsListComponent,
         resolve: {
           mountains: MountainsResolver,
-          count: MountainsCountResolver
-        }
+          count: MountainsCountResolver,
+        },
       },
       {
         path: ':id',
@@ -29,10 +29,10 @@ const routes: Routes = [
         component: MountainDetailsComponent,
         resolve: {
           mountain: MountainResolver,
-          comments: CommentsResolver
-        }
-      }
+          comments: CommentsResolver,
+        },
+      },
     ],
-  }
+  },
 ];
 export const MountainsRouting: ModuleWithProviders = RouterModule.forChild(routes);

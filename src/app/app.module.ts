@@ -12,24 +12,24 @@ import { isPlatformBrowser } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'angular-mountains' }),
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    routing
+    routing,
   ],
   providers: [
     RouteGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
-      multi: true
+      multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent ],
 })
 
 export class AppModule {

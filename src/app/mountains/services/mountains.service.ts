@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 import { Mountain } from '../interfaces/mountain';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MountainsService {
 

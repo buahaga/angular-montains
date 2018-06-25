@@ -1,23 +1,32 @@
-// const expect = require('chai').expect;
-// const should = require('chai').should;
 const request = require('supertest');
 const app = require('../app');
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJwYXNzd29yZCI6IjEyMyIsImV4cGlyYXRpb24iOjI1Mjk0Mjg4MTcwODUsImlhdCI6MTUyOTQyMjgxN30.7DtjAWnT0YK0kgY5JRmG9DzfjhN6Smc7Ic8LvsbVN5U';
+const userCredentials = {
+  email: 'admin@gmail.com',
+  password: '123'
+};
 
 describe('GET /', () => {
 
-  it('should require authorization', () => {
-    return request(app).get('/api').then((res) => {
+  it('should require authentication', () => {
+    request(app).get('/').then((res) => {
       expect(res.statusCode).toBe(401);
     });
   });
 
-  it('should respond with 200', () => {
-    return request(app).get('/api/mountains', {
-      headers: {
-        authorisation: token
-      }
-    }).then((res) => {
+  it('should return 418 if register whit already existing credentials', async () => {
+    await request(app).post('/api/auth/register').send(userCredentials).then((res) => {
+      expect(res.statusCode).toBe(418);
+    });
+  });
+
+  it('should return 200 on valid credentials', async () => {
+    await request(app).post('/api/auth/login').send(userCredentials).then((res) => {
+      expect(res.statusCode).toBe(200);
+    });
+  });
+
+  it('should respond with 200 after authentication', () => {
+    request(app).get('/').then((res) => {
       expect(res.statusCode).toBe(200);
     });
   });

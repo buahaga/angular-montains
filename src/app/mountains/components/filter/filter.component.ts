@@ -7,7 +7,7 @@ import { Filter } from '../../interfaces/filter';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css']
+  styleUrls: ['./filter.component.css'],
 })
 export class FilterComponent implements OnInit {
 
@@ -45,7 +45,7 @@ export class FilterComponent implements OnInit {
       heigherThen: [this.filter.heigherThen],
       difficulty: new FormGroup({
         minDifficulty: new FormControl(this.filter.minDifficulty),
-        maxDifficulty: new FormControl(this.filter.maxDifficulty)
+        maxDifficulty: new FormControl(this.filter.maxDifficulty),
       }),
     });
   }

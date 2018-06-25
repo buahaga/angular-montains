@@ -9,7 +9,7 @@ import { LoginModel } from '../../interfaces/login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   createForm() {
     this.form = this.formBuilder.group({
       email: ['admin@gmail.com', { validators: [Validators.required, Validators.email], updateOn: 'blur' }],
-      password: ['', { validators: [Validators.required, Validators.minLength(1)] }]
+      password: ['', { validators: [Validators.required, Validators.minLength(1)] }],
     });
   }
 

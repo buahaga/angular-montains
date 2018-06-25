@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'add-new-user',
-    component: RegisterComponent
-  }
+    component: RegisterComponent,
+  },
 ];
 export const AuthenticationRouting: ModuleWithProviders = RouterModule.forChild(routes);

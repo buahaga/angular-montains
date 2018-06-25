@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
   imports: [
     AppModule,
     ServerModule,
-    ModuleMapLoaderModule
+    ModuleMapLoaderModule,
   ],
   providers: [
     // Add universal-only providers here

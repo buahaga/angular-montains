@@ -17,7 +17,7 @@ import { AuthenticationService } from './services/authentication.service';
   declarations: [
     AuthenticationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   providers: [
     AuthenticationService,

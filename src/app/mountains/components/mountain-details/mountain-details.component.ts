@@ -12,7 +12,7 @@ import { Filter } from '../../interfaces/filter';
 @Component({
   selector: 'app-mountain-details',
   templateUrl: './mountain-details.component.html',
-  styleUrls: ['./mountain-details.component.css']
+  styleUrls: ['./mountain-details.component.css'],
 })
 export class MountainDetailsComponent implements OnInit {
 
@@ -47,7 +47,7 @@ export class MountainDetailsComponent implements OnInit {
 
   createForm() {
     this.commentForm = this.formBuilder.group({
-      comment: new FormControl('')
+      comment: new FormControl(''),
     });
   }
 
@@ -56,7 +56,7 @@ export class MountainDetailsComponent implements OnInit {
       this.httpComments.addComment({
         mountain: this.mountain.id,
         user: this.currentUser,
-        comment: this.commentForm.value.comment
+        comment: this.commentForm.value.comment,
       }).subscribe(() => {
         this.commentForm.get('comment').setValue('');
         this.router.navigate([`/mountains/${this.mountain.id}`]);

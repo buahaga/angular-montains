@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 import { Comment } from '../interfaces/comment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommentsService {
 

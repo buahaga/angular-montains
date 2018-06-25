@@ -3,6 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-mountains',
   template: `<router-outlet></router-outlet>`,
-  styles: []
+  styles: [],
 })
 export class MountainsComponent { }

@@ -12,7 +12,7 @@ describe('RangeSliderHandlerComponent', () => {
   beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [RangeSliderHandlerComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   }));

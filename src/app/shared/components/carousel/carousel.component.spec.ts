@@ -9,7 +9,7 @@ describe('CarouselComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [CarouselComponent]
+      declarations: [CarouselComponent],
     })
       .compileComponents();
   }));
@@ -22,7 +22,7 @@ describe('CarouselComponent', () => {
       'http://dummyimage.com/1000x400.png/5fa2dd/ffffff',
       'http://dummyimage.com/1100x400.png/ff4444/ffffff',
       'http://dummyimage.com/1200x400.png/dddddd/ffffff',
-      'http://dummyimage.com/1000x300.png/5fa2dd/ffffff'
+      'http://dummyimage.com/1000x300.png/5fa2dd/ffffff',
     ];
     component.currentSlide = 0;
     component.containerPosition = '0px';

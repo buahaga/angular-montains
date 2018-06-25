@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/login', (req, res) => {
   const credentials = req.body;
-  authenticationService.check(credentials)
+  authenticationService.login(credentials)
     .then((token) => res.status(200).json(token))
     .catch((err) => res.status(401).send(err));
 });

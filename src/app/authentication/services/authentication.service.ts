@@ -24,7 +24,7 @@ export class AuthenticationService {
       .pipe(map((data: AuthorisedModel) => {
         const token: Token = {
           user: data.user,
-          userToken: data.token
+          userToken: data.token,
         };
         if (isPlatformBrowser) {
           this.tokenService.setToken(token);
@@ -35,6 +35,6 @@ export class AuthenticationService {
   }
 
   register(regData: LoginModel): Observable<any> {
-    return this.http.post(this.apiUrl + '/register', regData)
+    return this.http.post(this.apiUrl + '/register', regData);
   }
 }
